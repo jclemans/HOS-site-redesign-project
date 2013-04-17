@@ -1,0 +1,5 @@
+static/shows/*.mp3
+static/shows/*.cue
+logs/*.log
+tmp/rainbows.pid
+.bundle

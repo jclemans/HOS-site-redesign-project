@@ -1,0 +1,57 @@
+
+Photo: <input name="program[amazon_file]" type="file"/>
+<br/>
+Name: <input name="program[name]" type="text" value="<%= h @program.name %>"/>
+<br/>
+Email: <input name="program[email]" type="text" value="<%= h @program.email %>"/>
+<br/>
+Genre: <input name="program[genre]" type="text" value="<%= h @program.genre %>"/>
+<br/>
+Deejays: <input name="program[deejays]" type="text" value="<%= h @program.deejays %>"/>
+<br/>
+Program Website: <input name="program[program_url]" type="text" value="<%= h @program.program_url %>"/>
+<br/>
+Day of Week (0-6): 
+<select name="program[day_of_week]">
+  <% Date::DAYNAMES.each_index do |index| %>
+    <option value="<%= index %>" <%= 'selected' if index == @program.day_of_week %>><%= Date::DAYNAMES[index] %></option>
+  <% end %>
+</select>
+
+<br/>
+Start Time:
+<select name="program[start_hour]">
+  <% Date::ASTRONOMICAL_TIME_HOURS.each do |hour| %>
+    <option value="<%= hour %>" <%= 'selected' if hour == @program.start_hour %>><%= hour %></option>
+  <% end %>
+</select>
+
+<select name="program[start_minute]">
+  <% Date::ASTRONOMICAL_TIME_MINUTES.each do |minute| %>
+    <option value="<%= minute %>" <%= 'selected' if minute == @program.start_minute %>><%= minute %></option>
+  <% end %>
+</select>
+
+<br/>
+
+End Time:
+<select name="program[end_hour]">
+  <% Date::ASTRONOMICAL_TIME_HOURS.each do |hour| %>  
+    <option value="<%= hour %>" <%= 'selected' if hour == @program.end_hour %>><%= hour %></option>
+  <% end %>
+</select>
+
+<select name="program[end_minute]">
+  <% Date::ASTRONOMICAL_TIME_MINUTES.each do |minute| %>
+    <option value="<%= minute %>" <%= 'selected' if minute == @program.end_minute %>><%= minute %></option>
+  <% end %>
+</select>
+
+<br/>
+
+Is Active? <input type="hidden" name="program[is_active]" value="0"/><input name="program[is_active]" type="checkbox" value="1" <%= 'checked' if @program.is_active %>>
+<br/>
+
+<textarea rows="10" cols="50" name="program[description]"><%= @program.description %></textarea>
+
+<br/>

@@ -1,0 +1,46 @@
+<h1>Your Programs</h1>
+
+<% if @programs.empty? %>
+  No programs yet.
+<% else %>
+
+  <table class="programs">
+    <tr>
+      <th>Name</th>
+      <th>DJs</th>
+      <th>Genre</th>
+      <th>Day</th>
+      <th>Time</th>
+      <th>Active?</th>
+    </tr>
+    <% @programs.each do |program| %>
+      <tr>
+        <td>
+          <% if program.email %>
+            <a href="mailto:<%= program.email %>"><%= h program.name %></a>
+          <% else %>
+            <%= h program.name %>
+          <% end %>
+        </td>
+        <td><%= h program.deejays %></td>
+        <td><%= h program.genre[0..20] %></td>
+        <td><%= h Date::DAYNAMES[program.day_of_week] %></td>
+        <td><%= h program.start_hour %>:<%= h program.start_minute %> - <%= h program.end_hour %>:<%= h program.end_minute %></td>
+        <td><%= program.is_active == true ? 'Yes' : 'No' %></td>
+        <td><a href="/admin/programs/<%= program.id %>/edit">Edit</a></td>
+        <td><a href="/admin/programs/<%= program.id %>" onclick="<%= onclick_delete 'Are you sure? This will also trash their shows. Perhaps you would rather mark this program inactive?' %>">Delete</a></td>
+        <td><a href="/admin/programs/<%= program.id %>/shows">Shows</a></td>
+      </tr>
+    <% end %>
+  </table>
+
+<% end %>
+<br/>
+<a href="/admin/programs/new">Add New Program</a>
+<br/><br/>
+
+<h1>DJ Emails</h1>
+<% @programs.each do |program| %>
+  <%= "#{program.email}," unless program.email.nil? || program.email.empty? %>
+<% end %>
+<br/><br/><br/>

@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* FB Fan Rev 2 */
+
+.fan_box
+.full_widget 
+.connect_top {
+	border: none;
+	background-color: #042133;
+}
+.fan_box
+.full_widget {
+	border: none;
+}
+.connect_top a {
+	color: #FFFFFF;
+}
+.connect_top a:hover {
+	color: #CC0000;	
+}
+.fan_box
+.connections {
+	background-color: #042133;
+	border: none;
+	color: #FFFFFF;
+}
+
+.fan_box .connections_grid {
+	color: #FFFFFF;  
+}
+
+.fan_box .grid_item {
+  color: #FFFFFF;
+}
+
+.fan_box .connections_grid .grid_item .name {
+  color: #FFFFFF;
+}
+  color: #FFFFFF;
+}
+.name {
+  color: #FFFFFF;
+}
+
+.connect_button {
+	color: #FFFFFF; 
+}
+
+.fan_box .name_block a:hover {
+  color: #5EACDF;
+  text-decoration: none;
+}
+
+.fan_box .name_block a:visited {
+  color: #5EACDF;
+  text-decoration: none;
+}

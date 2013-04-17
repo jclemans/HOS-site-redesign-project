@@ -1,0 +1,105 @@
+<icecast>
+    <limits>
+        <clients>100</clients>
+        <sources>2</sources>
+        <threadpool>30</threadpool>
+        <queue-size>1048576</queue-size>
+        <client-timeout>30</client-timeout>
+        <header-timeout>15</header-timeout>
+        <source-timeout>30</source-timeout>
+        <burst-on-connect>1</burst-on-connect>
+        <burst-size>65535</burst-size>
+    </limits>
+
+    <authentication>
+        <source-password>rocket11</source-password>
+        <relay-password>rocket11</relay-password>
+        <admin-user>admin</admin-user>
+        <admin-password>rocket!</admin-password>
+    </authentication>
+
+    <directory>
+        <yp-url-timeout>15</yp-url-timeout>
+        <yp-url>http://dir.xiph.org/cgi-bin/yp-cgi</yp-url>
+    </directory>
+
+    <hostname>www.houseofsound.org</hostname>
+
+    <listen-socket>
+        <port>8000</port>
+    </listen-socket>
+
+
+<mount>
+  <mount-name>/live.mp3</mount-name>
+  <public>1</public>
+  <stream-name>House of Sound - Portland Oregon - Live Stream</stream-name>
+  <stream-description>House of Sound is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want, there is no compulsory "Top Hits" rotation. We currently have over thirty-six live shows per week.</stream-description>
+  <stream-url>http://www.houseofsound.org</stream-url>
+  <genre>Indie</genre>
+  <mp3-metadata-interval>0</mp3-metadata-interval>
+  <!-- <mp3-metadata-interval>4096</mp3-metadata-interval> -->
+  <fallback-mount>/blank.mp3</fallback-mount>
+  <fallback-override>1</fallback-override>
+</mount>
+
+
+<!--
+    <listen-socket>
+        <port>8000</port>
+        <shoutcast-mount>/live.mp3</shoutcast-mount>
+	<public>1</public>
+	<stream-name>House of Sound - Portland Oregon - Live Stream</stream-name>
+	<stream-description>House of Sound is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want, there is no compulsory "Top Hits" rotation. We currently have over thirty-six live shows per week.</stream-description>
+	<stream-url>http://www.houseofsound.org</stream-url>
+	<genre>Indie</genre>
+	<mp3-metadata-interval>4096</mp3-metadata-interval>
+	<fallback-mount>/blank.mp3</fallback-mount>
+	<fallback-override>1</fallback-override>	
+    </listen-socket>
+-->
+
+    <listen-socket>
+        <port>8001</port>
+        <shoutcast-mount>/field.mp3</shoutcast-mount>
+    </listen-socket>
+<!--
+    <listen-socket>
+      <port>9000</port>
+      <shoutcast-mount>/</shoutcast-mount>
+    </listen-socket>
+-->
+    <fileserve>1</fileserve>
+
+    <paths>
+        <basedir>/usr/share/icecast2</basedir>
+        <logdir>/var/log/icecast2</logdir>
+        <webroot>/usr/share/icecast2/web</webroot>
+        <adminroot>/usr/share/icecast2/admin</adminroot>
+        <!-- <alias source="/" dest="/status.xsl"/> -->
+	<!-- <alias source="/" dest="/live.mp3"/> -->
+    </paths>
+
+    <logging>
+        <accesslog>access.log</accesslog>
+        <errorlog>error.log</errorlog>
+      	<loglevel>3</loglevel> <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
+      	<logsize>10000</logsize> <!-- Max size of a logfile -->
+        <!-- If logarchive is enabled (1), then when logsize is reached
+             the logfile will be moved to [error|access|playlist].log.DATESTAMP,
+             otherwise it will be moved to [error|access|playlist].log.old.
+             Default is non-archive mode (i.e. overwrite)
+        -->
+        <!-- <logarchive>1</logarchive> -->
+    </logging>
+
+    <security>
+        <chroot>0</chroot>
+        <!--
+        <changeowner>
+            <user>bryan</user>
+            <group>users</group>
+        </changeowner>
+       -->
+    </security>
+</icecast>

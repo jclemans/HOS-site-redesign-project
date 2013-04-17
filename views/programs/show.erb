@@ -1,0 +1,59 @@
+<div id="program">
+  <% if @program.amazon_filename %>
+    <br/>
+    <center><img src="<%= @program.amazon_public_url(:large) %>"/></center>
+  <% end %>
+  <h1><%= h @program.name %></h1>
+  <h2>with <%= h @program.deejays %></h2>
+  <h2><%= Date::DAYNAMES[@program.day_of_week] %>s from <%= @program.start_time %> to <%= h @program.end_time %></h2>
+  <h3><%= h @program.description %></h3>
+
+  <!-- DEBUG: <%= h @program.end_time_in_seconds %> -->
+  
+  <% if @program.program_url %>
+    <h4><strong>Website:</strong> <a target="_blank" href="<%= h @program.program_url %>"><%= h @program.program_url %></a></h4>
+  <% end %>
+  <br/>
+  <h2>PREVIOUS SHOWS</h2>
+  
+  
+  
+  <% if @program.shows.length == 0 %>
+    <div class="show">
+      No archived shows yet.
+    </div>
+  <% else %>
+    
+    <% @program.shows.each do |show| %>
+      <div class="show">
+        <h2><%= h show.when.strftime('%B %d, %Y')%></h2>
+        
+        <div class="play_embed">
+          <p id="show_<%= show.id %>"></p>
+          <!-- script type="text/javascript">
+            AudioPlayer.embed("show_<%= show.id %>", {
+              soundFile: "<%= show.file_public_path %>",
+              titles: "<%= escape_javascript show.program.name %> - <%= escape_javascript show.when.strftime('%B %d %Y')%>",
+            });
+          </script -->
+          
+          <!-- HTML 5 FOR MOBILE -->
+          <!-- audio src="<%= show.file_public_path %>" controls -->
+          
+          <div class="play_embed">
+          	
+	          <audio controls>
+	          	<source src="/shows/<%= show.id %>/House of Sound - <%= show.program.name.strip_non_characters %> - <%= show.when.strftime("%B %d") %>.mp3" type="audio/mpeg">
+	          </audio>
+	  	
+	  </div>
+          
+        </div>
+      
+        <span class="play_link"><h2><a href="/shows/<%= show.id %>/House of Sound - <%= show.program.name.strip_non_characters %> - <%= show.when.strftime("%B %d") %>.mp3">Download</a></h2></span>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+      
+

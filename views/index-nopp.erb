@@ -1,0 +1,23 @@
+<div id="headline">
+  
+  <!-- <h2><a href="/local">SEND US LOCAL MUSIC!</a></h2> -->
+
+  <% if @program %>
+    <div id="on_the_air"></div>
+    <% if @program.amazon_filename %>
+      <br/>
+      <center><img src="<%= @program.amazon_public_url(:large) %>"/></center>
+    <% end %>
+    <h1><%= h @program.name %></h1>
+    <h2>with <%= h @program.deejays %> until <%= h @program.end_time %></h2>
+    <h3><%= h @program.description %></h3>
+  <% end %>
+
+  <h1><img src="/img/houseofsound_header.png" alt="House of Sound" /></h1>
+  <h3>is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want - unlike other local radio stations, there is no compulsory "Top Hits" rotation. We currently have <b><%= h @program_count.en.numwords %></b> live shows per week. <% unless @program %><a href="/programs">Check the schedule</a> to find the next show, or listen to our DJ-compiled music library <a href="<%= STREAM_URL %>">right now</a>.<% end %></h3>
+
+  <div style="align:center; margin-left: auto; margin-right: auto; width: 590px;">
+    <iframe src="http://www.facebook.com/plugins/likebox.php?id=100809577144&amp;width=530&amp;connections=54&amp;stream=false&amp;header=false&amp;height=555" scrolling="no" frameborder="0" style="background: #FFFFFF; border:none; overflow:hidden; width:530px; height:555px;" allowTransparency="true"></iframe>
+  </div>
+  
+</div>

@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <td>
+      <td></td>
+      <td><b>Artist</b></td>
+      <td><b>Title</b></td>
+      <td><b>Uploaded at</b></td>
+  <% @local_songs.each do |local_song| %>
+    <tr>
+      <td><a href="/local_songs/<%= local_song.id %>.mp3.m3u">Play</a></td>
+      <td><a href="/local_songs/<%= local_song.id %>.mp3">DL</a></td>
+      <td><%= h local_song.artist_name %></td><td><%= h local_song.title %></td>
+      <td><%= h local_song.created_at.strftime('%A %B %d, %Y at %I:%M%p') %></td>
+    </tr>
+  <% end %>
+</table>
+
+<a href="/local_songs/all.m3u">PLAY ALL SONGS</a>

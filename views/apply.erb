@@ -1,0 +1,66 @@
+<h1>APPLY TO BE A DJ</h1>
+
+<div class="apply">
+  <h3>Imagine a radio station where you can play and say whatever you want, even if it isn't approved by the thought police at the FCC. Even if it's a musical style that isn't going to put more revenue on a corporation's stock portfolio. <b>Now quit imagining and join us, because we're doing it right now, and it's getting a lot of people's attention.</b></h3>
+
+  <h3>We're here to provide a <i>real</i> alternative, to both the corporate suits exploiting the airwaves to make money, and the overzealous station managers trying to force their style on everybody. We won't tell you what you can and can't play. Everything else is completely up to you.</h3>
+</div>
+  
+<br/>
+<form action="/apply" method="POST">
+  
+  <%= "<h2 class=\"error_message\">#{@error_message}</h2>" if @error_message %>
+  
+  <label for="apply[name]">
+    What is your name?
+    <br/>
+    <small>(This can be real or made up, but keep in mind that someone may call you and ask for you by this name)</small>
+  </label>
+  <input name="apply[name]" type="text" value="<%= h @apply.name %>"/><br/>
+  
+  <label for="apply[email]">Email Address</label>
+  <input name="apply[email]" type="text" value="<%= h @apply.email %>"/><br/>
+  
+  <label for="apply[phone_number]">Phone Number</label>
+  <input name="apply[phone_number]" type="text" value="<%= h @apply.phone_number %>"/><br/>
+  
+  <label for="apply[describe_your_show]">Describe your show.
+    <br/>
+    <small>(talk, music, or both, what kind of music, etc.)</small>
+  </label>
+  <textarea name="apply[describe_your_show]"><%= h @apply.describe_your_show %></textarea><br/>
+  
+  <label for="apply[show_name]">Show Name</label>
+  <input name="apply[show_name]" type="text" value="<%= h @apply.show_name %>"/><br/>
+  
+  <label for="apply[dj_name]" type="text">DJ Name</label>
+  <input name="apply[dj_name]" type="text" value="<%= h @apply.dj_name %>"/><br/>
+  
+  <label for="apply[can_afford_to_pay_dues]">
+    You can afford to pay 20 dollars a month as DJ dues, once a month and on time.
+    <br/>
+    <small>
+      Dues are for paying station rent and maintaining equipment. Dues mean we don't have to sell out, play ads, or worry about paying for the studio. Occasionally dues are also used for promotional events or other activities that bring new attention and listeners to the station.
+    </small>
+  </label>
+  <input name="apply[can_afford_to_pay_dues]" type="hidden" value=""/>
+  <input name="apply[can_afford_to_pay_dues]" type="checkbox" value="yes" class="boxes" <%= 'checked' if @apply.can_afford_to_pay_dues == 'yes' %>/><br/>
+  
+  <label for="apply[what_time_slots_are_you_looking_for]">
+    Please indicate days and times you would be available. What time slot are you looking for?
+    <br/> 
+    <small><a href="/programs/all" target="_blank">Click here to look for open slots</a>, but let us know your preferred as well. Slots sometimes open up.</small></label>
+  <textarea name="apply[what_time_slots_are_you_looking_for]"><%= h @apply.what_time_slots_are_you_looking_for %></textarea><br/>
+  
+  <label for="apply[do_you_know_a_hos_dj]">
+    Do you know anyone in House Of Sound? Do you have a friend in HoS who has offered to train you and sponsor you in the new membership process? If so, who?
+  </label>
+  <textarea name="apply[do_you_know_a_hos_dj]"><%= h @apply.do_you_know_a_hos_dj %></textarea><br/>
+  
+  <label for="apply[human_being]">Uncheck this box to prove to us you're a human being and not an e-mail spam bot.</label>
+  <input name="apply[human_being]" type="hidden" value="I am a human."/>
+  <input name="apply[human_being]" type="checkbox" value="" class="boxes" <%= 'checked' if @apply.human_being.blank? %>/>
+  <br/>
+  <input type="submit" name="submitbutton" id="submitbutton" value="SEND"/>
+  
+</form>

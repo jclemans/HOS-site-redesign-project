@@ -1,0 +1,77 @@
+<div id="headline">
+  
+  <!-- <h2><a href="/local">SEND US LOCAL MUSIC!</a></h2> -->
+
+  <% if @program %>
+    <div id="on_the_air"></div>
+    <% if @program.amazon_filename %>
+      <br/>
+      <center><img src="<%= @program.amazon_public_url(:large) %>"/></center>
+    <% end %>
+    <h1><%= h @program.name %></h1>
+    <h2>with <%= h @program.deejays %> until <%= h @program.end_time %></h2>
+    <h3><%= h @program.description %></h3>
+  <% end %>
+
+  <h1><img src="/img/houseofsound_header.png" alt="House of Sound" /></h1>
+  <h3>is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want - unlike other local radio stations, there is no compulsory "Top Hits" rotation. We currently have <b><%= h @program_count.en.numwords %></b> live shows per week. <% unless @program %><a href="/programs">Check the schedule</a> to find the next show, or listen to our DJ-compiled music library <a href="<%= STREAM_URL %>">right now</a>.<% end %></h3>
+
+  <div style="align:center; margin-left: auto; margin-right: auto; width: 590px;">
+    
+    
+    
+    <table border="0" width="90%" cellpadding="10" CELLSPACING="10">
+    	<tr>
+    		<td colspan="2">
+    			<h1>YOU NEED THIS</h1>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td>
+    			<img hspace="15" vspace="5" src="/img/hostee.jpg"><br />
+    		</td>
+    		<td>
+    		
+    		
+    			<p>Live out your fantasies of being an internationally famous DJ in this luxurious House of Sound Tee and support the best independent internet radio on the planet.</p>
+    			
+    			<br />
+    			<h3><b>JUST TEN MEASLY DOLLARS!</b></h3>
+    		
+    			<center>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="Q88A8GFSH4PSU">
+			<table>
+			<tr><td><input type="hidden" name="on0" value="Sizes">Select size:</td></tr><tr><td><select name="os0">
+				<option value="Youth L">Youth L </option>
+				<option value="Adult S">Adult S </option>
+				<option value="Adult M">Adult M </option>
+				<option value="Adult L">Adult L </option>
+				<option value="Adult XL">Adult XL </option>
+			</select> </td></tr>
+			</table>
+			<input class="ppbut" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" width="86" height="21" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+			</center>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			
+    			<p align="center"><i>Everyone looks this good in House Of Sound gear!</i></p>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td colspan="2">
+    			<br /><br />
+    		</td>
+    	</tr>
+     </table>
+    
+    
+    <iframe src="http://www.facebook.com/plugins/likebox.php?id=100809577144&amp;width=530&amp;connections=54&amp;stream=false&amp;header=false&amp;height=300" scrolling="no" frameborder="0" style="background: #FFFFFF; border:none; overflow:hidden; width:530px; height:300px;" allowTransparency="true"></iframe>
+  </div>
+  
+</div>

@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <title>House of Sound - Send us your Music!</title>
+    <link href="/css/reset.css" media="screen" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      a:link {
+        color: #FFFFFF;
+      }
+      a:visited {
+        color: #FFFFFF;
+      }
+      a:active {
+        color: #FFFFFF;
+      }
+      a:hover {
+        color: #FFFFFF;
+      }
+      
+      body {
+        font-family: Lucida, sans-serif;
+        color: #FFFFFF;
+        background-color: #0067a6;
+        margin-top: 20px;
+      }
+      #container {
+        width: 980px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #explanation {
+        width: 970px;
+        font-size: 12pt;
+      }
+      
+      td {
+        font-weight: bold;
+        padding-bottom: 10px;
+        padding-right: 5px;
+      }
+      
+      h3 {
+        padding-bottom: 10px;
+      }
+      
+      #container {
+        position: relative;
+        width: 980px;
+        margin-bottom: 35px;
+      }
+      
+      #left {
+        width: 450px;
+        display: inline-block;
+        float: left;
+      }
+      
+      #right {
+        width: 530px;
+        left: 20px;
+        display: inline-block;
+        position: relative;
+      }
+      
+      #thanks h1 {
+        font-size: 20pt;
+        margin-bottom: 20px;
+      }
+      
+      #sending {
+        margin-top: 5px;
+        font-size: 10pt;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <img src="/img/local/logo.png"/>
+      <br/><br/>
+
+      
+      <% if @uploaded_music %>
+        <div id="thanks">
+          <h1>THANK YOU! We received your music, and we'll get it on our playback system. Feel free to upload more music, or come back and upload more later. Let your friends know, too. We love you.</h1>
+        </div>
+      <% else %>
+        <img src="/img/local/header-text.png"/>
+        <br/><br/><br/>
+      <% end %>
+      
+      <div id="container">
+      
+
+      
+        <div id="left">
+          <h3>Send us your music! We want to play local Portland music, any and all. We're not stopping until we have the largest collection of local music of any radio station in town.</h3>
+
+          <h3>Just send it to us using this form, and we'll put it in our master playback library. You music will get added to our playback system, and over <%= @program_count.en.numwords %> DJs at the station will be able to play it on their shows.</h3>
+
+          <h3>Thanks for making PDX America's real rock city. From all of us at House of Sound.</h3>
+        </div>
+
+        <div id="right">      
+          <form method="POST" action="/local_songs" enctype="multipart/form-data">
+            <table>
+              <tr><td>Artist/Band Name:</td><td><input name="local_song[artist_name]" type="text"/></td></tr>
+              <tr><td>Song Title:</td><td><input name="local_song[title]" type="text"/></td></tr>
+              <tr><td>MP3 File:</td><td><input name="local_song[file]" type="file"/></td></tr>
+              <tr><td><small>(Can also be a ZIP file of an entire album)</small></td><td></td></tr>
+              <tr><td>Email <small>(if you want station updates.)</small></td><td><input name="local_song[email]" type="text"/></td></tr>
+              <tr><td></td><td><input type="submit" value="UPLOAD!" onclick="document.getElementById('sending').innerHTML = 'Uploading, please wait a few minutes..'"/><div id="sending"></span></td></tr>
+            </table>
+          </form>
+        </div>
+      </div>
+      <a href="/"><img src="/img/local/continue.png"/></a>
+    </div>
+  </body>
+</html>

@@ -1,18 +1,12 @@
 class Show
-  include DataMapper::Resource
-  property :id, Serial
-  property :when, DateTime
-  property :program_id, Integer
-  property :is_finished, Boolean, :default => false
   belongs_to :program
-  
-  before :destroy, :delete_file
+  before_destroy :delete_file
   
   LOCAL_ROOT = 'static'
   PUBLIC_ROOT = 'shows'
   
   def finish!
-    update :is_finished => true
+    self.update_attribute :is_finished, true
     program.enforce_max_shows
     delete_cue_file
   end
@@ -38,5 +32,4 @@ class Show
   def delete_cue_file
     File.delete File.join(LOCAL_ROOT, PUBLIC_ROOT, "#{id}.cue")
   end
-  
 end

@@ -46,17 +46,21 @@
 	</head>
 	<body>
 	  <div id="container">
-      
-    <div id="column_left">
-      <div id="navigation">
+	   
+	   <div id="navigation">
         <!-- div class="link"><a href="javascript:document.getElementById('donate_form').submit()">DONATE</a></div -->
+		<div id="lghdr"><a href="/"><img src="/img/hos-logo-wht.png"/></a></div>
+        <div class="link"><a href="/">HOME</a></div>
         <div class="link"><a href="/programs">SCHEDULE</a></div>
         <div class="link"><a href="/contact">CONTACT</a></div>
-        <div class="link"><a href="/apply">APPLY TO BE A DJ</a></div>  
+        <div class="link"><a href="/apply">JOIN</a></div>
+		<div class="link"><a href="#" onclick="window.open('/listen_live','Listen Live','height=270,width=400'); return false">LISTEN</a></div>  
         
         <!-- <div class="link"><a href="http://forum.houseofsound.org">FORUM</a></div> -->
         <!-- <div class="link"><a href="/local">LOCAL</a></div> -->
       </div>
+      
+    <div id="column_left">
 
       <div id="content">
         <%= yield %>
@@ -65,7 +69,7 @@
 
     <div id="column_right">
 
-      <a href="/" id="logo"></a>
+      <!-- <a href="/" id="logo"></a></div> -->
       <div id="live_player">
         <h1>LISTEN RIGHT NOW</h1>
         <h2>(No media player required)</h2>
@@ -97,14 +101,42 @@
         }
       </script>
       <div id="contact_panel">
-        <h1>TALK TO THE DJ</h1>
-        <b>CALL IN: 503-575-9344</b><br/>
-        Web IM: <a href="javascript:showchat();"><b>CHAT NOW</b></a><br/>
-        <!-- AIM: houseofsoundpdx<br /> -->
-        <!-- Yahoo!: houseofsoundpdx<br /> -->
-        <!-- GTalk: houseofsoundpdx@google.com<br /> -->
-      </div>
+TALK TO THE DJ:
+<a href="tel://5035759344"><h1>503-575-9344</h1></a>
+<script type="text/javascript" src="http://cdn.dev.skype.com/uri/skype-uri.js"></script>
+<div id="SkypeButton_Call_houseofsoundpdx_1">
+  <script type="text/javascript">
+    Skype.ui({
+      "name": "call",
+      "element": "SkypeButton_Call_houseofsoundpdx_1",
+      "participants": ["houseofsoundpdx"],
+      "imageSize": 32
+    });
+  </script>
+<a href="http://www.facebook.com/houseofsound"><img src="/img/fb.gif" style="padding-right:2px;"></a>
+<a href="http://twitter.com/houseofsound"><img src="/img/twitter.png"></a>
+<br>
+<a href="mailto:admins@houseofsound.org?subject=Website Message"><img src="/img/email.png" style="padding-right:2px;"></a>
+<a href="http://youtu.be/yZeRA4mdcos"><img src="/img/youtube.png" style="padding-right:2px;"></a>
+<a href="http://instagram.com/houseofsound"><img src="/img/instagram.png" style="padding-right:2px;"></a>
+<a href="http://tinychat.com/houseofsound"><img src="/img/tinychat.png" style="padding-right:2px;"></a>
+<a href="http://mibbit.com/?channel=%23HoS&server=irc.mibbit.net"><img src="/img/mibbit.png" style="padding-right:2px;"></a>
+<script type="text/javascript" src="http://cdn.dev.skype.com/uri/skype-uri.js"></script>
+<div id="SkypeButton_Chat_houseofsoundpdx_1">
+  <script type="text/javascript">
+    Skype.ui({
+      "name": "chat",
+      "element": "SkypeButton_Chat_houseofsoundpdx_1",
+      "participants": ["houseofsoundpdx"],
+      "imageSize": 32
+    });
+  </script>
+</div>
+</div>
+<iframe src="http://www.ustream.tv/embed/11191573" width="300" height="195" scrolling="no" frameborder="0" style="border: 0px none transparent;"></iframe><br /></a>
 
+        <!-- Web IM: <a href="javascript:showchat();"><b>CHAT NOW</b></a><br/><br /> -->
+      </div>
     </div>
 
   </div>

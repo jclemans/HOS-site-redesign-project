@@ -30,20 +30,20 @@
         
         <div class="play_embed">
           <p id="show_<%= show.id %>"></p>
-          <!-- script type="text/javascript">
-            AudioPlayer.embed("show_<%= show.id %>", {
-              soundFile: "<%= show.file_public_path %>",
-              titles: "<%= escape_javascript show.program.name %> - <%= escape_javascript show.when.strftime('%B %d %Y')%>",
-            });
-          </script -->
           
           <!-- HTML 5 FOR MOBILE -->
-          <!-- audio src="<%= show.file_public_path %>" controls -->
           
           <div class="play_embed">
-          	
+HTML5 Player (if supported)          	
 	          <audio controls>
-	          	<source src="/shows/<%= show.id %>/House of Sound - <%= show.program.name.strip_non_characters %> - <%= show.when.strftime("%B %d") %>.mp3" type="audio/mpeg">
+	          	<source src="/shows/<%= show.id %>/House of Sound - <%= show.program.name.strip_non_characters %> - <%= show.when.strftime("%B %d") %>.mp3" type="audio/mpeg"-->
+              <!-- source src="http://www.houseofsound.org/<%= show.file_public_path %>" /-->    
+              <script type="text/javascript">
+                AudioPlayer.embed("show_<%= show.id %>", {
+                  soundFile: "<%= show.file_public_path %>",
+                  titles: "<%= escape_javascript show.program.name %> - <%= escape_javascript show.when.strftime('%B %d %Y')%>",
+                });
+              </script>
 	          </audio>
 	  	
 	  </div>

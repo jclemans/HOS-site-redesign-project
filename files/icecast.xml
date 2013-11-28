@@ -34,7 +34,20 @@
   <mount-name>/live.mp3</mount-name>
   <public>1</public>
   <stream-name>House of Sound - Portland Oregon - Live Stream</stream-name>
-  <stream-description>House of Sound is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want, there is no compulsory "Top Hits" rotation. We currently have over thirty-six live shows per week.</stream-description>
+  <stream-description>House of Sound is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want!</stream-description>
+  <stream-url>http://www.houseofsound.org</stream-url>
+  <genre>Indie</genre>
+  <mp3-metadata-interval>0</mp3-metadata-interval>
+  <!-- <mp3-metadata-interval>4096</mp3-metadata-interval> -->
+  <fallback-mount>/blank.mp3</fallback-mount>
+  <fallback-override>1</fallback-override>
+</mount>
+
+<mount>
+  <mount-name>/test.mp3</mount-name>
+  <public>1</public>
+  <stream-name>House of Sound - Portland Oregon - test Stream</stream-name>
+  <stream-description>Test Stream</stream-description>
   <stream-url>http://www.houseofsound.org</stream-url>
   <genre>Indie</genre>
   <mp3-metadata-interval>0</mp3-metadata-interval>
@@ -50,7 +63,7 @@
         <shoutcast-mount>/live.mp3</shoutcast-mount>
 	<public>1</public>
 	<stream-name>House of Sound - Portland Oregon - Live Stream</stream-name>
-	<stream-description>House of Sound is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want, there is no compulsory "Top Hits" rotation. We currently have over thirty-six live shows per week.</stream-description>
+  <stream-description>House of Sound is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want!</stream-description>
 	<stream-url>http://www.houseofsound.org</stream-url>
 	<genre>Indie</genre>
 	<mp3-metadata-interval>4096</mp3-metadata-interval>

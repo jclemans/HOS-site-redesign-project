@@ -12,7 +12,7 @@ module Station
     def load!(programs)
       programs.each do |program|
         @log.info "Scheduling #{program.name}"
-        @scheduler.cron "#{program.start_minute.to_i} #{program.start_hour} * * #{program.day_of_week}" do
+        @scheduler.cron "#{program.start_minute.to_i} #{program.start_hour.to_i} * * #{program.day_of_week.to_i}" do
 
           show = program.shows.create :when => Time.now
           start_seconds = ((program.start_hour.to_i * 60) + program.start_minute.to_i) * 60

@@ -1,25 +1,30 @@
-source :rubygems
-gem 'rack',                  '1.1.0'
-gem 'sinatra',               '1.0', :require => 'sinatra/base'
-gem 'json'
-gem 'dm-core',               '0.10.2'
-gem 'dm-aggregates',         '0.10.2'
-gem 'dm-timestamps',         '0.10.2'
-gem 'dm-validations',        '0.10.2'
-gem 'data_objects',          '0.10.1'
-gem 'do_mysql',              '0.10.1'
-#gem 'do_sqlite3'
-gem 'extlib',                '0.9.14'
-gem 'addressable',           '2.1.1'
-gem 'hoe',                   '2.5.0'
-gem 'chronic',               '0.2.3'
-gem 'unicode',               '0.1'
-gem 'rufus-scheduler',       '2.0.4', :require => 'rufus/scheduler'
-gem 'mongrel',               '1.1.5'
-gem 'rainbows',              '0.91.0', :require => nil
-gem 'unicorn',               '0.97.0', :require => nil
-gem 'pony',                  '1.0'
-gem 'linguistics',           '1.0.8'
-gem 'nokogiri',              '1.4.2'
-gem 'dm-paperclip',          '2.4.1'
-gem 'aws-s3',                '0.6.2', :require => 'aws/s3'
+source 'https://rubygems.org'
+gem 'rails', '4.0.1'
+
+gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'cancan'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'cucumber', group: :test
+gem 'factory_girl_rails', group: :test
+gem 'faker', group: :test
+gem 'figaro'
+gem 'haml'
+gem 'jbuilder', '~> 1.2'
+gem 'jquery-rails'
+gem 'mysql2'
+gem 'pry', group: :development
+gem 'pry-stack_explorer', group: :development
+gem 'rolify'
+gem 'rspec-rails', group: :test
+gem 'sass-rails', '~> 4.0.0'
+gem 'squeel'
+gem 'turbolinks'
+gem 'uglifier', '>= 1.3.0'
+gem 'webmock', group: :test
+
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
+
+

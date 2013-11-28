@@ -1,15 +1,8 @@
 class LocalSong
-  include DataMapper::Resource
-  property :id, Serial
-  property :artist_name, String, :length => 255
-  property :title, String, :length => 255
-  property :email, String, :length => 255
-  property :filename, String, :length => 255
-  property :created_at, DateTime
-  
-  validates_present :filename
-  
-  after :create do
+  validate :filename, presence: true
+  after_create :copy_file
+
+  def copy_file
     FileUtils.copy_file @file[:tempfile].path, file_path
   end
   
@@ -28,10 +21,10 @@ class LocalSong
     filename.strip do |name|
       # NOTE: File.basename doesn't work right with Windows paths on Unix
       # get only the filename, not the whole path
-      name.gsub! /^.*(\\|\/)/, ''
+      name.gsub!(/^.*(\\|\/)/, '')
 
       # Finally, replace all non alphanumeric, underscore or periods with underscore
-      name.gsub! /[^\w\.\-]/, '_'
+      name.gsub!(/[^\w\.\-]/, '_')
     end
   end
   

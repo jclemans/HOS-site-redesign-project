@@ -1,21 +1,6 @@
 class Program
-  include DataMapper::Resource
-  include DataMapper::AmazonImage::Resource
-  property :id, Serial
-  property :name, String, :length => 255
-  property :description, Text
-  property :genre, String
-  property :deejays, String, :length => 255
-  property :email, String, :length => 255
-  property :program_url, String, :length => 255
-  property :day_of_week, Integer
-  property :start_hour, String
-  property :start_minute, String
-  property :end_hour, String
-  property :end_minute, String
-  property :is_active, Boolean, :default => true
-  has n, :shows, :is_finished => true, :order => [:id.desc]
-  has n, :listener_stats
+  has_many :shows, -> {where(is_finished: true).order("id DESC")}
+  has_many :listner_stats
 
   def amazon_thumbnail_sizes
     {:huge => '600x600>', :large => '400x400>', :medium => '200x200>', :thumb => '50x50>'}
@@ -80,11 +65,11 @@ class Program
   end
   
   def start_minute=(min)
-    attribute_set(:start_minute, min.to_s.to_minute)
+    write_attribute(:start_minute, min.to_s.to_minute)
   end
   
   def end_minute=(min)
-    attribute_set(:end_minute, min.to_s.to_minute)
+    write_attribute(:end_minute, min.to_s.to_minute)
   end
   
   def start_time
@@ -100,14 +85,13 @@ class Program
   end
   
   def am_or_pm?(which)
-    attribute_get("#{which}_hour").to_i < 12 ? 'AM' : 'PM'
+    read_attribute("#{which}_hour").to_i < 12 ? 'AM' : 'PM'
   end
   
   def twenty_four_to_twelve(which)
-    hour = attribute_get("#{which}_hour").to_i
+    hour = read_attribute("#{which}_hour").to_i
     return 12 if hour == 0
     hour -= 12 if hour > 12
     hour
   end
-  
 end

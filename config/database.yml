@@ -8,7 +8,7 @@ development:
   password:
   socket: /tmp/mysql.sock
 
-test:
+test: &test
   adapter: mysql2
   encoding: utf8
   reconnect: false
@@ -18,3 +18,6 @@ test:
   password:
   socket: /tmp/mysql.sock
 
+
+cucumber:
+  <<: *test

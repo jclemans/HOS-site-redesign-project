@@ -1,6 +1,15 @@
+<link href='http://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+
 <div id="headline">
   
   <!-- <h2><a href="/local">SEND US LOCAL MUSIC!</a></h2> -->
+
+<!-- HERE IS DEBUG TO SEE IF WE GET VIDEOFEATURE DATA
+<% if @videofeature %>
+<%= @videofeature.caption %>
+<% end %>
+END DEBUG -->
 
   <% if @program %>
     <div id="on_the_air"></div>
@@ -14,7 +23,7 @@
   <% end %>
 
   <h1><img src="/img/houseofsound_header.png" alt="House of Sound" /></h1>
-  <h3>is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want - unlike other local radio stations, there is no compulsory "Top Hits" rotation. We currently have <b><%= h @program_count.en.numwords %></b> live shows per week. <% unless @program %><a href="/programs">Check the schedule</a> to find the next show, or listen to our DJ-compiled music library <a href="<%= STREAM_URL %>">right now</a>.<% end %></h3>
+  <h3>Welcome to the largest free-form station in Portland, OR with <b><%= h @program_count.en.numwords %></b> live shows per week. <% unless @program %><a href="/programs">Check the schedule</a> or listen live now. <% end %></h3>
 
   <div style="align:center; margin-left: auto; margin-right: auto; width: 590px;">
     
@@ -23,22 +32,26 @@
     <table border="0" width="90%" cellpadding="10" CELLSPACING="10">
     	<tr>
     		<td colspan="2">
-    			<h1>YOU NEED THIS</h1>
+    			<h3><b>CHECK OUT SOME VIDEO FROM OUR LIVE EVENTS!</b></h3>
     		</td>
     	</tr>
     	<tr>
     		<td>
-    			<img hspace="15" vspace="5" src="/img/hostee.jpg"><br />
+    			<iframe width="530" height="298" src="//www.youtube.com/embed/videoseries?list=PLCD56208C7EC0DE4E" frameborder="0" allowfullscreen></iframe><br />
     		</td>
-    		<td>
-    		
-    		
-    			<p>Live out your fantasies of being an internationally famous DJ in this luxurious House of Sound Tee and support the best independent internet radio on the planet.</p>
-    			
-    			<br />
-    			<h3><b>JUST TEN MEASLY DOLLARS!</b></h3>
-    		
+        </tr>
+        <tr>     		
+            <td>
+    			<br>
+                <h3></h3>
+    			<br>
+    			<b></b>
+    		</td>
+        </tr>
+        <tr>     		
+          <td>
     			<center>
+<img src="/img/hostshirt.jpg">
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 			<input type="hidden" name="cmd" value="_s-xclick">
 			<input type="hidden" name="hosted_button_id" value="Q88A8GFSH4PSU">
@@ -60,8 +73,8 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			
-    			<p align="center"><i>Everyone looks this good in House Of Sound gear!</i></p>
+<b>THE WHITE HOUSE OF SOUND BLUE LOGO T-SHIRT FOR JUST $10!</b>
+    			<p align="center"><i>Proceeds help support House of Sound</i></p>
     		</td>
     	</tr>
     	<tr>
@@ -72,7 +85,9 @@
      </table>
     
     
-    <iframe src="http://www.facebook.com/plugins/likebox.php?id=100809577144&amp;width=530&amp;connections=54&amp;stream=false&amp;header=false&amp;height=300" scrolling="no" frameborder="0" style="background: #FFFFFF; border:none; overflow:hidden; width:530px; height:300px;" allowTransparency="true"></iframe>
+<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhouseofsound.org&amp;send=false&amp;layout=standard&amp;width=530&amp;show_faces=false&amp;font=arial&amp;colorscheme=dark&amp;action=like&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:530px; height:35px;" allowTransparency="true"></iframe>
+
+<iframe allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?url=http://houseofsound.org&text=Check%20out%20@HouseofSound" style="width:130px; height:20px;"></iframe>
   </div>
   
 </div>

@@ -5,7 +5,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'cancan'
 gem 'capybara'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'cucumber-rails', group: :test
+gem 'cucumber-rails', require: false, group: :test
 gem 'database_cleaner'
 gem 'factory_girl_rails', group: :test
 gem 'faker', group: :test
@@ -15,8 +15,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'mysql2'
 gem 'numbers_and_words'
-gem 'pry', group: :development
-gem 'pry-stack_explorer', group: :development
+gem 'pry', group: [:development, :test]
+gem 'pry-stack_explorer', group: [:development, :test]
 gem 'rolify'
 gem 'rspec-rails', group: :test
 gem 'sass-rails', '~> 4.0.0'

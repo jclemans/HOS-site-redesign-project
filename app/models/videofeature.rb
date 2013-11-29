@@ -1,2 +1,2 @@
-class Videofeature
+class Videofeature < ActiveRecord::Base
 end

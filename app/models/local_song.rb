@@ -1,4 +1,4 @@
-class LocalSong
+class LocalSong < ActiveRecord::Base
   validate :filename, presence: true
   after_create :copy_file
 

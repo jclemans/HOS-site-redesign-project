@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @program_count = 1
+    @program_count = Program.active.count
   end
 end

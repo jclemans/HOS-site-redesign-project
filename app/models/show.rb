@@ -1,4 +1,4 @@
-class Show
+class Show < ActiveRecord::Base
   belongs_to :program
   before_destroy :delete_file
   

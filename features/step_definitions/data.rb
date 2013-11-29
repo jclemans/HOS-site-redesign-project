@@ -9,3 +9,12 @@ Given(/^There are (\d+) inactive shows$/) do |arg1|
     FactoryGirl.create :inactive_program
   end
 end
+
+Given(/^there are (\d+) active shows on ([^\b]+)$/) do |number_of_shows, weekday|
+  wday = Chronic.parse(weekday).wday
+  number_of_shows.to_i.times do 
+    FactoryGirl.create :program, day_of_week: wday
+  end
+end
+
+

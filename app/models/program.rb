@@ -1,6 +1,7 @@
 class Program < ActiveRecord::Base
   has_many :shows, -> {where(is_finished: true).order("id DESC")}
   has_many :listner_stats
+  has_attached_file :avatar, styles: {huge: '600x600', large: '400x400', medium: '200x200', thumb: '50x50'} 
 
   validate :deejays, present: true
 
@@ -10,12 +11,6 @@ class Program < ActiveRecord::Base
     {:huge => '600x600>', :large => '400x400>', :medium => '200x200>', :thumb => '50x50>'}
   end
  
-  def amazon_config
-    {:access_key_id => "AKIAIIJ4XOZT3UO6DRVA",
-     :secret_access_key => "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",
-     :bucket_name => (ENV['RACK_ENV'] == :production ? 'houseofsound-production' : 'houseofsound-development')}
-  end
-
   def self.all_ordered_by_start
     programs = []
     Date::DAYNAMES.each_index {|index| programs << self.all_for_day(index) }
@@ -85,7 +80,7 @@ class Program < ActiveRecord::Base
   end
   
   def parse_time(which)
-    "#{twenty_four_to_twelve which}:#{attribute_get "#{which}_minute"}#{am_or_pm? which}"
+    "#{twenty_four_to_twelve which}:#{read_attribute "#{which}_minute"}#{am_or_pm? which}"
   end
   
   def am_or_pm?(which)

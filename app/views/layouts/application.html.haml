@@ -11,7 +11,7 @@
     %meta{:content => "website", :property => "og:type"}/
     %meta{:content => "http://www.houseofsound.org", :property => "og:url"}/
     %meta{:content => "http://houseofsound.org/img/houseofsound_squarelogo.png", :property => "og:image"}/
-    %meta{:content => "House of Sound, with #{h @program_count.to_words} live shows per week, is the largest free-form radio station in Portland, Oregon.", :property => "og:description"}/
+    %meta{:content => "House of Sound, with #{h program_count.to_words} live shows per week, is the largest free-form radio station in Portland, Oregon.", :property => "og:description"}/
     = render partial: "shared/analytics"
 
     = javascript_include_tag 'swfobject'

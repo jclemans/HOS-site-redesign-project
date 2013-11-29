@@ -1,12 +1,6 @@
 %link{:href => "http://fonts.googleapis.com/css?family=Francois+One", :rel => "stylesheet", :type => "text/css"}/
 %link{:href => "http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic", :rel => "stylesheet", :type => "text/css"}/
 #headline
-  / <h2><a href="/local">SEND US LOCAL MUSIC!</a></h2>
-  /
-    HERE IS DEBUG TO SEE IF WE GET VIDEOFEATURE DATA
-    <haml:silent> if @videofeature
-    </haml:silent><haml:block><haml:loud> @videofeature.caption </haml:loud>
-    </haml:block>END DEBUG
   - if @program
     #on_the_air
     - if @program.amazon_filename
@@ -18,7 +12,7 @@
       with #{h @program.deejays} until #{h @program.end_time}
     %h3= h @program.description
   %h1
-    %img{:alt => "House of Sound", :src => "/img/houseofsound_header.png"}/
+    = image_tag 'houseofsound_header.png', alt: 'House of Sound'
   %h3
     Welcome to the largest free-form station in Portland, OR with
     %b= h @program_count.to_words
@@ -45,7 +39,7 @@
       %tr
         %td
           %center
-            %img{:src => "/img/hostshirt.jpg"}/
+            = image_tag 'hostshirt.jpg'
             %form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post"}
               %input{:name => "cmd", :type => "hidden", :value => "_s-xclick"}/
               %input{:name => "hosted_button_id", :type => "hidden", :value => "Q88A8GFSH4PSU"}/

@@ -1,6 +1,10 @@
-class Program
+class Program < ActiveRecord::Base
   has_many :shows, -> {where(is_finished: true).order("id DESC")}
   has_many :listner_stats
+
+  validate :deejays, present: true
+
+  scope :active, -> {where is_active: true}
 
   def amazon_thumbnail_sizes
     {:huge => '600x600>', :large => '400x400>', :medium => '200x200>', :thumb => '50x50>'}
@@ -65,11 +69,11 @@ class Program
   end
   
   def start_minute=(min)
-    write_attribute(:start_minute, min.to_s.to_minute)
+    write_attribute(:start_minute, min.to_s.rjust(2, '0'))
   end
   
   def end_minute=(min)
-    write_attribute(:end_minute, min.to_s.to_minute)
+    write_attribute(:end_minute, min.to_s.rjust(2,'0'))
   end
   
   def start_time

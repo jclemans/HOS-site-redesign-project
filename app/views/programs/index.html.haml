@@ -1,0 +1,15 @@
+#programs
+  %h1 SCHEDULE
+  = render partial: 'day_of_week_nav', locals: {day_of_week: @day_of_week}
+  - @programs.each do |program|
+    .program
+      .info
+        = program.start_time
+        \- #{program.end_time}
+        %br/
+        %h3
+          = link_to program.name, program_path(program)
+        %br/
+        - if program.amazon_filename
+          = image_tag program.avatar.url(:medium)
+      .right= program.description

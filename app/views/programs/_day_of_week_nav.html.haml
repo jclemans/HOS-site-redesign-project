@@ -1,0 +1,6 @@
+.program_days
+  - Date::DAYNAMES.each do |day|
+    <h2 #{"class='selected_day'" if day_of_week && day == Date::DAYNAMES[day_of_week]}>
+    %a{:href => "/programs?day_of_week=#{day}"}= day.upcase
+  <h2 #{"class='selected_day'" if day_of_week && day_of_week == 'all'}>
+  %a{:href => "/programs/all"} ALL

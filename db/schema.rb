@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20131129211602) do
 
   create_table "archevents", force: true do |t|
     t.datetime "when"
@@ -50,19 +50,23 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "programs", force: true do |t|
-    t.string  "name"
-    t.text    "description"
-    t.string  "genre",           limit: 50
-    t.string  "deejays",                                   null: false
-    t.integer "day_of_week"
-    t.string  "start_hour",      limit: 50
-    t.string  "start_minute",    limit: 50
-    t.string  "end_hour",        limit: 50
-    t.string  "end_minute",      limit: 50
-    t.boolean "is_active",                  default: true
-    t.string  "email"
-    t.string  "amazon_filename", limit: 50
-    t.string  "program_url"
+    t.string   "name"
+    t.text     "description"
+    t.string   "genre",               limit: 50
+    t.string   "deejays",                                       null: false
+    t.integer  "day_of_week"
+    t.string   "start_hour",          limit: 50
+    t.string   "start_minute",        limit: 50
+    t.string   "end_hour",            limit: 50
+    t.string   "end_minute",          limit: 50
+    t.boolean  "is_active",                      default: true
+    t.string   "email"
+    t.string   "amazon_filename",     limit: 50
+    t.string   "program_url"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "shows", force: true do |t|

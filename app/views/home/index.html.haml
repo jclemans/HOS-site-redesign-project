@@ -15,7 +15,7 @@
     = image_tag 'houseofsound_header.png', alt: 'House of Sound'
   %h3
     Welcome to the largest free-form station in Portland, OR with
-    %b= h @program_count.to_words
+    %b= h program_count.to_words
     live shows per week.
     - unless @program
       %a{:href => "/programs"} Check the schedule

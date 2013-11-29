@@ -1,0 +1,42 @@
+#program
+  - if @program.amazon_filename
+    %br/
+    %center
+      %img{:src => @program.amazon_public_url(:large)}/
+  %h1= h @program.name
+  %h2
+    with #{h @program.deejays}
+  %h2
+    = Date::DAYNAMES[@program.day_of_week]
+    s from #{@program.start_time} to #{h @program.end_time}
+  %h3= h @program.description
+  / DEBUG: <haml:loud> h @program.end_time_in_seconds </haml:loud>
+  - if @program.program_url
+    %h4
+      %strong Website:
+      %a{:href => h @program.program_url, :target => "_blank"}= h @program.program_url
+  %br/
+  %h2 PREVIOUS SHOWS
+  - if @program.shows.length == 0
+    .show
+      No archived shows yet.
+  - else
+    - @program.shows.each do |show|
+      .show
+        %h2= h show.when.strftime('%B %d, %Y')
+        .play_embed
+          %p{:id => "show_#{show.id}"}
+          / HTML 5 FOR MOBILE
+          .play_embed
+            HTML5 Player (if supported)
+            %audio{:controls => ""}
+              %source{"--" => "", :src => "/shows/#{show.id}/House of Sound - #{show.program.name.strip_non_characters} - #{show.when.strftime("%B %d")}.mp3", :type => "audio/mpeg"}
+                / source src="http://www.houseofsound.org/<haml:loud> show.file_public_path </haml:loud>" /
+                :javascript
+                  AudioPlayer.embed("show_#{show.id}", {
+                    soundFile: "#{show.file_public_path}",
+                    titles: "#{escape_javascript show.program.name} - #{escape_javascript show.when.strftime('%B %d %Y')}",
+                  });
+        %span.play_link/
+        %h2
+          %a{:href => "/shows/#{show.id}/House of Sound - #{show.program.name.strip_non_characters} - #{show.when.strftime("%B %d")}.mp3"} Download

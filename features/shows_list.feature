@@ -16,3 +16,10 @@ Feature: Show List
     When I go to the programs page
     And I click on Tuesday in the day nav
     Then I should see 4 shows
+
+  Scenario: Seeing 7 day view of shows
+    Given there are 3 active shows on Monday
+    And there are 2 active shows on Tuesday
+    And there are 4 active shows on Friday
+    When I go to the weekly schedule
+    Then I should see 9 shows scheduled

@@ -2,7 +2,7 @@
   %h1 WEEKLY SCHEDULE
   .per_day_schedule_link
     Per-day schedule:
-    %a{:href => "/programs"} Click here
+    = link_to 'Click here', programs_path
 %table.calendar
   %thead
     %tr
@@ -10,17 +10,18 @@
       - Date::DAYNAMES.each do |day|
         %th= day
   %tbody
-    - Date::ASTRONOMICAL_TIME_HOURS.each do |hour|
+    - two_digit_hours.each do |hour|
       %tr
-        %td.hour= hour.hour_24_to_12
+        %td.hour= hour_24_to_12 hour.to_i
         - Date::DAYNAMES.each_with_index do |day,i|
-          - if program = @programs.first_program(:day_of_week => i, :start_hour => hour)
+          - if program = Program.active.where(day_of_week: i).where(start_hour: hour).first
             %td{:class => "active_start #{'active_end' if program.end_hour == hour}"}
-              %a{:href => "/programs/#{program.id}-#{program.name.url_friendly}"}= h program.name
+              = link_to program.name.html_safe, program_path(program)
               %br/
               %small
                 with #{h program.deejays}
-          - elsif program = @programs.first_program(:day_of_week => i, :end_hour => hour)
+
+          - elsif program = Program.active.where(day_of_week: i).where(start_hour: hour).first
             %td.active_end
           - else
             %td

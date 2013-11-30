@@ -14,7 +14,7 @@
   - if @program.program_url
     %h4
       %strong Website:
-      %a{:href => h @program.program_url, :target => "_blank"}= h @program.program_url
+      = link_to @program.program_url, program_path(@program)
   %br/
   %h2 PREVIOUS SHOWS
   - if @program.shows.length == 0

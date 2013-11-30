@@ -12,4 +12,7 @@ When(/^I click on ([^\b]+) in the day nav$/) do |weekday|
   end
 end
 
+When(/^I go to the weekly schedule$/) do
+  visit "/programs/all"
+end
 

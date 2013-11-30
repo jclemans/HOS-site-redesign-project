@@ -17,4 +17,8 @@ Given(/^there are (\d+) active shows on ([^\b]+)$/) do |number_of_shows, weekday
   end
 end
 
+Given(/^"(.*?)" is a show$/) do |arg1|
+  FactoryGirl.create :program, name: arg1
+end
+
 

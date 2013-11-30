@@ -2,7 +2,7 @@
   - if @program.amazon_filename
     %br/
     %center
-      %img{:src => @program.amazon_public_url(:large)}/
+      = image_tag @program.avatar.url(:large)
   %h1= h @program.name
   %h2
     with #{h @program.deejays}
@@ -30,7 +30,7 @@
           .play_embed
             HTML5 Player (if supported)
             %audio{:controls => ""}
-              %source{"--" => "", :src => "/shows/#{show.id}/House of Sound - #{show.program.name.strip_non_characters} - #{show.when.strftime("%B %d")}.mp3", :type => "audio/mpeg"}
+              %source{"--" => "", :src => show_link(show), :type => "audio/mpeg"}
                 / source src="http://www.houseofsound.org/<haml:loud> show.file_public_path </haml:loud>" /
                 :javascript
                   AudioPlayer.embed("show_#{show.id}", {
@@ -39,4 +39,4 @@
                   });
         %span.play_link/
         %h2
-          %a{:href => "/shows/#{show.id}/House of Sound - #{show.program.name.strip_non_characters} - #{show.when.strftime("%B %d")}.mp3"} Download
+          %a{:href => show_link(show)} Download

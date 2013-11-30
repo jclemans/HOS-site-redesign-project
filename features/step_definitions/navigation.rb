@@ -16,3 +16,9 @@ When(/^I go to the weekly schedule$/) do
   visit "/programs/all"
 end
 
+When(/^I go to the show page for "(.*?)"$/) do |program_name|
+  program = Program.where(name: program_name).first
+  visit program_path(program)
+end
+
+

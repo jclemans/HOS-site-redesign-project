@@ -8,6 +8,7 @@ gem 'capybara'
 gem 'chronic'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'cucumber-rails', require: false, group: :test
+gem 'dynamic_form'
 gem 'database_cleaner'
 gem 'factory_girl_rails', group: :test
 gem 'faker', group: :test
@@ -24,6 +25,7 @@ gem 'pry-stack_explorer', group: [:development, :test]
 gem 'rolify'
 gem 'rspec-rails', group: :test
 gem 'sass-rails', '~> 4.0.0'
+gem 'simple_form'
 gem 'squeel'
 gem 'timecop', group: :test
 gem 'turbolinks'

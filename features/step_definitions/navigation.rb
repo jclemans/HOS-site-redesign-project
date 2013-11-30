@@ -21,4 +21,8 @@ When(/^I go to the show page for "(.*?)"$/) do |program_name|
   visit program_path(program)
 end
 
+Given(/^I am on the new inquiry page$/) do
+  visit new_inquiry_path
+end
+
 

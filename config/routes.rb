@@ -4,5 +4,9 @@ HouseOfSound::Application.routes.draw do
       get :all
     end
   end
+
+  resources :inquiries
+  resources :applications
+
   root 'home#index'
 end

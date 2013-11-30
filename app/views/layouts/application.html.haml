@@ -39,7 +39,7 @@
         .link
           = link_to t('join').upcase, new_dj_application_path
         .link
-          %a{:href => "#", :onclick => "window.open('/listen_live','Listen Live','height=270,width=400'); return false"} t('listen').upcase
+          %a{:href => "#", :onclick => "window.open('/listen_live','Listen Live','height=270,width=400'); return false"}= t('listen').upcase
       #column_left
         #content
           = yield

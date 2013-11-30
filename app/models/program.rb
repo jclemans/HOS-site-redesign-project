@@ -1,6 +1,6 @@
 class Program < ActiveRecord::Base
-  has_many :shows, -> {where(is_finished: true).order("id DESC")}
-  has_many :listner_stats
+  has_many :shows, -> {where(is_finished: true).order("id DESC")}, dependent: :destroy
+  #has_many :listner_stats
   has_attached_file :avatar, styles: {huge: '600x600', large: '400x400', medium: '200x200', thumb: '50x50'} 
 
   validate :deejays, present: true

@@ -21,7 +21,7 @@
               %small
                 with #{h program.deejays}
 
-          - elsif program = Program.active.where(day_of_week: i).where(start_hour: hour).first
+          - elsif program = Program.active.where(day_of_week: i).where(end_hour: hour).first
             %td.active_end
           - else
             %td

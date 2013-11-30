@@ -25,6 +25,39 @@ en:
   schedule: 'schedule'
   join: 'join'
   listen: 'listen'
-
+  send: 'send'
+  click_here: 'click here'
+  
   inquiries:
     thank_you: "Thank You. Your message has been sent"
+    shout_out: "Shout Out"
+
+  dj_applications: 
+    apply_to_be_a_dj: "apply to be a dj"
+    dues_are_for: "Dues are for paying station rent and maintaining equipment. Dues mean we don't have to sell out, play ads, or worry about paying for the studio. Occasionally dues are also used for promotional events or other activities that bring new attention and listeners to the station."
+    check_for_open_slots: "Check for open slots, but let us know your preferred as well. Slots sometimes open up."
+    open_slots: "open slots"
+    are_you_passionate_about_music: "Are you passionate about music? Are you the first to discover new releases or check out the latest bands? Do you spin late at night for your friends? Maybe you've dreamed of doing that talk show podcast? Well imagine a place where you can play or say whatever you want right here, right now."
+    thats_house_of_sound: "That's House of Sound."
+    wed_like_you_to_join: "We'd like you to join us and you won't be told what you can and can't play. Now quit imagining and apply to be a DJ. Everything else is completely up to you."
+
+  simple_form:
+    labels:
+      defaults:
+        blue_meanies: "Anti-spam: What color are the blue meanies?"
+
+      dj_application:
+        name: "What is your name?"
+        email: "Email"
+        phone: "Phone"
+        show_description: 'Describe your show. (talk, music, or both, what kind of music, etc.)'
+        show_name: "show name"
+        dj_name: "DJ Name"
+        is_cost_ok: "You can afford to pay $20 / month as DJ dues, once a month and on time."
+        availability: "Please indicate days and times you would be available. What time slot are you looking for?"
+        internal_contacts: "Do you know anyone in House Of Sound? Do you have a friend in HoS who has offered to train you and sponsor you in the new membership process? If so, who?"
+
+
+
+
+

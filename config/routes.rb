@@ -6,7 +6,7 @@ HouseOfSound::Application.routes.draw do
   end
 
   resources :inquiries
-  resources :applications
+  resources :dj_applications
 
   root 'home#index'
 end

@@ -18,10 +18,6 @@ Then(/^I should see a thank you message$/) do
   page.should have_content "Thank You. Your message has been sent"
 end
 
-Then(/^I should see an error message$/) do
-  page.should have_content "There were problems with the following fields"
-end
-
 def fill_in_inquiry opts={}
   fill_in "Name", with: "Pancha"
   fill_in "Email", with: opts.has_key?(:email) ? opts[:email] : 'pancha@massive.com'

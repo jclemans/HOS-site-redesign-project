@@ -311,27 +311,33 @@ a:active {color:#FFFFFF; text-decoration: none;}
 
 
 
-form label {
-  float: left;
-  width: 200px;
-  font-weight: bold;
-  font-size: 10pt;
-  margin-bottom: 20px;
-  margin-right: 20px;
-}
+form{
+  label {
+    float: left;
+    width: 200px;
+    font-weight: bold;
+    font-size: 10pt;
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
 
-form input, textarea {
-  width: 180px;
-  margin-bottom: 5px;
-}
+  input.boolean{
+    width: 15px;
+  }
 
-form textarea {
-  width: 250px;
-  height: 150px;
-}
+  input, textarea {
+    width: 180px;
+    margin-bottom: 5px;
+  }
 
-form .boxes {
-  width: 1em;
+  textarea {
+    width: 250px;
+    height: 150px;
+  }
+
+  .boxes {
+    width: 1em;
+  }
 }
 
 .ppbut {
@@ -404,4 +410,10 @@ audio {
 
 div.input{
   clear: both;
+}
+
+.info{
+  margin-bottom: 10px;
+  margin-left: 220px;
+  color: grey;
 }

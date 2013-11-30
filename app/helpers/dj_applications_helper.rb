@@ -1,0 +1,2 @@
+module DjApplicationsHelper
+end

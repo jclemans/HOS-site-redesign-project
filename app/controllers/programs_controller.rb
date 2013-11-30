@@ -7,4 +7,6 @@ class ProgramsController < ApplicationController
     end
     @programs = Program.active.where(day_of_week: @day_of_week)
   end
+
+  
 end

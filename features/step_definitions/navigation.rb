@@ -25,4 +25,8 @@ Given(/^I am on the new inquiry page$/) do
   visit new_inquiry_path
 end
 
+Given(/^I am on the new application page$/) do
+  visit new_dj_application_path
+end
+
 

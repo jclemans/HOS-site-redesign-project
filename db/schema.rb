@@ -11,12 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131130155613) do
+ActiveRecord::Schema.define(version: 20131130192857) do
 
   create_table "archevents", force: true do |t|
     t.datetime "when"
     t.integer  "program_id"
     t.boolean  "is_finished", default: false
+  end
+
+  create_table "dj_applications", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "show_description"
+    t.string   "show_name"
+    t.string   "dj_name"
+    t.boolean  "is_cost_ok"
+    t.text     "availability"
+    t.text     "internal_contacts"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "events", force: true do |t|

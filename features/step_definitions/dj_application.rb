@@ -2,8 +2,12 @@ Given(/^I fill out the dj application form correctly$/) do
   fill_in_dj_app
 end
 
-Given(/^I fill out the dj application except for email$/) do
-  fill_in_dj_app email: nil
+Given(/^I fill out the dj application except for "([^"]+)"$/) do |field_name|
+  fill_in_dj_app :"#{field_name}" => nil
+end
+
+Given(/^I fill out the dj application with a "(.*?)" value of "(.*?)"$/) do |field, value|
+  fill_in_dj_app :"#{field}" => value
 end
 
 Then(/^I should see a validation error on the dj application$/) do
@@ -24,6 +28,6 @@ def fill_in_dj_app opts={}
   check 'dj_application_is_cost_ok'
   fill_in 'dj_application_availability', with: 'any time, any place'
   fill_in 'dj_application_internal_contacts', with: 'I fly solo'
-  fill_in 'dj_application_blue_meanies', with: 'blue'
+  fill_in 'dj_application_blue_meanies', with: opts.has_key?(:blue_meanies) ? opts[:blue_meanies] : 'blue'
 end
 

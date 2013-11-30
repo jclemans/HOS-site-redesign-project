@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131129211602) do
+ActiveRecord::Schema.define(version: 20131130155613) do
 
   create_table "archevents", force: true do |t|
     t.datetime "when"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 20131129211602) do
     t.string  "email"
     t.string  "amazon_filename", limit: 50
     t.string  "program_url"
+  end
+
+  create_table "inquiries", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "listener_stats", force: true do |t|

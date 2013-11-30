@@ -21,3 +21,5 @@
 
 en:
   hello: "Hello world"
+  inquiries:
+    thank_you: "Thank You. Your message has been sent"

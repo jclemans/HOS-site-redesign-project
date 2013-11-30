@@ -1,0 +1,13 @@
+%h1 CONTACT US
+- flash.each do |name, msg|
+  %h2{class: name}= msg
+
+= simple_form_for @inquiry do |f|
+  = f.error_messages
+  = f.input :name
+  = f.input :email
+  = f.input :subject
+  = f.input :message
+  = f.input :blue_meanies, label: "Anti-spam: What color are the blue meanies?"
+  = f.button :submit, "Shout Out"
+

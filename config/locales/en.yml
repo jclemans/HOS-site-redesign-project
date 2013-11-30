@@ -20,6 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  contact: 'contact'
+  home: 'home'
+  schedule: 'schedule'
+  join: 'join'
+  listen: 'listen'
+
   inquiries:
     thank_you: "Thank You. Your message has been sent"

@@ -14,4 +14,12 @@ module ProgramsHelper
     hour = (hour == 0 ? '12' : (hour > 12 ? hour-12 : hour))
     "#{hour}#{meridiem}"
   end
+
+  def show_link show
+    "/shows/#{show.id}/House of Sound - #{strip_non_characters(show.program.name)} - #{show.when.strftime("%B %d")}.mp3"
+  end
+
+  def strip_non_characters string
+    string.gsub(/['.,]/, '').gsub(/[^a-z0-9]+/i, ' ')
+  end
 end

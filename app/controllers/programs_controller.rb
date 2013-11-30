@@ -8,5 +8,11 @@ class ProgramsController < ApplicationController
     @programs = Program.active.where(day_of_week: @day_of_week)
   end
 
+  def all
+  end
+
+  def show
+    @program = Program.find params[:id]
+  end
   
 end

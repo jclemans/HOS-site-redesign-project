@@ -1,5 +1,7 @@
 class Program < ActiveRecord::Base
   has_many :shows, -> {where(is_finished: true).order("id DESC")}, dependent: :destroy
+  accepts_nested_attributes_for :shows, allow_destroy:  true
+
   #has_many :listner_stats
   has_attached_file :avatar, styles: {huge: '600x600', large: '400x400', medium: '200x200', thumb: '50x50'} 
 

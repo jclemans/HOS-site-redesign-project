@@ -1,9 +1,12 @@
 ActiveAdmin.register Program do
 
-  permit_params :name, :description, :genre, :deejays, :day_of_week, :start_hour, :start_minute, :end_hour, :end_minute, :is_active, :email, :program_url, :avatar
+  permit_params :name, :description, :genre, :deejays, :day_of_week, :start_hour, :start_minute, :end_hour, :end_minute, :is_active, :email, :program_url, :avatar, :shows_attributes => [:when, :is_finished, :id, :_destroy]
 
   index  do
     column :name 
+    column :image do |program|
+      image_tag program.avatar.url(:thumb)
+    end
     column :genre
     column "Day #", :day_of_week
     column :day do |program|
@@ -31,6 +34,23 @@ ActiveAdmin.register Program do
       row :start_minute
       row :end_hour
       row :end_minute
+
+      row :shows do
+        h3 "Shows"
+        table do
+          tr do
+            th "When"
+            th "Finished?"
+          end
+
+          ad.shows.each do |show|
+            tr do
+              td show.when.to_s(:db)
+              td show.is_finished?
+            end
+          end
+        end
+      end
     end
   end
 
@@ -58,6 +78,13 @@ ActiveAdmin.register Program do
       f.input :start_minute, as: :select, collection: ["0", "15", "30", "45"] 
       f.input :end_hour, as: :select, collection: (0..23).collect{|d| d.to_s.rjust(2,"0")}
       f.input :end_minute, as: :select, collection: ["0", "15", "30", "45"] 
+    end
+
+    f.inputs "Shows" do
+      f.has_many :shows,  allow_destroy: true do |show_form|
+        show_form.input :when
+        show_form.input :is_finished
+      end
     end
 
     f.actions

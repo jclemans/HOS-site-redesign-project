@@ -10,6 +10,5 @@
         %h3
           = link_to program.name, program_path(program)
         %br/
-        - if program.amazon_filename
-          = image_tag program.avatar.url(:medium)
+        = image_tag program.avatar.url(:medium)
       .right= program.description

@@ -17,9 +17,9 @@ gem 'haml'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'launchy', group: [:test]
-gem 'mysql2'
 gem 'numbers_and_words'
 gem 'paperclip'
+gem 'pg'
 gem 'pry', group: [:development, :test]
 gem 'pry-stack_explorer', group: [:development, :test]
 gem 'rolify'

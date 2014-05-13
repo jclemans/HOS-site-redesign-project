@@ -15,8 +15,8 @@ module ProgramsHelper
     "#{hour}#{meridiem}"
   end
 
-  def show_link show
-    "/shows/#{show.id}/House of Sound - #{strip_non_characters(show.program.name)} - #{show.when.strftime("%B %d")}.mp3"
+  def episode_link episode
+    "/episodes/#{episode.id}/House of Sound - #{strip_non_characters(episode.program.name)} - #{episode.when.strftime("%B %d")}.mp3"
   end
 
   def strip_non_characters string

@@ -1,6 +1,6 @@
 ActiveAdmin.register Program do
 
-  permit_params :name, :description, :genre, :deejays, :day_of_week, :start_hour, :start_minute, :end_hour, :end_minute, :is_active, :email, :program_url, :avatar, :shows_attributes => [:when, :is_finished, :id, :_destroy]
+  permit_params :name, :description, :genre, :deejays, :day_of_week, :start_hour, :start_minute, :end_hour, :end_minute, :is_active, :email, :program_url, :avatar, :episodes_attributes => [:when, :is_finished, :id, :_destroy]
 
   index  do
     column :name 
@@ -35,18 +35,18 @@ ActiveAdmin.register Program do
       row :end_hour
       row :end_minute
 
-      row :shows do
-        h3 "Shows"
+      row :episodes do
+        h3 "Episodes"
         table do
           tr do
             th "When"
             th "Finished?"
           end
 
-          ad.shows.each do |show|
+          ad.episodes.each do |episode|
             tr do
-              td show.when.to_s(:db)
-              td show.is_finished?
+              td episode.when.to_s(:db)
+              td episode.is_finished?
             end
           end
         end
@@ -80,10 +80,10 @@ ActiveAdmin.register Program do
       f.input :end_minute, as: :select, collection: ["0", "15", "30", "45"] 
     end
 
-    f.inputs "Shows" do
-      f.has_many :shows,  allow_destroy: true do |show_form|
-        show_form.input :when
-        show_form.input :is_finished
+    f.inputs "Episodes" do
+      f.has_many :episodes,  allow_destroy: true do |episode_form|
+        episode_form.input :when
+        episode_form.input :is_finished
       end
     end
 

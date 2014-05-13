@@ -2,8 +2,8 @@ HouseOfSound::Application.routes.draw do
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :programs do 
-    collection do 
+  resources :programs do
+    collection do
       get :all
     end
   end

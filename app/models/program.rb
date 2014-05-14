@@ -1,6 +1,6 @@
 class Program < ActiveRecord::Base
-  has_many :shows, -> {where(is_finished: true).order("id DESC")}, dependent: :destroy
-  accepts_nested_attributes_for :shows, allow_destroy:  true
+  has_many :episodes, -> {where(is_finished: true).order("id DESC")}, dependent: :destroy
+  accepts_nested_attributes_for :episodes, allow_destroy:  true
 
   #has_many :listner_stats
   has_attached_file :avatar, styles: {huge: '600x600', large: '400x400', medium: '200x200', thumb: '50x50'} 
@@ -44,7 +44,7 @@ class Program < ActiveRecord::Base
   def end_time_in_seconds
 
   # Astro added a conditional here to fix a bug that caused
-  # shows that end at midnight not to show up on the main page
+  # episodes that end at midnight not to show up on the main page
   # while they were live. See the conditional in def self.current
   # above and consider that current_time_in_seconds is always going
   # to be greater than zero (current_time_in_seconds for midnight).
@@ -58,9 +58,9 @@ class Program < ActiveRecord::Base
     nil
   end
   
-  def enforce_max_shows
-    until shows.length <= MAX_ARCHIVED_SHOWS
-      shows.first(:order => [:when]).destroy
+  def enforce_max_episodes
+    until episodes.length <= MAX_ARCHIVED_EPISODES
+      episodes.first(:order => [:when]).destroy
       reload
     end
   end

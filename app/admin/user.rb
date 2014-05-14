@@ -1,24 +1,17 @@
 ActiveAdmin.register User do
+  permit_params :email, :password, :password_confirmation,
+    roles_attributes: [:role_id]
 
   form do |f|
     f.inputs "User Details" do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.input :roles,  :label => "Roles", :as => :check_boxes, :collection => Role.all
+      f.actions
     end
-    f.actions
   end
 
-  create_or_edit = Proc.new {
-    @user            = User.find_or_create_by_id(params[:id])
-    if @user.save
-      redirect_to :action => :show, :id => @user.id
-    else
-      render active_admin_template((@user.new_record? ? 'new' : 'edit') + '.html.erb')
-    end
-  }
-  member_action :create, :method => :post, &create_or_edit
-  member_action :update, :method => :put, &create_or_edit
 
 
   # See permitted parameters documentation:

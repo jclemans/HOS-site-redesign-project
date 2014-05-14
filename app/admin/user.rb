@@ -1,6 +1,15 @@
 ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation,
-    roles_attributes: [:role_id]
+    role_ids:[]
+
+  index do
+    column :id
+    column :email
+    column 'Roles' do |user|
+      user.roles.collect { |role| role.name }.to_sentence
+    end
+    default_actions
+  end
 
   form do |f|
     f.inputs "User Details" do

@@ -69,6 +69,12 @@ ActiveRecord::Schema.define(version: 20140513231728) do
     t.datetime "updated_at"
   end
 
+  create_table "episodes", force: true do |t|
+    t.datetime "when"
+    t.integer  "program_id"
+    t.boolean  "is_finished"
+  end
+
   create_table "events", force: true do |t|
     t.string  "name",            limit: 510
     t.text    "description"
@@ -126,12 +132,6 @@ ActiveRecord::Schema.define(version: 20140513231728) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-  end
-
-  create_table "shows", force: true do |t|
-    t.datetime "when"
-    t.integer  "program_id"
-    t.boolean  "is_finished"
   end
 
   create_table "users", force: true do |t|

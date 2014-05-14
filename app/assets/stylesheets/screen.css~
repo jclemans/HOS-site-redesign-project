@@ -215,21 +215,21 @@ a:active {color:#FFFFFF; text-decoration: none;}
   padding-bottom: 20px;
 }
 
-.show {
+.episode {
   margin: auto;
   width: 290px;
   margin-bottom: 30px;
 }
 
-#program .show h2 {
+#program .episode h2 {
   display: inline-block;
   padding-bottom: 0px;
 }
 
-.show .play_embed {
+.episode .play_embed {
 }
 
-.show .play_link {
+.episode .play_link {
 }
 
 .calendar {

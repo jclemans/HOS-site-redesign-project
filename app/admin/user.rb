@@ -1,9 +1,11 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :user,
-    role_ids:[]
+  permit_params :name, :djname, :phone, :email, :password, :password_confirmation, :user, role_ids:[]
 
   index do
     column :id
+    column :name
+    column :djname
+    column :phone
     column :email
     column 'Roles' do |user|
       user.roles.collect { |role| role.name }.to_sentence
@@ -13,6 +15,9 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "User Details" do
+      f.input :name, :required => true
+      f.input :djname, :label => "DJ Name", :required => true
+      f.input :phone, :required => true
       f.input :email
       f.input :password
       f.input :password_confirmation

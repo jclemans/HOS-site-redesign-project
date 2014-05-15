@@ -25,6 +25,7 @@ gem 'pry-stack_explorer', group: [:development, :test]
 gem 'rolify'
 gem 'rspec-rails', group: :test
 gem 'sass-rails', '~> 4.0.0'
+gem 'shoulda-matchers'
 gem 'simple_form'
 gem 'squeel'
 gem 'timecop', group: :test

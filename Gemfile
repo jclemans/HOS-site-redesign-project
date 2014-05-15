@@ -31,6 +31,7 @@ gem 'timecop', group: :test
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'webmock', group: :test
+gem 'rerun'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

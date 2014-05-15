@@ -66,6 +66,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    celluloid (0.15.2)
+      timers (~> 1.1.0)
+    celluloid-io (0.15.0)
+      celluloid (>= 0.15.0)
+      nio4r (>= 0.5.0)
     chronic (0.10.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -111,6 +116,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.2.0)
       i18n (~> 0.5)
+    ffi (1.9.3)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -142,6 +148,11 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.2)
       addressable (~> 2.3)
+    listen (2.7.4)
+      celluloid (>= 0.15.2)
+      celluloid-io (>= 0.15.0)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -151,6 +162,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.2)
     multi_test (0.0.2)
+    nio4r (1.0.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     numbers_and_words (0.10.0)
@@ -194,8 +206,13 @@ GEM
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
+    rb-fsevent (0.9.4)
+    rb-inotify (0.9.4)
+      ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rerun (0.10.0)
+      listen (~> 2.7, >= 2.7.3)
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rolify (3.2.0)
@@ -241,6 +258,7 @@ GEM
       atomic
     tilt (1.4.1)
     timecop (0.6.3)
+    timers (1.1.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -285,6 +303,7 @@ DEPENDENCIES
   pry
   pry-stack_explorer
   rails (= 4.0.1)
+  rerun
   rolify
   rspec-rails
   sass-rails (~> 4.0.0)

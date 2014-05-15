@@ -33,4 +33,14 @@ feature 'user signs in and accesses pages' do
     page.should have_content "Powered by Active Admin"
   end
 
+  scenario 'DJ user signs in and tries to access admin page without auth' do
+    deejay = FactoryGirl.create(:user, email: "deejay@email.com", password: "password")
+    deejay.add_role "DJ"
+    visit '/users/sign_in'
+    fill_in "Email", with: "deejay@email.com"
+    fill_in "Password", with: "password"
+    click_button "Sign in"
+    visit '/admin'
+    page.should have_content 'Unauthorized Access!'
+  end
 end

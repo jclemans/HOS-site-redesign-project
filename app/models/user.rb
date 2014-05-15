@@ -5,5 +5,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :name, presence: true
+  validates :phone, presence: true
+  validates :djname, presence: true
+
   accepts_nested_attributes_for :roles, allow_destroy: true
 end

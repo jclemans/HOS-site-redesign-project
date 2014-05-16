@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516165755) do
+ActiveRecord::Schema.define(version: 20140516225750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,25 @@ ActiveRecord::Schema.define(version: 20140516165755) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "active_admin_seo_meta", force: true do |t|
+    t.string   "slug"
+    t.string   "title"
+    t.string   "description"
+    t.string   "keywords"
+    t.string   "og_title"
+    t.string   "og_type"
+    t.string   "og_image_uid"
+    t.string   "og_url"
+    t.integer  "seoable_id"
+    t.string   "seoable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "og_description"
+    t.string   "og_site_name"
+  end
+
+  add_index "active_admin_seo_meta", ["seoable_id", "seoable_type"], name: "active_admin_seo_meta_seoable", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -70,7 +89,7 @@ ActiveRecord::Schema.define(version: 20140516165755) do
   end
 
   create_table "episodes", force: true do |t|
-    t.datetime "recorded_at_datetime"
+    t.datetime "recorded_at"
     t.integer  "program_id"
     t.integer  "duration"
     t.string   "title"

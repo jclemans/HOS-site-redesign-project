@@ -4,5 +4,13 @@
 %p= h @user.email
 %br/
 
-.link
-  =link_to "Edit DJ", edit_user_path
+-if @user.has_role?(:DJ)
+  .link
+    =link_to "Edit Profile", edit_user_path
+-elsif @user.has_role?(:Admin)
+  .link
+    =link_to "Admin Dashboard", admin_root_path
+-else
+  .link
+    =link_to "Home", root_path
+

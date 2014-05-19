@@ -10,6 +10,7 @@ HouseOfSound::Application.routes.draw do
 
   resources :inquiries
   resources :dj_applications
+  resources :users, only: :show
 
   root 'home#index'
 end

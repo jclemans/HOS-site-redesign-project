@@ -3,7 +3,7 @@
 = simple_form_for @user do |f|
   = f.error_messages
   = f.input :name
-  = f.input :djname
+  = f.input :djname, label: "DJ Name"
   = f.input :phone
   = f.input :email
-  = f.button :submit, ('Edit')
+  = f.button :submit, ('Update')

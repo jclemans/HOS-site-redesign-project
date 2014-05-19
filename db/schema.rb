@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516225750) do
+ActiveRecord::Schema.define(version: 20140519231404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,22 +56,6 @@ ActiveRecord::Schema.define(version: 20140516225750) do
     t.integer  "program_id"
     t.integer  "duration"
     t.string   "title"
-  end
-
-  create_table "events", force: true do |t|
-    t.string  "name",            limit: 510
-    t.text    "description"
-    t.string  "genre",           limit: 100
-    t.string  "deejays",         limit: 510, null: false
-    t.integer "day_of_week"
-    t.string  "start_hour",      limit: 100
-    t.string  "start_minute",    limit: 100
-    t.string  "end_hour",        limit: 100
-    t.string  "end_minute",      limit: 100
-    t.boolean "is_active"
-    t.string  "email",           limit: 510
-    t.string  "amazon_filename", limit: 100
-    t.string  "program_url",     limit: 510
   end
 
   create_table "inquiries", force: true do |t|

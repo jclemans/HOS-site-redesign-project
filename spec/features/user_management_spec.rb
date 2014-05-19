@@ -44,7 +44,7 @@ feature 'user signs in and accesses pages' do
     page.should have_content 'Unauthorized Access!'
   end
 
-  scenario 'admin user signs in and visits admin page' do
+  scenario 'admin user signs in and visits admin page to create new user' do
     admin = FactoryGirl.create(:user, email: "admin@email.com", password: "password")
     admin.add_role "admin"
     visit '/users/sign_in'
@@ -62,5 +62,19 @@ feature 'user signs in and accesses pages' do
     fill_in :user_password_confirmation, with: "password"
     click_button "Create User"
     page.should have_content "User was successfully created."
+  end
+
+  scenario 'DJ signs in and edits profile page' do
+    deejay = FactoryGirl.create(:user, email: "deej@email.com", password: "password", id: 55)
+    deejay.add_role "DJ"
+    visit "/users/sign_in"
+    fill_in "Email", with: "deej@email.com"
+    fill_in "Password", with: "password"
+    click_button "Sign in"
+    visit "users/55"
+    click_link "Edit DJ"
+    fill_in "DJ Name", with: "DJ Today"
+    click_button "Update"
+    page.should have_content "DJ Today"
   end
 end

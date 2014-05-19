@@ -1,0 +1,9 @@
+%h1= h @user.djname
+
+= simple_form_for @user do |f|
+  = f.error_messages
+  = f.input :name
+  = f.input :djname
+  = f.input :phone
+  = f.input :email
+  = f.button :submit, ('Edit')

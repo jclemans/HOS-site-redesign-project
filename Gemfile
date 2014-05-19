@@ -3,7 +3,7 @@ gem 'rails', '4.0.1'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'aws-sdk'
-gem 'cancan'
+gem 'cancancan', '~> 1.8'
 gem 'capybara'
 gem 'chronic'
 gem 'coffee-rails', '~> 4.0.0'

@@ -23,7 +23,7 @@ feature 'user signs in and accesses pages' do
 
   scenario 'admin user signs in and visits admin page' do
     admin = FactoryGirl.create(:user, email: "admin@email.com", password: "password")
-    admin.add_role "admin"
+    admin.add_role "Admin"
     visit '/users/sign_in'
     fill_in "Email", with: "admin@email.com"
     fill_in "Password", with: "password"
@@ -46,7 +46,7 @@ feature 'user signs in and accesses pages' do
 
   scenario 'admin user signs in and visits admin page to create new user' do
     admin = FactoryGirl.create(:user, email: "admin@email.com", password: "password")
-    admin.add_role "admin"
+    admin.add_role "Admin"
     visit '/users/sign_in'
     fill_in "Email", with: "admin@email.com"
     fill_in "Password", with: "password"
@@ -72,7 +72,7 @@ feature 'user signs in and accesses pages' do
     fill_in "Password", with: "password"
     click_button "Sign in"
     visit "users/55"
-    click_link "Edit DJ"
+    click_link "Edit Profile"
     fill_in "DJ Name", with: "DJ Today"
     click_button "Update"
     page.should have_content "DJ Today"

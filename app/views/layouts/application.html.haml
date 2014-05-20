@@ -25,8 +25,10 @@
         -if current_user
           %p Logged in as #{current_user.email}
           =link_to "Sign Out", destroy_user_session_path, method: :delete
+          =link_to "My Profile", user_path(current_user)
         -else
           =link_to "Sign In", new_user_session_path
+
       =flash[:alert]
       =flash[:notice]
       =yield

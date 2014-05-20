@@ -8,10 +8,11 @@ class Ability
       if user.has_role? :Admin
         can :manage, :all
       elsif user.has_role? :DJ
-       can [:update, :edit], User, id: user.id
-       can :read, :all
+        can [:show, :update, :edit], User, id: user.id
+        can [:update, :edit], Program
+
       else
-        can :read, :all
+        can :read, Program
       end
     #
     # The first argument to `can` is the action you are giving the user

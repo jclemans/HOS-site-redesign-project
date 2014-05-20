@@ -4,6 +4,20 @@
   border: none;
 }
 
-form.input {
+body {
+  background-image:url('/assets/bg_record_right.jpg');
+  background-repeat:repeat;
+  background-position: top left;
+  background-color: #000000;
+  background-size: cover;
+  color: #FFFFFF;
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+.input {
   color: black;
+}
+
+.control-label {
+  color: #FFFFFF;
 }

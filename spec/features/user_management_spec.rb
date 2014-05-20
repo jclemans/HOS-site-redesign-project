@@ -77,4 +77,17 @@ feature 'user signs in and accesses pages' do
     click_button "Update"
     page.should have_content "DJ Today"
   end
+
+  scenario 'DJ signs in and tries to edit different user page' do
+    deejay = FactoryGirl.create(:user, email: "dj@example.com", password: "password", id: 2)
+    deejay.add_role "DJ"
+    visit "/users/sign_in"
+    new_user = FactoryGirl.create(:user, email: "admin@example.com", password: "password", phone: "565-453-1234", djname: "DJ quickonmyfeet", id: 3)
+    new_user.add_role "Admin"
+    fill_in "Email", with: "dj@example.com"
+    fill_in "Password", with: "password"
+    click_button "Sign in"
+    visit "/users/3/edit"
+    page.should have_content "You are not authorized to access this page."
+  end
 end

@@ -10,7 +10,6 @@
 -elsif @user.has_role?(:Admin)
   .link
     =link_to "Admin Dashboard", admin_root_path
--else
-  .link
-    =link_to "Home", root_path
+.link
+  =link_to "Home", root_path
 

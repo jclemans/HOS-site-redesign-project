@@ -1,9 +1,10 @@
 %h1= h @user.djname
 
-= simple_form_for @user do |f|
-  = f.error_messages
-  = f.input :name
-  = f.input :djname, label: "DJ Name"
-  = f.input :phone
-  = f.input :email
-  = f.button :submit, ('Update')
+%div{:class => "container"}
+  = simple_form_for @user do |f|
+    = f.error_messages
+    = f.input :name
+    = f.input :djname, label: "DJ Name"
+    = f.input :phone
+    = f.input :email
+    = f.button :submit, ('Update')

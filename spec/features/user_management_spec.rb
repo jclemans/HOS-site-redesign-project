@@ -28,7 +28,8 @@ feature 'user signs in and accesses pages' do
     fill_in "Email", with: "admin@email.com"
     fill_in "Password", with: "password"
     click_button "Sign in"
-    visit '/admin'
+    click_link "My Profile"
+    click_link "Admin Dashboard"
     page.should have_content "Dashboard"
     page.should have_content "Powered by Active Admin"
   end
@@ -51,7 +52,8 @@ feature 'user signs in and accesses pages' do
     fill_in "Email", with: "admin@email.com"
     fill_in "Password", with: "password"
     click_button "Sign in"
-    visit '/admin'
+    click_link "My Profile"
+    click_link "Admin Dashboard"
     click_link "Users"
     click_link "New User"
     fill_in :user_name, with: "Fred Flintstone"
@@ -71,7 +73,7 @@ feature 'user signs in and accesses pages' do
     fill_in "Email", with: "deej@email.com"
     fill_in "Password", with: "password"
     click_button "Sign in"
-    visit "users/55"
+    click_link "My Profile"
     click_link "Edit Profile"
     fill_in "DJ Name", with: "DJ Today"
     click_button "Update"

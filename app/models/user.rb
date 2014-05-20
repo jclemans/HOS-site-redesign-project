@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+
+  resourcify
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -9,7 +11,7 @@ class User < ActiveRecord::Base
 
   validates :phone, presence: true
   validates_uniqueness_of :phone
-  
+
 
   validates :djname, presence: true
   validates_uniqueness_of :djname

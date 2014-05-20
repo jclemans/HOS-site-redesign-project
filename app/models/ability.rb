@@ -8,7 +8,7 @@ class Ability
       if user.has_role? :Admin
         can :manage, :all
       elsif user.has_role? :DJ
-       can [:update, :edit], User
+       can [:update, :edit], User, id: user.id
        can :read, :all
       else
         can :read, :all

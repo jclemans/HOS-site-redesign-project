@@ -3,6 +3,7 @@ gem 'rails', '4.0.1'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'aws-sdk'
+gem 'bootstrap-sass', '~> 3.1.1'
 gem 'cancancan', '~> 1.8'
 gem 'capybara'
 gem 'chronic'

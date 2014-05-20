@@ -1,15 +1,25 @@
 %h1= h @user.djname
-%p= h @user.name
-%p= h @user.phone
-%p= h @user.email
-%br/
 
--if @user.has_role?(:DJ)
-  .link
-    =link_to "Edit Profile", edit_user_path
--elsif @user.has_role?(:Admin)
-  .link
-    =link_to "Admin Dashboard", "/admin"
-.link
-  =link_to "Home", root_path
+.div.col-md-6
+  .well.record
+    %h3 Record an Episode of your Program
+  Show Duration: 2 hours
+  %h3 Playlist
+  %ol
+    %li Artist, Song
+    %li Artist, Song
+    %li Artist, Song
+    %li Artist, Song
+
+    %br
+    .div.col-md-4.right
+      -if @user.has_role?(:DJ)
+        .link
+          =link_to "Edit Profile", edit_user_path
+      -elsif @user.has_role?(:Admin)
+        .link
+          =link_to "Admin Dashboard", "/admin"
+      %br
+      .link
+        =link_to "Home", root_path
 

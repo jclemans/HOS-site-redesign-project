@@ -7,14 +7,12 @@ describe User do
     User.with_role(:DJ).should eq [test_user]
   end
 
-
   it { should validate_presence_of :name }
 
   it { should validate_presence_of :phone }
-  it { should validate_uniqueness_of :phone } 
+  it { should validate_uniqueness_of :phone }
 
   it { should validate_presence_of :djname }
-  it { should validate_uniqueness_of :djname } 
-
+  it { should validate_uniqueness_of :djname }
 
 end

@@ -1,26 +1,8 @@
 %h2= h @user.djname
 
-<<<<<<< HEAD
 .col-sm-4
   = simple_form_for @user do |f|
     = f.error_messages
-    = f.input :name
     = f.input :djname, label: "DJ Name"
-    = f.input :phone
-    = f.input :email
-    = f.button :submit, ('Update')
-=======
-.container
-  .form
-    = simple_form_for @user do |f|
-      = f.error_messages
-      .form-control
-        = f.input :name
-      .form-control
-        = f.input :djname, label: "DJ Name"
-      .form-control
-        = f.input :phone
-      .form-control
-        = f.input :email
-        = f.button :submit, ('Update'), :class => 'btn btn-success'
->>>>>>> work on fixing conflict between simple_form and bootstrap
+    = f.button :submit, ('Update'), :class => 'btn btn-success'
+

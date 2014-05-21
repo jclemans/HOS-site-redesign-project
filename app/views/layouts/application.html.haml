@@ -13,16 +13,22 @@
     = javascript_include_tag 'application'
 
   %body
-    .container
-      .link{align:"right"}
-        -if current_user
-          %p Logged in as #{current_user.email}
-          =link_to "Sign Out", destroy_user_session_path, method: :delete
-          =link_to "My Profile", user_path(current_user)
-        -else
-          =link_to "Sign In", new_user_session_path
+    .navbar.navbar-inverse
+      .container
+        =link_to "House of Sound", root_path, class: "navbar-brand"
+        -if current_user.nil?
+          =link_to "Sign In", new_user_session_path, class: "navbar-text navbar-right"
+        -elsif current_user.has_role?(:DJ)
+          =link_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar-text navbar-right"
+          =link_to "Edit Profile", edit_user_path(current_user), class: "navbar-text navbar-right"
+          =link_to "DJ Dashboard", user_path(current_user), class: "navbar-text navbar-right"
 
-      =flash[:alert]
-      =flash[:notice]
-      =yield
+        -elsif current_user.has_role?(:Admin)
+          =link_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar-text navbar-right"
+          =link_to "Admin Dashboard", "/admin", class: "navbar-text navbar-right"
+
+  .container
+    =flash[:alert]
+    =flash[:notice]
+    =yield
 

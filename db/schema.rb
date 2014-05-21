@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520171628) do
+ActiveRecord::Schema.define(version: 20140521220429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,11 +37,6 @@ ActiveRecord::Schema.define(version: 20140520171628) do
     t.boolean  "is_finished"
   end
 
-  create_table "contents", force: true do |t|
-    t.string "name"
-    t.string "artist"
-  end
-
   create_table "dj_applications", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -59,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140520171628) do
   create_table "episodes", force: true do |t|
     t.datetime "recorded_at"
     t.integer  "program_id"
-    t.integer  "duration"
+    t.integer  "record_time"
     t.string   "title"
   end
 
@@ -86,22 +81,24 @@ ActiveRecord::Schema.define(version: 20140520171628) do
     t.datetime "created_at"
   end
 
-  create_table "playlists", force: true do |t|
-    t.integer "episode_id"
-    t.integer "content_id"
-  end
-
   create_table "programs", force: true do |t|
-    t.string   "title"
-    t.integer  "user_id"
-    t.datetime "start_time"
+    t.string   "name",                limit: 510
     t.text     "description"
-    t.boolean  "is_live_event"
+    t.string   "genre",               limit: 100
+    t.string   "deejays",             limit: 510, null: false
+    t.integer  "day_of_week"
+    t.string   "start_hour",          limit: 100
+    t.string   "start_minute",        limit: 100
+    t.string   "end_hour",            limit: 100
+    t.string   "end_minute",          limit: 100
+    t.boolean  "is_active"
+    t.string   "email",               limit: 510
+    t.string   "amazon_filename",     limit: 100
+    t.string   "program_url",         limit: 510
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "duration"
   end
 
   create_table "roles", force: true do |t|
@@ -114,6 +111,13 @@ ActiveRecord::Schema.define(version: 20140520171628) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "tracks", force: true do |t|
+    t.string   "content"
+    t.integer  "episode_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

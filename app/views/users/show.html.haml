@@ -11,16 +11,3 @@
     %li Description
     %li Description
     %li Description
-
-%br
-.div.col-md-4
-  -if @user.has_role?(:DJ)
-    .link
-      =link_to "Edit Profile", edit_user_path, class: "btn btn-primary"
-  -elsif @user.has_role?(:Admin)
-    .link
-      =link_to "Admin Dashboard", "/admin", class: "btn btn-primary"
-  %br
-  .link
-    =link_to "Home", root_path, class: "btn btn-primary"
-

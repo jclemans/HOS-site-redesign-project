@@ -1,5 +1,6 @@
 class Episode < ActiveRecord::Base
   belongs_to :program
+  has_many :tracks
   before_destroy :delete_file
   
   LOCAL_ROOT = 'static'

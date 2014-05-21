@@ -1,25 +1,26 @@
 %h1= h @user.djname
 
 .div.col-md-6
-  .well.record
-    %h3 Record an Episode of your Program
-  Show Duration: 2 hours
-  %h3 Playlist
+  .btn.btn-danger.btn-lg.btn-group.btn-group-justified
+    .btn-group
+      %h3 Record Episode
+  %p Show Duration: 2 hours
+  %h3 Tracks
   %ol
-    %li Artist, Song
-    %li Artist, Song
-    %li Artist, Song
-    %li Artist, Song
+    %li Description
+    %li Description
+    %li Description
+    %li Description
 
-    %br
-    .div.col-md-4.right
-      -if @user.has_role?(:DJ)
-        .link
-          =link_to "Edit Profile", edit_user_path
-      -elsif @user.has_role?(:Admin)
-        .link
-          =link_to "Admin Dashboard", "/admin"
-      %br
-      .link
-        =link_to "Home", root_path
+%br
+.div.col-md-4
+  -if @user.has_role?(:DJ)
+    .link
+      =link_to "Edit Profile", edit_user_path, class: "btn btn-primary"
+  -elsif @user.has_role?(:Admin)
+    .link
+      =link_to "Admin Dashboard", "/admin", class: "btn btn-primary"
+  %br
+  .link
+    =link_to "Home", root_path, class: "btn btn-primary"
 

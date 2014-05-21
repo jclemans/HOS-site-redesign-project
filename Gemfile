@@ -27,7 +27,7 @@ gem 'rolify'
 gem 'rspec-rails', group: :test
 gem 'sass-rails', '~> 4.0.0'
 gem 'shoulda-matchers'
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc1'
 gem 'squeel'
 gem 'timecop', group: :test
 gem 'turbolinks'

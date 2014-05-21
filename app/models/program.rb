@@ -1,5 +1,5 @@
 class Program < ActiveRecord::Base
-  has_many :users
+  belongs_to :user
   has_many :episodes, -> {where(is_finished: true).order("id DESC")}, dependent: :destroy
   accepts_nested_attributes_for :episodes, allow_destroy:  true
 

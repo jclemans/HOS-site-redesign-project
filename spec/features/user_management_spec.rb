@@ -8,7 +8,18 @@ feature 'user signs in and accesses pages' do
     fill_in "Email", with: "deejay@email.com"
     fill_in "Password", with: "password"
     click_button "Sign in"
-    page.should have_content "Logged in as deejay@email.com"
+    page.should have_content "Signed in successfully."
+  end
+
+  scenario 'user signs in and signs out' do
+    user = FactoryGirl.create(:user, email: "deejay@email.com", password: "password")
+    user.add_role "DJ"
+    visit '/users/sign_in'
+    fill_in "Email", with: "deejay@email.com"
+    fill_in "Password", with: "password"
+    click_button "Sign in"
+    click_link "Sign Out"
+    page.should have_content "Signed out successfully."
   end
 
   scenario 'user signs in and tries to access admin page without auth' do
@@ -28,7 +39,6 @@ feature 'user signs in and accesses pages' do
     fill_in "Email", with: "admin@email.com"
     fill_in "Password", with: "password"
     click_button "Sign in"
-    click_link "DJ Dashboard"
     click_link "Admin Dashboard"
     page.should have_content "Dashboard"
     page.should have_content "Powered by Active Admin"
@@ -52,7 +62,6 @@ feature 'user signs in and accesses pages' do
     fill_in "Email", with: "admin@email.com"
     fill_in "Password", with: "password"
     click_button "Sign in"
-    click_link "DJ Dashboard"
     click_link "Admin Dashboard"
     click_link "Users"
     click_link "New User"
@@ -73,7 +82,6 @@ feature 'user signs in and accesses pages' do
     fill_in "Email", with: "deej@email.com"
     fill_in "Password", with: "password"
     click_button "Sign in"
-    click_link "DJ Dashboard"
     click_link "Edit Profile"
     fill_in "DJ Name", with: "DJ Today"
     click_button "Update"

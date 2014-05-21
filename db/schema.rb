@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521214915) do
+ActiveRecord::Schema.define(version: 20140521220429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20140521214915) do
   create_table "episodes", force: true do |t|
     t.datetime "recorded_at"
     t.integer  "program_id"
-    t.integer  "duration"
+    t.integer  "record_time"
     t.string   "title"
   end
 

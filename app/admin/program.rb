@@ -34,7 +34,7 @@ ActiveAdmin.register Program do
             end
             ad.schedules.each do |schedule|
               tr do
-                td schedule.start_time
+                td schedule.start_time.strftime('%H:%M')
                 td schedule.duration
                 td schedule.days_of_week.to_sentence
               end

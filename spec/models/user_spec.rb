@@ -10,9 +10,9 @@ describe User do
   it { should validate_presence_of :name }
 
   it { should validate_presence_of :phone }
-  it { should validate_uniqueness_of :phone }
 
   it { should validate_presence_of :djname }
-  it { should validate_uniqueness_of :djname }
+
+  it { should have_one :program }
 
 end

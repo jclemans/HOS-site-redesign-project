@@ -36,7 +36,7 @@ ActiveAdmin.register Program do
               tr do
                 td schedule.start_time
                 td schedule.duration
-                td schedule.days_of_week
+                td schedule.days_of_week.to_sentence
               end
             end
           end

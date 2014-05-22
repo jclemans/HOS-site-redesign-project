@@ -11,11 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
+
 ActiveRecord::Schema.define(version: 20140522212815) do
-=======
-ActiveRecord::Schema.define(version: 20140521235050) do
->>>>>>> creates schedules table
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,7 +105,7 @@ ActiveRecord::Schema.define(version: 20140521235050) do
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
-  create_table "schedule", force: true do |t|
+  create_table "schedules", force: true do |t|
     t.integer  "program_id"
     t.time     "start_time"
     t.integer  "duration"

@@ -1,10 +1,8 @@
 ActiveAdmin.register Program do
 
-  controller do
-    def permit_params
-      params.permit(:title, :user_id, :is_live_event, :description, :avatar, :schedules_attributes => [:program_id, :start_time, :duration, :day_of_week ], :episodes_attributes => [:title, :recorded_at, :id, :_destroy])
-    end
-  end
+
+      permit_params :title, :user_id, :is_live_event, :description, :avatar, :schedules_attributes => [:program_id, :start_time, :duration, days_of_week: []], :episodes_attributes => [:title, :recorded_at, :id, :_destroy]
+
 
   index  do
     column :title
@@ -38,7 +36,7 @@ ActiveAdmin.register Program do
               tr do
                 td schedule.start_time
                 td schedule.duration
-                td schedule.day_of_week
+                td schedule.days_of_week
               end
             end
           end
@@ -82,7 +80,7 @@ ActiveAdmin.register Program do
         schedule_form.input :program_id, as: :hidden, :value => program.id
         schedule_form.input :start_time
         schedule_form.input :duration, as: :select, collection: { '30 mins' => 30, '1 hour' => 60, '1.5 hours' => 90, '2 hours' => 120, '2.5 hours' => 180, '3 hours' => 210, '3.5 hours' => 240, '4 hours' => 270, '4.5 hours' => 350, '5 hours' => 380, '5.5 hours' => 410, '6 hours' => 440}
-        schedule_form.input :day_of_week, as: :check_boxes, collection: {'Sunday' => 0, 'Monday' => 1, 'Tuesday' => 2, 'Wednesday' => 3, 'Thursday' => 4, 'Friday' => 5, 'Saturday' => 6}
+        schedule_form.input :days_of_week, as: :check_boxes, :multiple => true, :collection => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
       end
     end
     f.actions

@@ -10,10 +10,10 @@ class UserProgramUpdater
 		program.update_attribute :user_id, dj.id
 		dj.add_role "DJ"
 	rescue
-		if program.email.blank?
-			email = program.id
-		else
+		if program.email.length > 0 && program.email != "docnormal@houseofsound.org"
 			email = program.email
+		else
+			email = "#{program.id}@default.com"
 		end
 		dj = User.create(djname: program.deejays, email: email, password: "password", password_confirmation: "password", phone: program.deejays, name: program.deejays)
 		program.update_attribute :user_id, dj.id

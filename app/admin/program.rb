@@ -1,26 +1,25 @@
 ActiveAdmin.register Program do
 
 
-      permit_params :title, :user_id, :is_live_event, :description, :avatar, :schedules_attributes => [:program_id, :start_time, :duration, days_of_week: []], :episodes_attributes => [:title, :recorded_at, :id, :_destroy]
+      permit_params :name, :user_id, :deejays, :is_live_event, :description, :avatar, :schedules_attributes => [:program_id, :start_time, :duration, days_of_week: []], :episodes_attributes => [:Name, :recorded_at, :id, :_destroy]
 
 
   index  do
-    column :title
-    column :avatar do |program|
-      image_tag program.avatar.url(:thumb)
-    end
+    column :name
+    # column :avatar do |program|
+    #   image_tag program.avatar.url(:thumb)
+    # end
     column :user_id
     column :description
-    column :is_live_event
     actions
   end
 
   show do |ad|
     attributes_table do
-      row :title
-      row :avatar do
-        image_tag ad.avatar.url(:medium)
-      end
+      row :name
+      # row :avatar do
+      #   image_tag ad.avatar.url(:medium)
+      # end
       row :description
       row :user_id
       row :is_live_event
@@ -47,13 +46,13 @@ ActiveAdmin.register Program do
         h3 "Episodes"
         table do
           tr do
-            th "Title"
+            th "Name"
             th "Record Time"
             th "Recorded At"
           end
           ad.episodes.each do |episode|
             tr do
-              td episode.title
+              td episode.name
               td episode.record_time
               td episode.recorded_at.to_s(:db)
             end
@@ -70,7 +69,7 @@ ActiveAdmin.register Program do
     # end
 
     f.inputs "About" do
-      f.input :title
+      f.input :name
       f.input :description
       f.input :user_id, as: :select, :collection => User.order("djname ASC").all
     end

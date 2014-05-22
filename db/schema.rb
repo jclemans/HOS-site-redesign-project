@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522213659) do
+ActiveRecord::Schema.define(version: 20140522235627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,10 +82,9 @@ ActiveRecord::Schema.define(version: 20140522213659) do
   end
 
   create_table "programs", force: true do |t|
-    t.string   "name",                limit: 510
+    t.string   "title",               limit: 510
     t.text     "description"
     t.string   "genre",               limit: 100
-    t.string   "deejays",             limit: 510, null: false
     t.integer  "day_of_week"
     t.string   "start_hour",          limit: 100
     t.string   "start_minute",        limit: 100

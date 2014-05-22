@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140522212815) do
+=======
+ActiveRecord::Schema.define(version: 20140521235050) do
+>>>>>>> creates schedules table
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,24 +86,15 @@ ActiveRecord::Schema.define(version: 20140522212815) do
   end
 
   create_table "programs", force: true do |t|
-    t.string   "name",                limit: 510
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "start_time"
     t.text     "description"
-    t.string   "genre",               limit: 100
-    t.string   "deejays",             limit: 510, null: false
-    t.integer  "day_of_week"
-    t.string   "start_hour",          limit: 100
-    t.string   "start_minute",        limit: 100
-    t.string   "end_hour",            limit: 100
-    t.string   "end_minute",          limit: 100
-    t.boolean  "is_active"
-    t.string   "email",               limit: 510
-    t.string   "amazon_filename",     limit: 100
-    t.string   "program_url",         limit: 510
+    t.boolean  "is_live_event"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "user_id"
   end
 
   create_table "roles", force: true do |t|
@@ -112,6 +107,15 @@ ActiveRecord::Schema.define(version: 20140522212815) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "schedule", force: true do |t|
+    t.integer  "program_id"
+    t.time     "start_time"
+    t.integer  "duration"
+    t.integer  "day_of_week", array: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tracks", force: true do |t|
     t.string   "content"

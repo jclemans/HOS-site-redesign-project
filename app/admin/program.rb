@@ -1,6 +1,10 @@
 ActiveAdmin.register Program do
 
-  permit_params :title, :user_id, :is_live_event, :description, :avatar, :schedules_attributes => [:program_id,:start_time, :duration, :day_of_week ], :episodes_attributes => [:title, :recorded_at, :id, :_destroy]
+  controller do
+    def permit_params
+      params.permit(:title, :user_id, :is_live_event, :description, :avatar, :schedules_attributes => [:program_id, :start_time, :duration, :day_of_week ], :episodes_attributes => [:title, :recorded_at, :id, :_destroy])
+    end
+  end
 
   index  do
     column :title
@@ -22,6 +26,25 @@ ActiveAdmin.register Program do
       row :description
       row :user_id
       row :is_live_event
+      row :schedules do
+        h3 "Scheules"
+          table do
+            tr do
+              th "Start Time"
+              th "Duration In Minutes"
+              th "Days of The Week"
+            end
+            ad.schedules.each do |schedule|
+              tr do
+                td schedule.start_time
+                td schedule.duration
+                td schedule.day_of_week
+              end
+            end
+          end
+        end
+
+
       row :episodes do
         h3 "Episodes"
         table do

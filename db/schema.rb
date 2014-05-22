@@ -12,7 +12,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+
 ActiveRecord::Schema.define(version: 20140522212815) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +87,6 @@ ActiveRecord::Schema.define(version: 20140522212815) do
   create_table "programs", force: true do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "start_time"
     t.text     "description"
     t.boolean  "is_live_event"
     t.string   "avatar_file_name"
@@ -106,12 +107,10 @@ ActiveRecord::Schema.define(version: 20140522212815) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "schedules", force: true do |t|
-    t.integer  "program_id"
-    t.time     "start_time"
-    t.integer  "duration"
-    t.integer  "day_of_week", array: true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "program_id"
+    t.time    "start_time"
+    t.integer "duration"
+    t.integer "day_of_week", array: true
   end
 
   create_table "tracks", force: true do |t|

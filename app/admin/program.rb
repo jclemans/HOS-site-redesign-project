@@ -1,13 +1,12 @@
 ActiveAdmin.register Program do
 
-  permit_params :name, :description, :genre, :deejays, :day_of_week, :start_hour, :start_minute, :end_hour, :end_minute, :is_active, :email, :program_url, :episodes_attributes => [:title, :recorded_at, :id, :_destroy]
+  permit_params :title, :user_id, :is_live_event, :description, :avatar, :schedules_attributes => [:program_id,:start_time, :duration, :day_of_week ], :episodes_attributes => [:title, :recorded_at, :id, :_destroy]
 
   index  do
-    column :name
-    # column :image do |program|
-    #   image_tag program.avatar.url(:thumb)
-    # end
-    column :genre
+    column :title
+    column :avatar do |program|
+      image_tag program.avatar.url(:thumb)
+    end
     column "Day #", :day_of_week
     column :day do |program|
       Date::DAYNAMES[program.day_of_week]
@@ -15,23 +14,16 @@ ActiveAdmin.register Program do
     column :start_hour do |program|
       hour_24_to_12 program.start_hour.to_i
     end
-    column :is_active
     actions
   end
 
   show do |ad|
     attributes_table do
       row :name
-      row :email
+      row :avatar do
+        image_tag ad.avatar.url(:medium)
+      end
       row :description
-      row :program_url
-      row :genre
-      row :day_of_week
-      row :start_hour
-      row :start_minute
-      row :end_hour
-      row :end_minute
-
       row :episodes do
         h3 "Episodes"
         table do

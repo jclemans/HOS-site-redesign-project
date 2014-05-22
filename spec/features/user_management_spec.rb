@@ -24,46 +24,30 @@ feature 'user signs in and accesses pages' do
   end
 
   scenario 'user signs in and tries to access admin page without auth' do
-    FactoryGirl.create(:dj, email: "deejay@email.com", password: "password")
+    sign_in(FactoryGirl.create(:dj, email: "deejay@email.com", password: "password"))
     
-    visit '/users/sign_in'
-    fill_in "Email", with: "deejay@email.com"
-    fill_in "Password", with: "password"
-    click_button "Sign in"
     visit '/admin'
     page.should have_content 'Unauthorized Access!'
   end
 
   scenario 'admin user signs in and visits admin page' do
-    FactoryGirl.create(:admin, email: "admin@email.com", password: "password")
+    sign_in(FactoryGirl.create(:admin, email: "admin@email.com", password: "password"))
     
-    visit '/users/sign_in'
-    fill_in "Email", with: "admin@email.com"
-    fill_in "Password", with: "password"
-    click_button "Sign in"
     click_link "Admin Dashboard"
     page.should have_content "Dashboard"
     page.should have_content "Powered by Active Admin"
   end
 
   scenario 'DJ user signs in and tries to access admin page without auth' do
-    FactoryGirl.create(:dj, email: "deejay@email.com", password: "password")
+    sign_in(FactoryGirl.create(:dj, email: "deejay@email.com", password: "password"))
     
-    visit '/users/sign_in'
-    fill_in "Email", with: "deejay@email.com"
-    fill_in "Password", with: "password"
-    click_button "Sign in"
     visit '/admin'
     page.should have_content 'Unauthorized Access!'
   end
 
   scenario 'admin user signs in and visits admin page to create new user' do
-    FactoryGirl.create(:admin, email: "admin@email.com", password: "password")
+    sign_in(FactoryGirl.create(:admin, email: "admin@email.com", password: "password"))
     
-    visit '/users/sign_in'
-    fill_in "Email", with: "admin@email.com"
-    fill_in "Password", with: "password"
-    click_button "Sign in"
     click_link "Admin Dashboard"
     click_link "Users"
     click_link "New User"
@@ -78,12 +62,8 @@ feature 'user signs in and accesses pages' do
   end
 
   scenario 'DJ signs in and edits profile page' do
-    FactoryGirl.create(:dj, email: "deej@email.com", password: "password", id: 55)
+    sign_in(FactoryGirl.create(:dj, email: "deej@email.com", password: "password", id: 55))
     
-    visit "/users/sign_in"
-    fill_in "Email", with: "deej@email.com"
-    fill_in "Password", with: "password"
-    click_button "Sign in"
     click_link "Edit Profile"
     fill_in "DJ Name", with: "DJ Today"
     click_button "Update"
@@ -91,13 +71,9 @@ feature 'user signs in and accesses pages' do
   end
 
   scenario 'DJ signs in and tries to edit different user page' do
-    FactoryGirl.create(:dj, email: "dj@example.com", password: "password", id: 2)
+    sign_in(FactoryGirl.create(:dj, email: "dj@example.com", password: "password", id: 2))
     FactoryGirl.create(:admin, id: 3)
     
-    visit "/users/sign_in"
-    fill_in "Email", with: "dj@example.com"
-    fill_in "Password", with: "password"
-    click_button "Sign in"
     visit "/users/3/edit"
     page.should have_content "You are not authorized to access this page."
   end

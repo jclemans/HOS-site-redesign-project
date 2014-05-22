@@ -7,38 +7,33 @@ ActiveAdmin.register Program do
     column :avatar do |program|
       image_tag program.avatar.url(:thumb)
     end
-    column "Day #", :day_of_week
-    column :day do |program|
-      Date::DAYNAMES[program.day_of_week]
-    end
-    column :start_hour do |program|
-      hour_24_to_12 program.start_hour.to_i
-    end
+    column :user_id
+    column :description
+    column :is_live_event
     actions
   end
 
   show do |ad|
     attributes_table do
-      row :name
+      row :title
       row :avatar do
         image_tag ad.avatar.url(:medium)
       end
       row :description
+      row :user_id
+      row :is_live_event
       row :episodes do
         h3 "Episodes"
         table do
           tr do
             th "Title"
-            th "Duration"
+            th "Record Time"
             th "Recorded At"
-
-
           end
-
           ad.episodes.each do |episode|
             tr do
               td episode.title
-              td episode.duration
+              td episode.record_time
               td episode.recorded_at.to_s(:db)
             end
           end
@@ -48,53 +43,26 @@ ActiveAdmin.register Program do
   end
 
   form :html => { :enctype => "multipart/form-data" } do |f|
-    f.inputs "Live" do
-      f.input :is_active
-    end
 
     # f.inputs "Artwork" do
     #   f.input :avatar, :as => :file, :hint => f.template.image_tag(f.object.avatar.url(:medium))
     # end
 
     f.inputs "About" do
-      f.input :name
-      f.input :email
+      f.input :title
       f.input :description
-      f.input :genre
-      f.input :deejays
-      f.input :program_url
+      f.input :user_id, as: :select, :collection => User.order("djname ASC").all
     end
 
-    f.inputs "When" do
-      f.input :day_of_week, as: :select, collection: {'Sunday' => 0, 'Monday' => 1, 'Tuesday' => 2, 'Wednesday' => 3, 'Thursday' => 4, 'Friday' => 5, 'Saturday' => 6}
-      f.input :start_hour, as: :select, collection: (0..23).collect{|d| d.to_s.rjust(2,"0")}
-      f.input :start_minute, as: :select, collection: ["0", "15", "30", "45"]
-      f.input :end_hour, as: :select, collection: (0..23).collect{|d| d.to_s.rjust(2,"0")}
-      f.input :end_minute, as: :select, collection: ["0", "15", "30", "45"]
-    end
-
-    f.inputs "Episodes" do
-      f.has_many :episodes,  allow_destroy: true do |episode_form|
-        episode_form.input :title
-        episode_form.input :duration
-        episode_form.input :recorded_at
+    f.inputs "Schedule" do
+      f.has_many :schedules, allow_destroy: true do |schedule_form|
+        schedule_form.input :program_id, as: :hidden, :value => program.id
+        schedule_form.input :start_time
+        schedule_form.input :duration, as: :select, collection: { '30 mins' => 30, '1 hour' => 60, '1.5 hours' => 90, '2 hours' => 120, '2.5 hours' => 180, '3 hours' => 210, '3.5 hours' => 240, '4 hours' => 270, '4.5 hours' => 350, '5 hours' => 380, '5.5 hours' => 410, '6 hours' => 440}
+        schedule_form.input :day_of_week, as: :check_boxes, collection: {'Sunday' => 0, 'Monday' => 1, 'Tuesday' => 2, 'Wednesday' => 3, 'Thursday' => 4, 'Friday' => 5, 'Saturday' => 6}
       end
     end
-
     f.actions
   end
-
-  # See permitted parameters documentation:
-  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #  permitted = [:permitted, :attributes]
-  #  permitted << :other if resource.something?
-  #  permitted
-  # end
-
 end
+

@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  belongs_to :program
   resourcify
   rolify
   # Include default devise modules. Others available are:

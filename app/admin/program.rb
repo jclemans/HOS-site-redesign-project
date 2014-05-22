@@ -1,12 +1,12 @@
 ActiveAdmin.register Program do
 
-  permit_params :name, :description, :genre, :deejays, :day_of_week, :start_hour, :start_minute, :end_hour, :end_minute, :is_active, :email, :program_url, :avatar, :episodes_attributes => [:title, :recorded_at, :id, :_destroy]
+  permit_params :name, :description, :genre, :deejays, :day_of_week, :start_hour, :start_minute, :end_hour, :end_minute, :is_active, :email, :program_url, :episodes_attributes => [:title, :recorded_at, :id, :_destroy]
 
   index  do
     column :name
-    column :image do |program|
-      image_tag program.avatar.url(:thumb)
-    end
+    # column :image do |program|
+    #   image_tag program.avatar.url(:thumb)
+    # end
     column :genre
     column "Day #", :day_of_week
     column :day do |program|
@@ -22,9 +22,6 @@ ActiveAdmin.register Program do
   show do |ad|
     attributes_table do
       row :name
-      row :avatar do
-        image_tag ad.avatar.url(:medium)
-      end
       row :email
       row :description
       row :program_url
@@ -63,9 +60,9 @@ ActiveAdmin.register Program do
       f.input :is_active
     end
 
-    f.inputs "Artwork" do
-      f.input :avatar, :as => :file, :hint => f.template.image_tag(f.object.avatar.url(:medium))
-    end
+    # f.inputs "Artwork" do
+    #   f.input :avatar, :as => :file, :hint => f.template.image_tag(f.object.avatar.url(:medium))
+    # end
 
     f.inputs "About" do
       f.input :name

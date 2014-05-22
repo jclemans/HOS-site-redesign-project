@@ -1,8 +1,8 @@
 #program
   - if @program.amazon_filename
     %br/
-    %center
-      = image_tag @program.avatar.url(:large)
+  /   %center
+  /     = image_tag @program.avatar.url(:large)
   %h1= h @program.name
   %h2
     with #{h @program.deejays}
@@ -16,27 +16,27 @@
       %strong Website:
       = link_to @program.program_url, program_path(@program)
   %br/
-  %h2 PREVIOUS SHOWS
-  - if @program.episodes.length == 0
-    .episode
-      No archived shows yet.
-  - else
-    - @program.episodes.each do |episode|
-      .episode
-        %h2= h episode.when.strftime('%B %d, %Y')
-        .play_embed
-          %p{:id => "episode_#{episode.id}"}
-          / HTML 5 FOR MOBILE
-          .play_embed
-            HTML5 Player (if supported)
-            %audio{:controls => ""}
-              %source{"--" => "", :src => episode_link(episode), :type => "audio/mpeg"}
-                / source src="http://www.houseofsound.org/<haml:loud> episode.file_public_path </haml:loud>" /
-                :javascript
-                  AudioPlayer.embed("episode_#{episode.id}", {
-                    soundFile: "#{episode.file_public_path}",
-                    titles: "#{escape_javascript episode.program.name} - #{escape_javascript episode.when.strftime('%B %d %Y')}",
-                  });
-        %span.play_link/
-        %h2
-          %a{:href => episode_link(episode)} Download
+  / %h2 PREVIOUS SHOWS
+  / - if @program.episodes.length == 0
+  /   .episode
+  /     No archived shows yet.
+  / - else
+  /   - @program.episodes.each do |episode|
+  /     .episode
+  /       %h2= h episode.when.strftime('%B %d, %Y')
+  /       .play_embed
+  /         %p{:id => "episode_#{episode.id}"}
+  /         / HTML 5 FOR MOBILE
+  /         .play_embed
+  /           HTML5 Player (if supported)
+  /           %audio{:controls => ""}
+  /             %source{"--" => "", :src => episode_link(episode), :type => "audio/mpeg"}
+  /               / source src="http://www.houseofsound.org/<haml:loud> episode.file_public_path </haml:loud>" /
+  /               :javascript
+  /                 AudioPlayer.embed("episode_#{episode.id}", {
+  /                   soundFile: "#{episode.file_public_path}",
+  /                   titles: "#{escape_javascript episode.program.name} - #{escape_javascript episode.when.strftime('%B %d %Y')}",
+  /                 });
+  /       %span.play_link/
+  /       %h2
+  /         %a{:href => episode_link(episode)} Download

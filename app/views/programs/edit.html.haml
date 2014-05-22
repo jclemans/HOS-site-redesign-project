@@ -1,0 +1,8 @@
+%h2= h @program.name
+
+.col-sm-4
+  = simple_form_for @program do |f|
+    = f.error_messages
+    = f.input :name, label: "Program Name"
+    = f.text_area :description, :rows => 8, :cols => 60, :id => 'text_area'
+    = f.button :submit, ('Update'), :class => 'btn btn-success'

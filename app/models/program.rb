@@ -6,7 +6,7 @@ class Program < ActiveRecord::Base
   #has_many :listner_stats
   has_attached_file :avatar, styles: {huge: '600x600', large: '400x400', medium: '200x200', thumb: '50x50'} 
 
-  validate :users, present: true
+  validate :user, present: true
 
   scope :active, -> {where is_active: true}
 

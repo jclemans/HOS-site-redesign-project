@@ -100,9 +100,4 @@ class Program < ActiveRecord::Base
   #   hour
   # end
 
-  # private
-
-  # def program_params
-  #   params.permit(:title, :avatar, :description, :user_id, :schedule_attributes => [:program_id, :start_time, :duration, :day_of_week])
-  # end
-end
+  end

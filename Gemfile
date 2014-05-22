@@ -15,6 +15,7 @@ gem 'factory_girl_rails', group: :test
 gem 'faker', group: :test
 gem 'figaro'
 gem 'haml'
+gem 'ice_cube'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'launchy', group: [:test]

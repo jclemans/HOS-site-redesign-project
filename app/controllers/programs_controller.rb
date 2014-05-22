@@ -14,5 +14,25 @@ class ProgramsController < ApplicationController
   def show
     @program = Program.find params[:id]
   end
-  
+
+  def edit
+    @program = Program.find params[:id]
+  end
+
+  def update
+    @program = Program.find params[:id]
+      if @program.update(program_params)
+        redirect_to program_path(@program)
+        flash[:alert] = "Update successful."
+      else
+        render program_path(@program)
+        flash[:alert] = "Update unsuccesful."
+      end
+  end
+
+private
+  def program_params
+    params.require(:program).permit(:name, :description)
+  end
+
 end

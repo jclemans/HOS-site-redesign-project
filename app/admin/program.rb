@@ -25,7 +25,7 @@ ActiveAdmin.register Program do
       row :user_id
       row :is_live_event
       row :schedules do
-        h3 "Scheules"
+        h3 "Schedules"
           table do
             tr do
               th "Start Time"

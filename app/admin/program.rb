@@ -70,7 +70,7 @@ ActiveAdmin.register Program do
     f.inputs "About" do
       f.input :title
       f.input :description
-      f.input :user_id, as: :select, :collection => User.order("djname ASC").all
+      f.input :user_id, as: :select, :collection => User.order(:djname)
     end
 
     f.inputs "Schedule" do

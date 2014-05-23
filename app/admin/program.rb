@@ -1,7 +1,7 @@
 ActiveAdmin.register Program do
 
 
-      permit_params :title, :user_id, :deejays, :description, :avatar, :schedules_attributes => [:program_id, :start_time, :duration, days_of_week: []], :episodes_attributes => [:Name, :recorded_at, :id, :_destroy]
+      permit_params :title, :user_id, :deejays, :description, :avatar, :schedules_attributes => [:id, :program_id, :start_time, :duration, days_of_week: []], :episodes_attributes => [:id, :name, :recorded_at, :id, :_destroy]
 
 
   index  do

@@ -1,7 +1,7 @@
 ActiveAdmin.register Program do
 
 
-      permit_params :title, :user_id, :deejays, :description, :avatar, :schedules_attributes => [:program_id, :start_time, :duration, days_of_week: []], :episodes_attributes => [:Name, :recorded_at, :id, :_destroy]
+      permit_params :title, :user_id, :deejays, :description, :avatar, :schedules_attributes => [:id, :program_id, :start_time, :duration, :_destroy, days_of_week: []], :episodes_attributes => [:id, :title, :recorded_at, :record_time, :program_id, :_destroy]
 
 
   index  do
@@ -40,8 +40,7 @@ ActiveAdmin.register Program do
           end
         end
 
-
-      row :episodes do
+        row :episodes do
         h3 "Episodes"
         table do
           tr do
@@ -70,15 +69,20 @@ ActiveAdmin.register Program do
     f.inputs "About" do
       f.input :title
       f.input :description
-      f.input :user_id, as: :select, :collection => User.order("djname ASC").all
+      f.input :user_id, as: :select, :collection => User.order(:djname)
     end
 
     f.inputs "Schedule" do
       f.has_many :schedules, allow_destroy: true do |schedule_form|
         schedule_form.input :program_id, as: :hidden, :value => program.id
         schedule_form.input :start_time
-        schedule_form.input :duration, as: :select, collection: { '30 mins' => 30, '1 hour' => 60, '1.5 hours' => 90, '2 hours' => 120, '2.5 hours' => 180, '3 hours' => 210, '3.5 hours' => 240, '4 hours' => 270, '4.5 hours' => 350, '5 hours' => 380, '5.5 hours' => 410, '6 hours' => 440}
-        schedule_form.input :days_of_week, as: :check_boxes, :multiple => true, :collection => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        schedule_form.input :duration, as: :select, collection: { '30 mins' => 30, '1 hour' => 60, '1.5 hours' => 90, '2 hours' => 120, '2.5 hours' => 150, '3 hours' => 180, '3.5 hours' => 210, '4 hours' => 240, '4.5 hours' => 270, '5 hours' => 300, '5.5 hours' => 330, '6 hours' => 360}
+        schedule_form.input :days_of_week, as: :check_boxes, :multiple => true, :collection => [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      end
+    end
+    f.inputs "Episodes" do
+      f.has_many :episodes do |episode_form|
+        episode_form.input :title
       end
     end
     f.actions

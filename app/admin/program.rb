@@ -76,7 +76,7 @@ ActiveAdmin.register Program do
       f.has_many :schedules, allow_destroy: true do |schedule_form|
         schedule_form.input :program_id, as: :hidden, :value => program.id
         schedule_form.input :start_time
-        schedule_form.input :duration, as: :select, collection: { '30 mins' => 30, '1 hour' => 60, '1.5 hours' => 90, '2 hours' => 120, '2.5 hours' => 180, '3 hours' => 210, '3.5 hours' => 240, '4 hours' => 270, '4.5 hours' => 350, '5 hours' => 380, '5.5 hours' => 410, '6 hours' => 440}
+        schedule_form.input :duration, as: :select, collection: { '30 mins' => 30, '1 hour' => 60, '1.5 hours' => 90, '2 hours' => 120, '2.5 hours' => 150, '3 hours' => 180, '3.5 hours' => 210, '4 hours' => 240, '4.5 hours' => 270, '5 hours' => 300, '5.5 hours' => 330, '6 hours' => 360}
         schedule_form.input :days_of_week, as: :check_boxes, :multiple => true, :collection => [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
       end
     end

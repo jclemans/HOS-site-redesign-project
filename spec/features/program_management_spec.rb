@@ -17,6 +17,7 @@ feature 'signed in admin manages programs' do
 		select("Dustin", :from => "program[user_id]")
 		click_button "Create Program"
 		page.should have_content "DJ Dustin's Twitter Etiquette"
+		page.should have_content "Program was successfully created"
 	end
 
 	scenario 'admin edits a program' do
@@ -31,8 +32,23 @@ feature 'signed in admin manages programs' do
 		fill_in "Description", with: "Description is different"
 		select("Dustin", :from => "program[user_id]")
 		click_button "Update Program"
+		page.should have_content "Program was successfully updated"
 		page.should have_content "New Title"
 		page.should have_content "Description is different"
 	end
+
+	scenario 'admin deletes a program' do
+		FactoryGirl.create(:program, id: 54)
+		click_link "Admin Dashboard"
+		click_link "Programs"
+		within("//tr[@id='program_54']") do
+		  click_link "Delete"
+    end
+    page.should have_content "Program was successfully destroyed"
+  end
+
+
+
+
 
 end

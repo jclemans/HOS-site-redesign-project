@@ -1,28 +1,14 @@
 class Schedule < ActiveRecord::Base
   belongs_to :program
 
-  before_create :validate_program_create
+  validate :schedule_conflicts
 
-  def find_end_time
-    start = DateTime.parse(start_time)
-    duration = duration.minutes
-    end_time = start + duration
-  end
-
-  def validate_program_create(new_start_time, duration)
-    previous_program = Program.where("start_time < new_start_time").order("start_time ASC").last
-    next_program = Program.where("start_time > new_start_time").order("start_time ASC").first
-
-    if new_start_time < previous_program.find_end_time || new_start_time + duration > next_program.start_time
-      flash[:alert] = "There is a conflict with the schedule. Please try again."
-      return false
-    else
-      Schedule.create()
+  def schedule_conflicts
+    new_start_time = self.start_time
+    new_duration = self.duration.minutes
+    check_start_time = Schedule.all.select { |s| s.start_time < new_start_time && new_start_time < (s.start_time + s.duration.minutes) }
+    if check_start_time.last
+      errors.add(:start_time, "Conflicts with program #{check_start_time.last.program_id}")
     end
-  end
-
-private
-  def schedule_params
-    params.require(:schedule).permit(:start_time, :duration, :days_of_week)
   end
 end

@@ -77,14 +77,12 @@ ActiveAdmin.register Program do
         schedule_form.input :program_id, as: :hidden, :value => program.id
         schedule_form.input :start_time
         schedule_form.input :duration, as: :select, collection: { '30 mins' => 30, '1 hour' => 60, '1.5 hours' => 90, '2 hours' => 120, '2.5 hours' => 180, '3 hours' => 210, '3.5 hours' => 240, '4 hours' => 270, '4.5 hours' => 350, '5 hours' => 380, '5.5 hours' => 410, '6 hours' => 440}
-        schedule_form.input :days_of_week, as: :check_boxes, :multiple => true, :allow_destroy => true, :collection => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        schedule_form.input :days_of_week, as: :check_boxes, :multiple => true, :collection => [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
       end
     end
     f.inputs "Episodes" do
       f.has_many :episodes do |episode_form|
         episode_form.input :title
-        episode_form.input :recorded_at
-        episode_form.input :record_time
       end
     end
     f.actions

@@ -33,7 +33,6 @@ feature 'signed in admin manages programs' do
 		click_button "Update Program"
 		page.should have_content "New Title"
 		page.should have_content "Description is different"
-
 	end
 
 end

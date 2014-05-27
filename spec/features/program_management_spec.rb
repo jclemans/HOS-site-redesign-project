@@ -61,7 +61,7 @@ feature 'dj signs in and edits a program' do
 
   scenario 'dj visits the program edit page and updates the program name.' do
     FactoryGirl.create(:user, id: '2', email: "deejay@email.com", password: "password")
-    FactoryGirl.create(:program, id: '99', user_id: '2', day_of_week: [1,2,3,4,5])
+    FactoryGirl.create(:program, id: '99', user_id: '2', day_of_week: 1)
     visit '/programs/99/edit'
     click_button 'Update'
     page.should have_content 'Update successful.'

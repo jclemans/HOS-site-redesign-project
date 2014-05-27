@@ -1,52 +1,57 @@
 ActiveAdmin.register Program do
 
-  permit_params :name, :description, :genre, :deejays, :day_of_week, :start_hour, :start_minute, :end_hour, :end_minute, :is_active, :email, :program_url, :episodes_attributes => [:title, :recorded_at, :id, :_destroy]
+
+      permit_params :title, :user_id, :deejays, :description, :avatar, :schedules_attributes => [:id, :program_id, :start_time, :duration, :_destroy, days_of_week: []], :episodes_attributes => [:id, :title, :recorded_at, :record_time, :program_id, :_destroy]
+
 
   index  do
-    column :name
-    # column :image do |program|
+    column :title
+    # column :avatar do |program|
     #   image_tag program.avatar.url(:thumb)
     # end
-    column :genre
-    column "Day #", :day_of_week
-    column :day do |program|
-      Date::DAYNAMES[program.day_of_week]
-    end
-    column :start_hour do |program|
-      hour_24_to_12 program.start_hour.to_i
-    end
-    column :is_active
+    column :user_id
+    column :description
     actions
   end
 
   show do |ad|
     attributes_table do
-      row :name
-      row :email
+      row :title
+      # row :avatar do
+      #   image_tag ad.avatar.url(:medium)
+      # end
       row :description
-      row :program_url
-      row :genre
-      row :day_of_week
-      row :start_hour
-      row :start_minute
-      row :end_hour
-      row :end_minute
+      row :user_id
+      row :schedules do
+        h3 "Schedules"
+          table do
+            tr do
+              th "Start Time"
+              th "Duration In Minutes"
+              th "Days of The Week"
+            end
+            ad.schedules.each do |schedule|
+              tr do
+                td schedule.start_time.strftime('%H:%M')
+                td schedule.duration
+                td schedule.days_of_week.to_sentence
+              end
+            end
+          end
+        end
 
-      row :episodes do
+        row :episodes do
         h3 "Episodes"
         table do
           tr do
             th "Title"
-            th "Duration"
+            th "Record Time"
             th "Recorded At"
-
-
           end
-
           ad.episodes.each do |episode|
             tr do
               td episode.title
-              td episode.duration
+              td episode.record_time
               td episode.recorded_at.to_s(:db)
             end
           end
@@ -56,53 +61,31 @@ ActiveAdmin.register Program do
   end
 
   form :html => { :enctype => "multipart/form-data" } do |f|
-    f.inputs "Live" do
-      f.input :is_active
-    end
 
     # f.inputs "Artwork" do
     #   f.input :avatar, :as => :file, :hint => f.template.image_tag(f.object.avatar.url(:medium))
     # end
 
     f.inputs "About" do
-      f.input :name
-      f.input :email
+      f.input :title
       f.input :description
-      f.input :genre
-      f.input :deejays
-      f.input :program_url
+      f.input :user_id, as: :select, :collection => User.order(:djname)
     end
 
-    f.inputs "When" do
-      f.input :day_of_week, as: :select, collection: {'Sunday' => 0, 'Monday' => 1, 'Tuesday' => 2, 'Wednesday' => 3, 'Thursday' => 4, 'Friday' => 5, 'Saturday' => 6}
-      f.input :start_hour, as: :select, collection: (0..23).collect{|d| d.to_s.rjust(2,"0")}
-      f.input :start_minute, as: :select, collection: ["0", "15", "30", "45"]
-      f.input :end_hour, as: :select, collection: (0..23).collect{|d| d.to_s.rjust(2,"0")}
-      f.input :end_minute, as: :select, collection: ["0", "15", "30", "45"]
-    end
-
-    f.inputs "Episodes" do
-      f.has_many :episodes,  allow_destroy: true do |episode_form|
-        episode_form.input :title
-        episode_form.input :duration
-        episode_form.input :recorded_at
+    f.inputs "Schedule" do
+      f.has_many :schedules, allow_destroy: true do |schedule_form|
+        schedule_form.input :program_id, as: :hidden, :value => program.id
+        schedule_form.input :start_time
+        schedule_form.input :duration, as: :select, collection: { '30 mins' => 30, '1 hour' => 60, '1.5 hours' => 90, '2 hours' => 120, '2.5 hours' => 150, '3 hours' => 180, '3.5 hours' => 210, '4 hours' => 240, '4.5 hours' => 270, '5 hours' => 300, '5.5 hours' => 330, '6 hours' => 360}
+        schedule_form.input :days_of_week, as: :check_boxes, :multiple => true, :collection => [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
       end
     end
-
+    f.inputs "Episodes" do
+      f.has_many :episodes do |episode_form|
+        episode_form.input :title
+      end
+    end
     f.actions
   end
-
-  # See permitted parameters documentation:
-  # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #  permitted = [:permitted, :attributes]
-  #  permitted << :other if resource.something?
-  #  permitted
-  # end
-
 end
+

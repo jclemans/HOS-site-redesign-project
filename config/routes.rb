@@ -3,8 +3,10 @@ HouseOfSound::Application.routes.draw do
 
   ActiveAdmin.routes(self)
   resources :programs do
-    collection do
-      get :all
+    resources :schedules do
+      collection do
+        get :all
+      end
     end
   end
 

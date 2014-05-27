@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @episode = Episode.new
+    
   end
 
   def edit

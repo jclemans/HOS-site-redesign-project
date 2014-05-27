@@ -3,6 +3,7 @@ class Episode < ActiveRecord::Base
   has_many :tracks
   before_destroy :delete_file
   has_attached_file :recording
+  after_create :record_stream
 
   LOCAL_ROOT = 'static'
   PUBLIC_ROOT = 'episodes'
@@ -14,7 +15,7 @@ class Episode < ActiveRecord::Base
   # end
 
   def record_stream
-    system "(streamripper #{"http://www.houseofsound.org:8000/live.mp3"} -A -l 300 -i -m 600 -a #{show.file_local_path}"
+    system "(streamripper #{"http://www.houseofsound.org:8000/live.mp3"} -A -l 300 -i -m 600 -a -d /users/dev/desktop/rips)"
   end
 
 

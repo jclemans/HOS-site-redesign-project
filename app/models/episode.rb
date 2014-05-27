@@ -15,9 +15,9 @@ class Episode < ActiveRecord::Base
   # end
 
   def record_stream
-    system "(streamripper #{"http://www.houseofsound.org:8000/live.mp3"} -A -l 300 -i -m 600 -a -d /users/dev/desktop/rips)"
+    duration = (record_time * 60)
+    system "(streamripper #{ENV['stream_url']} -A -l #{duration} -i -m 300 -a -d #{ENV['episode_file_path']})"
   end
-
 
   def file_name
     "#{id}.mp3"

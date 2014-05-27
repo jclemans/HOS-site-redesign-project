@@ -13,6 +13,7 @@ FactoryGirl.define do
 
   factory :program do
     id
+    user_id 9
     title
     description
    end

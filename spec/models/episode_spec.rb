@@ -19,4 +19,9 @@ describe Episode do
 		episode = Episode.create(:recorded_at => Time.now, :record_time => duration)
 		episode.file_path.should == "#{episode_file_directory}/#{episode.id}.mp3"
 	end
+
+	it "should update its recording_file_name attribute after creation" do
+		episode = Episode.create(:recorded_at => Time.now, :record_time => duration)
+		episode.recording_file_name.should eq "#{episode_file_directory}/#{episode.id}.mp3"
+	end
 end

@@ -1,10 +1,10 @@
 class EpisodesController < ApplicationController
 
-	def index
+  def index
   end
 
-	def new
-		@episode = Episode.new
+  def new
+  	@episode = Episode.new
   end
 
   def create
@@ -12,5 +12,4 @@ class EpisodesController < ApplicationController
     @episode = Episode.create
     redirect_to user_path(current_user)
   end
-
 end

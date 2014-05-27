@@ -1,10 +1,11 @@
 %h1= h @user.djname
 
 .div.col-md-6
-  -form_for @episode do |f|
-    = f.hidden_field :program_id, value: @user.program.id
+  =form_for @episode do |f|
     = f.hidden_field :recorded_at, value: Time.now
-    = f.hidden_field :record_time, value: @user.program.schedules.last.duration * 60
+    = fields_for @user do |f|
+      = f.hidden_field :program_id, value: @user.program.id
+      / = f.hidden_field :record_time, value: @user.program.schedules.last.duration * 60
     = f.submit 'Record Episode', class: 'btn.btn-danger.btn-lg.btn-group.btn-group-justified'
   %h3 Tracks
   %ol

@@ -6,7 +6,7 @@
     = fields_for @user do |f|
       = f.hidden_field :program_id, value: @user.program.id
       = f.hidden_field :record_time, value: (@user.program.schedules.last.duration)
-    = f.submit 'Record Episode', class: 'btn.btn-danger.btn-lg.btn-group.btn-group-justified'
+    = f.submit 'Record Episode', class: 'btn.btn-danger.btn-lg'
   %h3 Tracks
   %ol
     %li Description

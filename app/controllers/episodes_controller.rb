@@ -8,6 +8,7 @@ class EpisodesController < ApplicationController
   end
 
   def create
+    @user = User.find(current_user)
     @episode = Episode.create
     redirect_to user_path(current_user)
   end

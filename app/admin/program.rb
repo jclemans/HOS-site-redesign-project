@@ -1,8 +1,8 @@
 ActiveAdmin.register Program do
 
-
-      permit_params :title, :user_id, :deejays, :description, :avatar, :schedules_attributes => [:id, :program_id, :start_time, :duration, :_destroy, days_of_week: []], :episodes_attributes => [:id, :title, :recorded_at, :record_time, :program_id, :_destroy]
-
+  permit_params :title, :user_id, :description, :avatar,
+                :schedules_attributes => [:id, :program_id, :start_time, :duration, :_destroy, days_of_week: []],
+                :episodes_attributes => [:id, :title, :recorded_at, :record_time, :program_id, :_destroy]
 
   index  do
     column :title
@@ -24,23 +24,23 @@ ActiveAdmin.register Program do
       row :user_id
       row :schedules do
         h3 "Schedules"
-          table do
+        table do
+          tr do
+            th "Start Time"
+            th "Duration In Minutes"
+            th "Days of The Week"
+          end
+          ad.schedules.each do |schedule|
             tr do
-              th "Start Time"
-              th "Duration In Minutes"
-              th "Days of The Week"
-            end
-            ad.schedules.each do |schedule|
-              tr do
-                td schedule.start_time.strftime('%H:%M')
-                td schedule.duration
-                td schedule.days_of_week.to_sentence
-              end
+              td schedule.start_time.strftime('%H:%M')
+              td schedule.duration
+              td schedule.days_of_week.to_sentence
             end
           end
         end
+      end
 
-        row :episodes do
+      row :episodes do
         h3 "Episodes"
         table do
           tr do

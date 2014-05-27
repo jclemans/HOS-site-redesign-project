@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-feature 'signed in admin manages programs' do 
+feature 'signed in admin manages programs' do
 
-	before :each do 
+	before :each do
 		sign_in(FactoryGirl.create(:admin))
 	end
 
@@ -25,7 +25,7 @@ feature 'signed in admin manages programs' do
 		FactoryGirl.create(:program, id: 35)
 		click_link "Admin Dashboard"
 		click_link "Programs"
-		within("//tr[@id='program_35']") do 
+		within("//tr[@id='program_35']") do
 			click_link "Edit"
 		end
 		fill_in "Title", with: "New Title"

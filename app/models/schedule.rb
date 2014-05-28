@@ -24,19 +24,19 @@ class Schedule < ActiveRecord::Base
   end
 
   def segments
-    results = []
-    (0...self.duration).step(30) do |n|
-      segment_time = self.start_time + n.minutes
-      if segment_time.wday != self.start_time.wday
-        segment_day = (self.day_of_week + 1) % 7
-      else
-        segment_day = self.day_of_week
-      end
-      results << "#{segment_day}-#{segment_time.strftime('%H:%M')}"
-    end
-    results
-    # self.start_time
-  end
+		results = []
+		(0...self.duration).step(30) do |n|
+			segment_time = self.start_time + n.minutes
+			if segment_time.wday != self.start_time.wday
+				segment_day = (self.day_of_week + 1) % 7
+			else
+				segment_day = self.day_of_week
+			end
+			results << "#{segment_day}-#{segment_time.strftime('%H:%M')}"
+		end
+		results
+		# self.start_time
+	end
 
   # schedules = Schedule.where(day_of_week:[(new_day-1)..(new_day + 1)])
   # existing_segments = schedules.collect(&:segments).flatten

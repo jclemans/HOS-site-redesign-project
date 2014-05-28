@@ -4,23 +4,27 @@ class Schedule < ActiveRecord::Base
   validate :schedule_conflicts
 
   def schedule_conflicts
-    new_start_time = self.start_time
-    new_duration = self.duration.minutes
-    new_day = self.day_of_week
-    start_conflicts = checker(new_start_time, new_day)
-    if
-      errors.add(:start_time, "Conflicts with program #{start_conflicts.last.program_id}")
-    end
-  end
+		first_day = if self.day_of_week == 0 then 6 else (self.day_of_week - 1) end
+		last_day = (self.day_of_week + 1) % 7
+		schedules = Schedule.where(day_of_week: (first_day..last_day))
+		if schedules.length > 0
+			existing_segments = schedules.collect(&:segments).flatten
+			conflicts = self.segments & existing_segments
+			if conflicts.last
+				errors.add(:start_time, "Conflicts with program on #{translate_errors(conflicts)}")
+			end
+		end
+	end
 
-  def checker(new_start_time, new_day)
-    result = []
-    Schedule.all.each do |schedule|
-      if schedule.day_of_week == new_day && schedule.start_time <= new_start_time && new_start_time <= (schedule.start_time + schedule.duration.minutes)
-        result << schedule
-      end
-    end
-    result
+  def translate_errors(array)
+  	results = []
+  	days = { 'Sunday' => 0, 'Monday' => 1, 'Tuesday' => 2, 'Wednesday' => 3, 'Thursday' => 4, 'Friday' => 5, 'Saturday' => 6}
+
+  	array.each do |date_string|
+  		number = date_string.first
+  		results << "#{days.key(number)} at #{date_string.slice(2..-1)}"
+  	end
+  	results.join(', ')
   end
 
   def segments
@@ -35,12 +39,5 @@ class Schedule < ActiveRecord::Base
 			results << "#{segment_day}-#{segment_time.strftime('%H:%M')}"
 		end
 		results
-		# self.start_time
 	end
-
-  # schedules = Schedule.where(day_of_week:[(new_day-1)..(new_day + 1)])
-  # existing_segments = schedules.collect(&:segments).flatten
-  #  do an intersection of these two arrays to see if there is an overlap
 end
-
-

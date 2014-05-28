@@ -18,6 +18,7 @@ gem 'dynamic_form'
 gem 'database_cleaner'
 gem 'factory_girl_rails', group: :test
 gem 'faker', group: :test
+gem 'faraday', '0.8.0'
 gem 'figaro'
 gem 'haml'
 gem 'ice_cube'
@@ -37,6 +38,7 @@ gem 'simple_form', '~> 3.1.0.rc1'
 gem 'squeel'
 gem 'timecop', group: :test
 gem 'therubyracer'
+gem 'tumblr_client'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'webmock', group: :test

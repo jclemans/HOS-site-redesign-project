@@ -4,7 +4,7 @@ class EpisodesController < ApplicationController
   end
 
   def new
-  	@episode = Episode.new
+    @episode = Episode.new
   end
 
   def create

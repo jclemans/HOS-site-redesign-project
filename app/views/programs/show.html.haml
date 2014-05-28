@@ -5,10 +5,10 @@
   /     = image_tag @program.avatar.url(:large)
   %h1= h @program.title
   %h2
-    with #{h @program.deejays}
+    with #{h @user.djname}
   %h2
-    = Date::DAYNAMES[@program.day_of_week]
-    s from #{@program.start_time} to #{h @program.end_time}
+    = Date::DAYNAMES[@program.day_of_week]+ "s"
+    from #{@program.start_hour + ":" + @program.start_minute} to #{h @program.end_hour + ":" + @program.end_minute}
   %h3= h @program.description
   / DEBUG: <haml:loud> h @program.end_time_in_seconds </haml:loud>
   - if @program.program_url
@@ -16,6 +16,8 @@
       %strong Website:
       = link_to @program.program_url, program_path(@program)
   %br/
+
+  =link_to "Edit", edit_program_path(@program), class: "btn btn-danger"
   / %h2 PREVIOUS SHOWS
   / - if @program.episodes.length == 0
   /   .episode

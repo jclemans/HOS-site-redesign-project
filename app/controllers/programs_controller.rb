@@ -5,7 +5,7 @@ class ProgramsController < ApplicationController
     else
       @day_of_week = Date.today.wday
     end
-    @programs = Program.active.where(day_of_week: @day_of_week)
+      @programs = Program.active.where(day_of_week: @day_of_week)
   end
 
   def all
@@ -13,6 +13,7 @@ class ProgramsController < ApplicationController
 
   def show
     @program = Program.find params[:id]
+    @user = User.find(@program.user_id)
   end
 
   def edit

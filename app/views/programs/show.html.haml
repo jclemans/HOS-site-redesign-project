@@ -3,7 +3,7 @@
     %br/
   /   %center
   /     = image_tag @program.avatar.url(:large)
-  %h1= h @program.name
+  %h1= h @program.title
   %h2
     with #{h @program.deejays}
   %h2
@@ -35,7 +35,7 @@
   /               :javascript
   /                 AudioPlayer.embed("episode_#{episode.id}", {
   /                   soundFile: "#{episode.file_public_path}",
-  /                   titles: "#{escape_javascript episode.program.name} - #{escape_javascript episode.when.strftime('%B %d %Y')}",
+  /                   titles: "#{escape_javascript episode.program.title} - #{escape_javascript episode.when.strftime('%B %d %Y')}",
   /                 });
   /       %span.play_link/
   /       %h2

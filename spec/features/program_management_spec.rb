@@ -42,13 +42,8 @@ feature 'signed in admin manages programs' do
 		click_link "Admin Dashboard"
 		click_link "Programs"
 		within("//tr[@id='program_54']") do
-		  click_link "Delete"
-    end
-    page.should have_content "Program was successfully destroyed"
-  end
-
-
-
-
-
+			click_link "Delete"
+		end
+		page.should have_content "Program was successfully destroyed"
+	end
 end

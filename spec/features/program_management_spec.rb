@@ -46,4 +46,5 @@ feature 'signed in admin manages programs' do
 		end
 		page.should have_content "Program was successfully destroyed"
 	end
+
 end

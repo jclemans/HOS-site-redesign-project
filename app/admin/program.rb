@@ -1,8 +1,10 @@
 ActiveAdmin.register Program do
 
   permit_params :title, :user_id, :description, :avatar,
-                :schedules_attributes => [:id, :program_id, :start_time, :duration, :_destroy, days_of_week: []],
+                :schedules_attributes => [:id, :program_id, :start_time, :duration, :_destroy, :day_of_week],
                 :episodes_attributes => [:id, :title, :recorded_at, :record_time, :program_id, :_destroy]
+
+  config.batch_actions = false
 
   index  do
     column :title
@@ -34,7 +36,7 @@ ActiveAdmin.register Program do
             tr do
               td schedule.start_time.strftime('%H:%M')
               td schedule.duration
-              td schedule.days_of_week.to_sentence
+              td schedule.day_of_week
             end
           end
         end
@@ -75,7 +77,7 @@ ActiveAdmin.register Program do
     f.inputs "Schedule" do
       f.has_many :schedules, allow_destroy: true do |schedule_form|
         schedule_form.input :program_id, as: :hidden, :value => program.id
-        schedule_form.input :start_time
+        schedule_form.input :start_time, as: :time_select, minute_step: 30
         schedule_form.input :duration, as: :select, collection: { '30 mins' => 30, '1 hour' => 60, '1.5 hours' => 90, '2 hours' => 120, '2.5 hours' => 150, '3 hours' => 180, '3.5 hours' => 210, '4 hours' => 240, '4.5 hours' => 270, '5 hours' => 300, '5.5 hours' => 330, '6 hours' => 360}
         schedule_form.input :day_of_week, as: :select, :collection => { 'Sunday' => 0, 'Monday' => 1, 'Tuesday' => 2, 'Wednesday' => 3, 'Thursday' => 4, 'Friday' => 5, 'Saturday' => 6}
       end

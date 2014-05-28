@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-<<<<<<< HEAD
 feature 'signed in admin manages programs' do
 
 	before :each do

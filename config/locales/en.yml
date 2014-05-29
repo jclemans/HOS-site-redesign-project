@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  time:
+    formats:
+      long: "%H:%M"
   contact: 'contact'
   home: 'home'
   schedule: 'schedule'
@@ -27,12 +30,12 @@ en:
   listen: 'listen'
   send: 'send'
   click_here: 'click here'
-  
+
   inquiries:
     thank_you: "Thank You. Your message has been sent"
     shout_out: "Shout Out"
 
-  dj_applications: 
+  dj_applications:
     apply_to_be_a_dj: "apply to be a dj"
     dues_are_for: "Dues are for paying station rent and maintaining equipment. Dues mean we don't have to sell out, play ads, or worry about paying for the studio. Occasionally dues are also used for promotional events or other activities that bring new attention and listeners to the station."
     check_for_open_slots: "Check for open slots, but let us know your preferred as well. Slots sometimes open up."

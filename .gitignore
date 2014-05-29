@@ -23,4 +23,4 @@ hos_postgres_5.19.14.sql
 /config/database.yml
 
 # Ignore public folder containing avatar images
-/public/system/avatars/
+/public/system/programs/avatars/

@@ -10,6 +10,7 @@ HouseOfSound::Application.routes.draw do
     end
   end
 
+  resources :schedules, only: [:index]
   resources :inquiries
   resources :dj_applications
   resources :users, only: [:show, :edit, :update]

@@ -31,9 +31,10 @@ p {
 
 ol.tumblr_posts {
   list-style-type: none;
-  audio_post {
-  padding: 20px;
-  }
-  background-color: grey;
+}
+
+.audio_player_iframe {
+  width: 350 px;
+  height: 40 px;
 }
 

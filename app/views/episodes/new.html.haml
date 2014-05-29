@@ -1,0 +1,22 @@
+%h2= h @user.djname
+%h3= h @user.program.title
+
+.div.col-md-6
+  %h4 Schedule
+  - @user.program.schedules.each do |s|
+    %p= "#{to_day(s.day_of_week)} at #{s.start_time.strftime('%H:%M')}"
+
+
+  =form_for @episode do |f|
+    = f.hidden_field :recorded_at, value: Time.now
+    = fields_for @user do |f|
+      = f.hidden_field :program_id, value: @user.program.id
+      = f.hidden_field :record_time, value: (@user.program.schedules.last.duration)
+    = f.submit 'Record Episode', class: 'btn btn-danger btn-lg'
+
+  %h3 Tracks
+  %ol
+    %li Description
+    %li Description
+    %li Description
+    %li Description

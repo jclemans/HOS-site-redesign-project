@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_one :program
+  
+  accepts_nested_attributes_for :program, allow_destroy:  true
 
   validates :name, presence: true
 
@@ -14,6 +17,6 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :roles, allow_destroy: true
 
-  has_one :program
+  
 
 end

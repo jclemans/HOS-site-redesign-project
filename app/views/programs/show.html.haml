@@ -2,20 +2,24 @@
   - if @program.amazon_filename
     %br/
   /   %center
-  /     = image_tag @program.avatar.url(:large)
-  %h1= h @program.name
+  /
+  %h1= h @program.title
   %h2
-    with #{h @program.deejays}
+    with #{h @user.djname}
   %h2
-    = Date::DAYNAMES[@program.day_of_week]
-    s from #{@program.start_time} to #{h @program.end_time}
+    / = Date::DAYNAMES[@program.day_of_week]+ "s"
+    / PENDING MIGRATION CHANGES
+    / from START_TIME to END_TIME
   %h3= h @program.description
   / DEBUG: <haml:loud> h @program.end_time_in_seconds </haml:loud>
+  = image_tag @program.avatar.url(:large)
   - if @program.program_url
     %h4
       %strong Website:
       = link_to @program.program_url, program_path(@program)
   %br/
+
+  = link_to "Edit", edit_program_path(@program), class: "btn btn-danger"
   / %h2 PREVIOUS SHOWS
   / - if @program.episodes.length == 0
   /   .episode
@@ -35,7 +39,7 @@
   /               :javascript
   /                 AudioPlayer.embed("episode_#{episode.id}", {
   /                   soundFile: "#{episode.file_public_path}",
-  /                   titles: "#{escape_javascript episode.program.name} - #{escape_javascript episode.when.strftime('%B %d %Y')}",
+  /                   titles: "#{escape_javascript episode.program.title} - #{escape_javascript episode.when.strftime('%B %d %Y')}",
   /                 });
   /       %span.play_link/
   /       %h2

@@ -52,7 +52,6 @@ feature 'dj signs in and edits a program' do
 
   scenario 'dj signs in and goes to the program page' do
     FactoryGirl.create(:user, email: "deejay@email.com", password: "password")
-
     visit '/users/sign_in'
     fill_in "Email", with: "deejay@email.com"
     fill_in "Password", with: "password"
@@ -61,8 +60,8 @@ feature 'dj signs in and edits a program' do
   end
 
   scenario 'dj visits the program edit page and updates the program name.' do
-    FactoryGirl.create(:program, id: '99')
-    sign_in(FactoryGirl.create(:dj, email: "deejay@email.com", password: "password"))
+    FactoryGirl.create(:user, id: '2', email: "deejay@email.com", password: "password")
+    FactoryGirl.create(:program, id: '99', user_id: '2', day_of_week: [1,2,3,4,5])
     visit '/programs/99/edit'
     click_button 'Update'
     page.should have_content 'Update successful.'

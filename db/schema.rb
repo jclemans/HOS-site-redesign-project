@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522235627) do
+ActiveRecord::Schema.define(version: 20140527233420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 20140522235627) do
     t.integer "program_id"
     t.time    "start_time"
     t.integer "duration"
-    t.string  "days_of_week", default: [], array: true
+    t.integer "day_of_week"
   end
 
   create_table "tracks", force: true do |t|

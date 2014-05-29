@@ -2,6 +2,8 @@ class Episode < ActiveRecord::Base
   belongs_to :program
   has_many :tracks
   before_destroy :delete_file
+  has_attached_file :recording
+  after_create :record_stream
 
   LOCAL_ROOT = 'static'
   PUBLIC_ROOT = 'episodes'
@@ -11,6 +13,16 @@ class Episode < ActiveRecord::Base
   #   program.enforce_max_episodes
   #   delete_cue_file
   # end
+
+  def record_stream
+    duration = (record_time * 60)
+    system "streamripper #{ENV['stream_url']} -A -l #{duration} -i -m 300 -a -d #{file_path}"
+    self.update(:recording_file_name => file_path)
+  end
+
+  def file_path
+    "#{ENV['episode_file_path']}/#{file_name}"
+  end
 
   def file_name
     "#{id}.mp3"

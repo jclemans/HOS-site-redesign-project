@@ -1,12 +1,13 @@
 %h1= h @user.djname
 
 .div.col-md-6
-  =form_for @episode do |f|
-    = f.hidden_field :recorded_at, value: Time.now
-    = fields_for @user do |f|
-      = f.hidden_field :program_id, value: @user.program.id
-      = f.hidden_field :record_time, value: (@user.program.schedules.last.duration)
-    = f.submit 'Record Episode', class: 'btn.btn-danger.btn-lg'
+  -if !@user.program.nil?
+    =form_for @episode do |f|
+      = f.hidden_field :recorded_at, value: Time.now
+      = fields_for @user do |f|
+        = f.hidden_field :program_id, value: @user.program.id
+        = f.hidden_field :record_time, value: (@user.program.schedules.last.duration)
+      = f.submit 'Record Episode', class: 'btn.btn-danger.btn-lg'
   %h3 Tracks
   %ol
     %li Description

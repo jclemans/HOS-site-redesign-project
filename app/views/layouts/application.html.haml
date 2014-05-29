@@ -21,7 +21,7 @@
         -elsif current_user.has_role?(:DJ)
           =link_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar-text navbar-right"
           =link_to "Edit Profile", edit_user_path(current_user), class: "navbar-text navbar-right"
-          =link_to "DJ Dashboard", user_path(current_user), class: "navbar-text navbar-right"
+          =link_to "Record Episode", new_episode_path, class: "navbar-text navbar-right"
 
         -elsif current_user.has_role?(:Admin)
           =link_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar-text navbar-right"

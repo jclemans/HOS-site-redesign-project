@@ -1,4 +1,6 @@
+require 'hos/date_helpers'
 class Schedule < ActiveRecord::Base
+	include HOS::DateHelpers
   belongs_to :program
 
   validate :schedule_conflicts
@@ -18,11 +20,10 @@ class Schedule < ActiveRecord::Base
 
   def translate_errors(array)
   	results = []
-  	days = { 'Sunday' => 0, 'Monday' => 1, 'Tuesday' => 2, 'Wednesday' => 3, 'Thursday' => 4, 'Friday' => 5, 'Saturday' => 6}
 
   	array.each do |date_string|
-  		number = date_string.first
-  		results << "#{days.key(number)} at #{date_string.slice(2..-1)}"
+  		number = date_string.first.to_i
+  		results << "#{to_day(number)} at #{date_string.slice(2..-1)}"
   	end
   	results.join(', ')
   end

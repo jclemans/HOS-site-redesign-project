@@ -6,9 +6,9 @@ ActiveAdmin.register Program do
 
   index  do
     column :title
-    # column :avatar do |program|
-    #   image_tag program.avatar.url(:thumb)
-    # end
+    column :avatar do |program|
+      image_tag program.avatar.url(:thumb)
+    end
     column :user_id
     column :description
     actions
@@ -17,9 +17,9 @@ ActiveAdmin.register Program do
   show do |ad|
     attributes_table do
       row :title
-      # row :avatar do
-      #   image_tag ad.avatar.url(:medium)
-      # end
+      row :avatar do
+        image_tag ad.avatar.url(:medium)
+      end
       row :description
       row :user_id
       row :schedules do
@@ -62,9 +62,9 @@ ActiveAdmin.register Program do
 
   form :html => { :enctype => "multipart/form-data" } do |f|
 
-    # f.inputs "Artwork" do
-    #   f.input :avatar, :as => :file, :hint => f.template.image_tag(f.object.avatar.url(:medium))
-    # end
+    f.inputs "Artwork" do
+      f.input :avatar, :as => :file, :hint => f.template.image_tag(f.object.avatar.url(:medium))
+    end
 
     f.inputs "About" do
       f.input :title

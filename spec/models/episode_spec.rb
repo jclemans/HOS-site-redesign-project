@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Episode do 
+describe Episode do
 	let(:stream_url){ ENV["stream_url"] }
 	let(:duration){ 5 }
 	let(:duration_seconds){ duration * 60 }
@@ -9,7 +9,7 @@ describe Episode do
 
 	it "takes program.duration and converts it to seconds and inserts that value into streamripper" do
 		episode = Episode.new(:recorded_at => Time.now, :record_time => duration)
-		episode.stub!(:file_name).and_return "1.mp3"
+		episode.stub(:file_name).and_return "1.mp3"
 		expected_file_path = "#{episode_file_directory}/1.mp3"
 		episode.should_receive(:system).with("streamripper #{stream_url} -A -l #{duration_seconds} -i -m 300 -a -d #{expected_file_path}")
 		episode.save

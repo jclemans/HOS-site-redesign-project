@@ -1,4 +1,5 @@
 require 'active_admin/cancan_adapter'
+require 'hos/date_helpers'
 
 ActiveAdmin.setup do |config|
 

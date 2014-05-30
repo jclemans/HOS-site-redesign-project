@@ -36,6 +36,7 @@ gem 'shoulda-matchers'
 gem 'simple_form', '~> 3.1.0.rc1'
 gem 'squeel'
 gem 'timecop', group: :test
+gem 'therubyracer'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'webmock', group: :test

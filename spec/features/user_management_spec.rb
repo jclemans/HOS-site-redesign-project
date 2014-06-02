@@ -8,7 +8,7 @@ feature 'user signs in and accesses pages' do
     visit '/users/sign_in'
     fill_in "Email", with: "deejay@email.com"
     fill_in "Password", with: "password"
-    click_button "Sign in"
+    click_on "Sign in"
     page.should have_content "Signed in successfully."
   end
 
@@ -18,8 +18,8 @@ feature 'user signs in and accesses pages' do
     visit '/users/sign_in'
     fill_in "Email", with: "deejay@email.com"
     fill_in "Password", with: "password"
-    click_button "Sign in"
-    click_link "Sign Out"
+    click_on "Sign in"
+    click_on "SIGN OUT"
     page.should have_content "Signed out successfully."
   end
 
@@ -33,7 +33,7 @@ feature 'user signs in and accesses pages' do
   scenario 'admin user signs in and visits admin page' do
     sign_in(FactoryGirl.create(:admin, email: "admin@email.com", password: "password"))
 
-    click_link "Admin Dashboard"
+    click_link "ADMIN DASHBOARD"
     page.should have_content "Dashboard"
     page.should have_content "Powered by Active Admin"
   end
@@ -48,7 +48,7 @@ feature 'user signs in and accesses pages' do
   scenario 'admin user signs in and visits admin page to create new user' do
     sign_in(FactoryGirl.create(:admin, email: "admin@email.com", password: "password"))
 
-    click_link "Admin Dashboard"
+    click_link "ADMIN DASHBOARD"
     click_link "Users"
     click_link "New User"
     fill_in :user_name, with: "Fred Flintstone"
@@ -64,7 +64,7 @@ feature 'user signs in and accesses pages' do
   scenario 'DJ signs in and edits profile page' do
     sign_in(FactoryGirl.create(:dj, email: "deej@email.com", password: "password"))
 
-    click_link "Edit Profile"
+    click_link "EDIT PROFILE"
     fill_in "DJ Name", with: "DJ Today"
     click_button "Update"
     page.should have_content "DJ Today"

@@ -14,3 +14,41 @@
 p.copyright {
   text-align: center
 }
+
+.navbar-default {
+  background: transparent;
+  border-radius: 0px;
+  border-left: none;
+  border-right: none;
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+  .navbar-brand, .navbar-text {
+    color: #ffffff;
+  }
+}
+
+a.navbar-text, a.navbar-brand {
+  text-decoration: none;
+}
+
+.footer {
+  bottom: 0;
+  width: 90%;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html, body { 
+  height: 100%;
+}
+
+.container {
+  min-height: 90%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -30px;
+  padding-bottom: 40px;
+}
+
+

@@ -13,6 +13,13 @@
     = javascript_include_tag 'application'
 
   %body
+    
+  .container
+    =flash[:alert]
+    =flash[:notice]
+    =yield
+
+  %footer
     .navbar.navbar-inverse
       .container
         =link_to "House of Sound", root_path, class: "navbar-brand"
@@ -26,9 +33,4 @@
         -elsif current_user.has_role?(:Admin)
           =link_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar-text navbar-right"
           =link_to "Admin Dashboard", "/admin", class: "navbar-text navbar-right"
-
-  .container
-    =flash[:alert]
-    =flash[:notice]
-    =yield
-
+    %p.copyright House of Sound ® 2014

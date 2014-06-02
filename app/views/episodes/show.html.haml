@@ -1,0 +1,14 @@
+%h2= h @user.djname
+%h3= h @user.program.title
+
+= form_for @track do |f|
+  = f.hidden_field :episode_id, value: @episode.id
+  = f.text_field :content, placeholder: "Enter track title and artist."
+  = f.submit 'Add Track'
+
+- if @episode.tracks.length == 0
+  %p No tracks added to this episode yet.
+- else
+  %h3 Tracks
+  - @episode.tracks.each do |t|
+    %li= t.content

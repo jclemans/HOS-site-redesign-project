@@ -13,24 +13,25 @@
     = javascript_include_tag 'application'
 
   %body
-    
-  .container
-    =flash[:alert]
-    =flash[:notice]
-    =yield
+    .container
+      =flash[:alert]
+      =flash[:notice]
+      =yield
+      .push
 
-  %footer
-    .navbar.navbar-inverse
-      .container
-        =link_to "House of Sound", root_path, class: "navbar-brand"
-        -if current_user.nil?
-          =link_to "Sign In", new_user_session_path, class: "navbar-text navbar-right"
-        -elsif current_user.has_role?(:DJ)
-          =link_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar-text navbar-right"
-          =link_to "Edit Profile", edit_user_path(current_user), class: "navbar-text navbar-right"
-          =link_to "Record Episode", new_episode_path, class: "navbar-text navbar-right"
-
-        -elsif current_user.has_role?(:Admin)
-          =link_to "Sign Out", destroy_user_session_path, method: :delete, class: "navbar-text navbar-right"
-          =link_to "Admin Dashboard", "/admin", class: "navbar-text navbar-right"
-    %p.copyright House of Sound ® 2014
+    .footer
+      .navbar.navbar-default
+        .navbar-bottom
+          =link_to "HOUSE OF SOUND", root_url, class: "navbar-brand"
+          =link_to "HOME", root_url, class: "navbar-text"
+          -if current_user.nil?  
+            =link_to "SIGN IN", new_user_session_path, class: "navbar-text"
+          -elsif current_user.has_role?(:DJ)
+            =link_to "RECORD EPISODE", new_episode_path, class: "navbar-text"
+            =link_to "EDIT PROFILE", edit_user_path(current_user), class: "navbar-text"
+            =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"  
+          -elsif current_user.has_role?(:Admin)
+            =link_to "ADMIN DASHBOARD", "/admin", class: "navbar-text"
+            =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
+          
+      %p.copyright House of Sound ® 2014

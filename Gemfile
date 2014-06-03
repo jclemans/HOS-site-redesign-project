@@ -38,7 +38,10 @@ gem 'simple_form', '~> 3.1.0.rc1'
 gem 'squeel'
 gem 'timecop', group: :test
 gem 'therubyracer'
+<<<<<<< HEAD
 gem 'tumblr_client'
+=======
+>>>>>>> cbac3db0eed9a370ec16574d1ab0c24877170912
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'webmock', group: :test

@@ -15,7 +15,6 @@ p.copyright {
   text-align: center
 }
 
-<<<<<<< HEAD
 .navbar-default {
   background: transparent;
   border-radius: 0px;
@@ -53,8 +52,6 @@ html, body {
   padding-bottom: 40px;
 }
 
-
-=======
 .well {
   background-color: #042133;
   border: none;
@@ -77,4 +74,19 @@ ol.tumblr_posts {
   height: 40 px;
 }
 
->>>>>>> 050834f53e33ef200a6ad87cbefce261dbac1576
+.tumblr_post {
+  margin: 14px 4px;
+  background-color: #444;
+  display: block;
+  font-family: Helvetica Neue, Arial, sans-serif;
+  font-size: 14px;
+  border: 1px solid;
+  border-color: #e8e8e8;
+  padding: 16px;
+ } 
+  
+.tumblr_photo  { 
+  max-width: 350px;
+  max-height: 225px;
+}
+

@@ -49,4 +49,11 @@ describe Schedule do
       test_schedule.segments.should include('0-00:30')
     end
   end
+
+  describe 'now_playing' do
+    it 'should find the currently playing schedule' do
+      schedule = Schedule.create(start_time: 1.hour.ago, duration: 120, day_of_week: Date.today.wday)
+      schedule.now_playing.first.should eq schedule
+    end
+  end
 end

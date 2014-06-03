@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140530231830) do
     t.integer  "program_id"
     t.integer  "record_time"
     t.string   "title"
+    t.string   "recording_file_name"
   end
 
   create_table "inquiries", force: true do |t|

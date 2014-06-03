@@ -7,7 +7,7 @@
   text-align: center;
   background-color: #042133;
   border: none;
-  font-size: 30px;
+  font-size: 20px;
   font-family: monospace;
 }
 
@@ -24,6 +24,7 @@ p.copyright {
   border-bottom-color: #ffffff;
   .navbar-brand, .navbar-text {
     color: #ffffff;
+    text-transform: uppercase;
   }
 }
 

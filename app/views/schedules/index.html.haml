@@ -15,6 +15,7 @@
                 = schedule.start_time.strftime("%l:%M%P") + '-' + (schedule.start_time + schedule.duration.minutes).strftime("%l:%M%P")
                 %br
                 = schedule.program.title
+                = image_tag schedule.program.avatar.url(:medium)
 
 
 

@@ -1,15 +1,21 @@
 #schedules
   %h1 Schedule
   .container-fluid
-    .row
-      .well.col-sm-2
-        %p 10:00-12:00
-        %h5 Big Voodoo Daddy!
-      .well.col-sm-1
-        %p 2:00-4:00
-      .well.col-sm-1
-        %p 6:00-7:00
-      .well.col-sm-1
-      .well.col-sm-1
-      .well.col-sm-1
+
+    - @schedules.keys.sort.each do |day|
+      - schedules = @schedules[day]
+      .row
+        .row
+          %h3
+            = to_day(day)
+        %table{:class => "table table-hover", :width => "100%"}
+          %tr
+            - schedules.sort_by! { |schedule, start_time | schedule.start_time }.each do |schedule|
+              %td{:width => "#{schedule.duration / day_total(schedules)}%"}
+                = schedule.start_time.strftime("%l:%M%P") + '-' + (schedule.start_time + schedule.duration.minutes).strftime("%l:%M%P")
+                %br
+                = schedule.program.title
+
+
+
 

@@ -9,7 +9,7 @@ feature 'signed in admin manages programs' do
 	scenario 'admin creates a program' do
 		FactoryGirl.create(:dj, name: "Dustin")
 
-		click_link "Admin Dashboard"
+		click_link "ADMIN DASHBOARD"
 		click_link "Programs"
 		click_link "New Program"
 		fill_in "Title", with: "DJ Dustin's Twitter Etiquette"
@@ -23,7 +23,7 @@ feature 'signed in admin manages programs' do
 	scenario 'admin edits a program' do
 		FactoryGirl.create(:dj, name: "Dustin")
 		FactoryGirl.create(:program, id: 35)
-		click_link "Admin Dashboard"
+		click_link "ADMIN DASHBOARD"
 		click_link "Programs"
 		within("//tr[@id='program_35']") do
 			click_link "Edit"
@@ -39,7 +39,7 @@ feature 'signed in admin manages programs' do
 
 	scenario 'admin deletes a program' do
 		FactoryGirl.create(:program, id: 54)
-		click_link "Admin Dashboard"
+		click_link "ADMIN DASHBOARD"
 		click_link "Programs"
 		within("//tr[@id='program_54']") do
 		  click_link "Delete"

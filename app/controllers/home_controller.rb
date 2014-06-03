@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @schedules = Schedule.where(day_of_week: Date.today.wday)
         # @key = "LKnK9JeMKEn5uRDHaZeNO4IUxkxiWOx8tNPeMcZl2IpfV8GLpU"
         # @secret = "u0mHkS1p3QxXCTBmt5LnCGDMQc8ZuNZ5VjFTq5wA7EvgvhvyYC"
         # @oauth_token = "UBvogCSj90wpvXXg53nYRWmGnFgbm1C08B8nXSuCvUa7uuID1c"

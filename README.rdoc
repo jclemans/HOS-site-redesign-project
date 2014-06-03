@@ -1,2 +1,11 @@
 == README
 
+Steps to get a working development environment
+- clone it to dev environment
+- bundle
+- cp /config/database.example.yml to /config/database.yml and tailor to your setup
+- psql <dev_db_name> < lib/host_postgres_5.4.14.sql
+- rake db:migrate
+- rake db:test:prepare
+- rspec spec
+- Bask in the green glow of passing tests

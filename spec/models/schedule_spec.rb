@@ -49,4 +49,44 @@ describe Schedule do
       test_schedule.segments.should include('0-00:30')
     end
   end
+
+  describe 'now_playing' do
+    it 'should find the currently playing schedule' do
+      minutes_to_start = 1.hour.ago.min - 1.hours.ago.min % 30
+      if minutes_to_start == 0
+        minutes_to_start = 00
+      end
+      time_to_start = "#{1.hour.ago.hour.to_s}:#{minutes_to_start.to_s}"
+
+      schedule = Schedule.create(start_time: time_to_start, duration: 120, day_of_week: Date.today.wday)
+      Schedule.now_playing(Time.now).should eq schedule
+    end
+
+    it 'should not find a schedule that is not playing' do
+      schedule = Schedule.create(start_time: "03:00", duration: 120, day_of_week: Date.today.wday)
+      Schedule.now_playing(Time.new(2000)).should eq nil
+    end
+  end
+
+  describe 'find_next_schedule' do
+    it 'should find the next schedule' do
+      schedule = Schedule.create(start_time: Time.new(2000) + 23.hours, duration: 120, day_of_week: Date.today.wday)
+      Schedule.find_next_schedule.should eq schedule
+    end
+  
+    it 'should not find a currently playing schedule' do
+      current_schedule = Schedule.create(start_time: Time.new(2000), duration: 120, day_of_week: Date.today.wday)    
+      future_schedule = Schedule.create(start_time: (Time.new(2000) + Time.now.hour.hours), duration: 120, day_of_week: Date.today.wday)
+      Schedule.find_next_schedule.should eq future_schedule
+    end
+
+    it 'should find the next schedule even if it falls on the next day' do
+      future_schedule = Schedule.create(start_time: Time.new(2000), duration: 120, day_of_week: Date.tomorrow.wday)
+      Schedule.find_next_schedule.should eq future_schedule
+    end
+
+    it 'should not recurse infinitely if there are no schedules' do
+      Schedule.find_next_schedule.should eq nil
+    end
+  end
 end

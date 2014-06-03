@@ -11,12 +11,19 @@ class EpisodesController < ApplicationController
   end
 
   def create
-    if Episode.create(episode_params)
+    @episode = Episode.new(episode_params)
+    if @episode.save
       flash[:alert] = "Recording in progress"
-      redirect_to root_path
+      redirect_to episode_path(@episode)
     else
       flash[:alert] = "Unable to record at this time. Please check the schedule."
     end
+  end
+
+  def show
+    @user = current_user
+    @episode = Episode.find(params[:id])
+    @track = @episode.tracks.new
   end
 
   private

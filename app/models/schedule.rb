@@ -5,6 +5,22 @@ class Schedule < ActiveRecord::Base
 
   validate :schedule_conflicts
 
+  def now_playing
+    Schedule.where(day_of_week == Date.today.wday).each do |schedule|
+      end_time = schedule.start_time.to_time + schedule.duration.to_i.minutes
+      if (schedule.start_time.to_i..end_time.to_i).include?(Time.now)
+        schedule.first
+      end
+    end
+  end
+
+  def find_next_schedule
+    next_schedule = @schedules.where(start_time > Time.now).first
+    if next_schedule.nil?
+      next_schedule = @schedules.where(day_of_week == Date.tomorrow).first
+    end
+  end
+
   def schedule_conflicts
 		first_day = if self.day_of_week == 0 then 6 else (self.day_of_week - 1) end
 		last_day = (self.day_of_week + 1) % 7

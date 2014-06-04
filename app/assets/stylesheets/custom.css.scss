@@ -90,3 +90,19 @@ ol.tumblr_posts {
   max-height: 225px;
 }
 
+.navbar-header {
+  font-weight: bold;
+  font-size: 20pt;
+  font-family: 'Francois One', Arial, sans-serif;
+  padding-top: 20px;
+  position: relative;
+  left: 50px;
+  float: left;
+  .navbar-text {
+    color: #FFFFFF;  
+  }
+}
+
+.well.col-sm-6,  {
+  width: 57%;
+}

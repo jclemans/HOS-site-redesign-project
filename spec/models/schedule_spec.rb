@@ -55,5 +55,10 @@ describe Schedule do
       schedule = Schedule.create(start_time: 1.hour.ago, duration: 120, day_of_week: Date.today.wday)
       schedule.now_playing.first.should eq schedule
     end
+
+    it 'should not find a schedule that is not playing' do
+      schedule = Schedule.create(start_time: "13:30", duration: 120, day_of_week: Date.today.wday)
+      schedule.now_playing.first.should eq nil
+    end
   end
 end

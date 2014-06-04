@@ -1,4 +1,6 @@
 require 'hos/date_helpers'
+require 'pry'
+
 class Schedule < ActiveRecord::Base
 	include HOS::DateHelpers
   belongs_to :program
@@ -7,8 +9,8 @@ class Schedule < ActiveRecord::Base
 
   def now_playing
     Schedule.where(day_of_week == Date.today.wday).each do |schedule|
-      end_time = schedule.start_time.to_time + schedule.duration.to_i.minutes
-      if (schedule.start_time.to_i..end_time.to_i).include?(Time.now)
+      end_time = schedule.start_time + schedule.duration.to_i.minutes
+      if (schedule.start_time.to_i..end_time.to_i).include?(Time.now.to_i)
         schedule.first
       end
     end

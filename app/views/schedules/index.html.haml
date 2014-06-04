@@ -1,12 +1,11 @@
 #schedules
-  %h1 Schedule
   .container-fluid
 
     - @schedules.keys.sort.each do |day|
       - schedules = @schedules[day]
       .row
         .row
-          %h3
+          %h1
             = to_day(day)
         %table{:class => "table"}
           %tr

@@ -52,13 +52,19 @@ describe Schedule do
 
   describe 'now_playing' do
     it 'should find the currently playing schedule' do
-      schedule = Schedule.create(start_time: 1.hour.ago, duration: 120, day_of_week: Date.today.wday)
-      schedule.now_playing.first.should eq schedule
+      minutes_to_start = 1.hour.ago.min - 1.hours.ago.min % 30
+      if minutes_to_start == 0
+        minutes_to_start = 00
+      end
+      time_to_start = "#{1.hour.ago.hour.to_s}:#{minutes_to_start.to_s}"
+
+      schedule = Schedule.create(start_time: time_to_start, duration: 120, day_of_week: Date.today.wday)
+      Schedule.now_playing.should eq schedule
     end
 
     it 'should not find a schedule that is not playing' do
-      schedule = Schedule.create(start_time: "13:30", duration: 120, day_of_week: Date.today.wday)
-      schedule.now_playing.first.should eq nil
+      schedule = Schedule.create(start_time: "03:00", duration: 120, day_of_week: Date.today.wday)
+      Schedule.now_playing.should eq nil
     end
   end
 end

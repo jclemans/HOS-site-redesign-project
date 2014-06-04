@@ -1,7 +1,7 @@
 !!!
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
-    =csrf_meta_tags
+    =csrf_meta_tags 
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "House of Sound is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want - unlike other local radio stations, there is no compulsory \"Top Hits\" rotation.", :name => "description"}/
     %title House of Sound
@@ -13,34 +13,30 @@
     = javascript_include_tag 'application'
 
   %body
-    .tumblr.well.col-md-6
+    .tumblr.well.col-sm-6
       %p HOUSE OF SOUND
       <script type="text/javascript" src="http://houseofsoundradio.tumblr.com/js"></script>
 
-    / .well.col-md-6
-    /   <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
-    /   <div class="fb-post" data-href="https://www.facebook.com/photo.php?fbid=10152444722962145&amp;set=a.109701332144.88271.100809577144&amp;type=1" data-width="466"><div class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/photo.php?fbid=10152444722962145&amp;set=a.109701332144.88271.100809577144&amp;type=1">Post</a> by <a href="https://www.facebook.com/houseofsound">House of Sound</a>.</div></div>
+    .well.col-sm-5.pull-right
+      %p NOW PLAYING Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby. 
 
-    /   <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
-    /   <div class="fb-post" data-href="https://www.facebook.com/houseofsound/posts/10152444623887145" data-width="466"><div class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/houseofsound/posts/10152444623887145">Post</a> by <a href="https://www.facebook.com/houseofsound">House of Sound</a>.</div></div>
-
-    /   <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
-    /   <div class="fb-post" data-href="https://www.facebook.com/houseofsound/posts/10152443761742145" data-width="466"><div class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/houseofsound/posts/10152443761742145">Post</a> by <a href="https://www.facebook.com/houseofsound">House of Sound</a>.</div></div>
-
-    .well.col-md-5.col-sm-offset-1
-      %p NOW PLAYING Cat ipsum. Thai abyssinian . Bengal manx and munchkin but tom. Cheetah kitten but british shorthair cougar but british shorthair, so tabby. Grimalkin jaguar and malkin munchkin lynx, yet birman for kitten. Tabby mouser. 
-      
-    .listen_now.well.col-md-5.col-sm-offset-1
+    .listen_now.well.col-sm-5.pull-right
       %p LISTEN NOW
 
-    .contact_dj.well.col-md-5.col-sm-offset-1
+    .contact_dj.well.col-sm-5.pull-right
       %p Ask the DJ
       <iframe frameborder="0" scrolling="no" width="300" height="250" src="http://www.tumblr.com/ask_form/houseofsoundradio.tumblr.com/" value="Ask the DJ..."></iframe>
 
-    .contact_dj.well.col-md-5.col-sm-offset-1
+    .contact_dj.well.col-sm-5.pull-right
       %p Call the DJ
       %p 503-575-9344
 
-    .twitter.well.col-md-5.col-sm-offset-1
+    .donate.well.col-sm-6
+      %p IPSUM Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby. 
+
+    .twitter.well.col-sm-5.pull-right
       <a class="twitter-timeline" href="https://twitter.com/houseofsound" data-widget-id="471797898695303168">Tweets by @houseofsound</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    .affiliates.well.col-sm-6 
+      %p IPSUM 2 Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby. 

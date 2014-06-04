@@ -11,5 +11,3 @@ class SchedulesController < ApplicationController
     end
   end
 end
-
-# h.sort_by { |k,v| v[:day_of_week] }

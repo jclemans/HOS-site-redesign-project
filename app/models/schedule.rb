@@ -1,23 +1,36 @@
+
 require 'hos/schedule_helpers'
+
 class Schedule < ActiveRecord::Base
 	include HOS::ScheduleHelpers
   belongs_to :program
 
   validate :schedule_conflicts
 
-  def now_playing
-    Schedule.where(day_of_week == Date.today.wday).each do |schedule|
-      end_time = schedule.start_time.to_time + schedule.duration.to_i.minutes
-      if (schedule.start_time.to_i..end_time.to_i).include?(Time.now)
-        schedule.first
+  def self.now_playing(time_to_check)
+      result = nil
+      schedules = Schedule.where(day_of_week: time_to_check.wday)
+      schedules.each do |schedule|
+        rounded_time = Time.at((time_to_check.to_f / 1800).round * 1800)
+        this_schedule_intersection = schedule.segments & [schedule.segment_format(time_to_check.wday, rounded_time)]
+        if this_schedule_intersection.length != 0
+          result = schedule
+        end
       end
+      result
     end
-  end
 
-  def find_next_schedule
-    next_schedule = @schedules.where(start_time > Time.now).first
-    if next_schedule.nil?
-      next_schedule = @schedules.where(day_of_week == Date.tomorrow).first
+  def self.find_next_schedule
+    next_time = Time.now + 30.minutes
+    next_show = Schedule.now_playing(next_time)
+    while next_show == nil && next_time < Time.now + 7.days
+      next_time = next_time + 30.minutes 
+      next_show = Schedule.now_playing(next_time)
+    end
+    if next_show != nil
+      next_show
+    else 
+      nil
     end
   end
 

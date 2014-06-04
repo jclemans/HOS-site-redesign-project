@@ -13,6 +13,7 @@ class Ability
 
       else
         can :read, Program
+        can :read, Schedule
       end
     #
     # The first argument to `can` is the action you are giving the user

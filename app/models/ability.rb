@@ -10,10 +10,11 @@ class Ability
       elsif user.has_role? :DJ
         can [:show, :update, :edit], User, id: user.id
         can [:update, :edit], Program
+        can :index, Schedule
 
       else
-        can :read, Program
-        can :read, Schedule
+        can :show, Program
+        can :index, Schedule
       end
     #
     # The first argument to `can` is the action you are giving the user

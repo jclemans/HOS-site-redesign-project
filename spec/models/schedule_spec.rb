@@ -57,7 +57,6 @@ describe Schedule do
         minutes_to_start = 00
       end
       time_to_start = "#{1.hour.ago.hour.to_s}:#{minutes_to_start.to_s}"
-
       schedule = Schedule.create(start_time: time_to_start, duration: 120, day_of_week: Date.today.wday)
       Schedule.now_playing(Time.now).should eq schedule
     end
@@ -87,11 +86,6 @@ describe Schedule do
 
     it 'should not recurse infinitely if there are no schedules' do
       Schedule.find_next_schedule.should eq nil
-    end
-
-    it 'should not find a schedule that is not playing' do
-      schedule = Schedule.create(start_time: "13:30", duration: 120, day_of_week: Date.today.wday)
-      schedule.now_playing.first.should eq nil
     end
   end
 end

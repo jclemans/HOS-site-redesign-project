@@ -70,6 +70,7 @@ class Schedule < ActiveRecord::Base
 		results
 	end
 
+<<<<<<< HEAD
   def segment_format(weekday, time)
     "#{weekday}-#{time.strftime('%H:%M')}"
   end

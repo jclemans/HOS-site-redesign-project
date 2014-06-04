@@ -6,13 +6,18 @@ class Schedule < ActiveRecord::Base
 
   validate :schedule_conflicts
 
-  def now_playing
-    Schedule.where(day_of_week == Date.today.wday).each do |schedule|
-      end_time = schedule.start_time + schedule.duration.to_i.minutes
-      if (schedule.start_time.to_i..end_time.to_i).include?(Time.now.to_i)
-        schedule.first
+  def self.now_playing
+    result = nil
+    schedules = Schedule.where(day_of_week: Date.today.wday)
+
+    schedules.each do |schedule|
+      rounded_time = Time.at((Time.now.to_f / 1800).round * 1800)
+      this_one = schedule.segments & [schedule.segment_key(Date.today.wday, rounded_time)]
+      if this_one.length != 0
+        result = schedule
       end
     end
+    result
   end
 
   def find_next_schedule
@@ -54,8 +59,12 @@ class Schedule < ActiveRecord::Base
 			else
 				segment_day = self.day_of_week
 			end
-			results << "#{segment_day}-#{segment_time.strftime('%H:%M')}"
+			results << segment_key(segment_day, segment_time)
 		end
 		results
 	end
+
+  def segment_key(weekday, time)
+    "#{weekday}-#{time.strftime('%H:%M')}"
+  end
 end

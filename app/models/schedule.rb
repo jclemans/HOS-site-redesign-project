@@ -1,3 +1,4 @@
+
 require 'hos/schedule_helpers'
 
 class Schedule < ActiveRecord::Base

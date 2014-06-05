@@ -40,7 +40,7 @@ a.navbar-text, a.navbar-brand {
   margin-right: auto;
 }
 
-html, body { 
+html, body {
   height: 100%;
 }
 
@@ -83,9 +83,9 @@ ol.tumblr_posts {
   border: 1px solid;
   border-color: #e8e8e8;
   padding: 16px;
- } 
-  
-.tumblr_photo  { 
+ }
+
+.tumblr_photo  {
   max-width: 350px;
   max-height: 225px;
 }
@@ -99,10 +99,11 @@ ol.tumblr_posts {
   left: 50px;
   float: left;
   .navbar-text {
-    color: #FFFFFF;  
+    color: #FFFFFF;
   }
 }
 
-.well.col-sm-6,  {
-  width: 57%;
+table {
+  font-size: 20px;
 }
+

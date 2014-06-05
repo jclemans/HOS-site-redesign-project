@@ -1,4 +1,4 @@
-include HOS::DateHelpers
+include HOS::ScheduleHelpers
 
 ActiveAdmin.register Schedule do
 

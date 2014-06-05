@@ -18,4 +18,5 @@ HouseOfSound::Application.routes.draw do
   resources :tracks
 
   root 'home#index'
+  get '/listen_live', to: 'home#listen_live'
 end

@@ -1,5 +1,4 @@
 require 'hos/date_helpers'
-require 'pry'
 
 class Schedule < ActiveRecord::Base
 	include HOS::DateHelpers

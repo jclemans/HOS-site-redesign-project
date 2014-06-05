@@ -20,10 +20,15 @@ class Schedule < ActiveRecord::Base
     result
   end
 
-  def find_next_schedule
-    next_schedule = @schedules.where(start_time > Time.now).first
-    if next_schedule.nil?
-      next_schedule = @schedules.where(day_of_week == Date.tomorrow).first
+  def self.find_next_schedule(day)
+    search_day = Date.today + day.days
+    schedule = Schedule.where(day_of_week: search_day.wday).where('start_time'.to_f > Time.new(2000).to_f).order(:start_time).first
+    if schedule != nil
+      schedule
+    elsif day > 7
+      return "There are no programs scheduled for the next week. Contact an adminstrator."
+    else 
+      self.find_next_schedule(day+1)
     end
   end
 

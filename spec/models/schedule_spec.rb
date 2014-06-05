@@ -48,10 +48,5 @@ describe Schedule do
       test_schedule = Schedule.new(start_time: "23:30", duration: 90, program: program, day_of_week: 6)
       test_schedule.segments.should include('0-00:30')
     end
-
-    it 'should break down the day of week for each schedule into hash' do
-      test_schedule_hash = Schedules.new(start_time: "23:30", duration: 90, program: program, day_of_week: 6)
-      test_schedule_hash.values_at("day_of_week").should_not include(nil)
-    end
   end
 end

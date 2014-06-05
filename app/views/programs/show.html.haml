@@ -18,7 +18,7 @@
       %strong Website:
       = link_to @program.program_url, program_path(@program)
   %br/
-  - if current_user && current_user.id ==  @program.user_id 
+  - if can? :edit, @program
     = link_to "Edit", edit_program_path(@program), class: "btn btn-danger"
   / %h2 PREVIOUS SHOWS
   / - if @program.episodes.length == 0

@@ -6,6 +6,7 @@ class TracksController < ApplicationController
       redirect_to(:back)
     else
       flash[:alert] = "Oops, there was a problem. Try entering your track again."
+      redirect_to(:back)
     end
   end
 

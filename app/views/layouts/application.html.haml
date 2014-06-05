@@ -45,18 +45,9 @@
             =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
 
           .navbar-right.media
-            <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-
-            <div class="fb-follow" data-href="https://www.facebook.com/houseofsound" data-width="80" data-height="18" data-colorscheme="dark" data-layout="button" data-show-faces="false"></div>
-
-            =link_to image_tag("tumblr.png", size: "20"), "http://www.tumblr.com/follow/houseofsoundradio/"
-            =link_to image_tag("instagram.png", size: "20"), "http://instagram.com/houseofsound"
-            =link_to image_tag("email.png", size: "50x20"), "mailto:admins@houseofsound.org"
+            =link_to image_tag("fb_follow.jpg", size: "80x25"), "https://www.facebook.com/houseofsound"
+            =link_to image_tag("tumblr.png", size: "25"), "http://www.tumblr.com/follow/houseofsoundradio/"
+            =link_to image_tag("instagram.png", size: "25"), "http://instagram.com/houseofsound"
+            =link_to image_tag("email.png", size: "60x25"), "mailto:admins@houseofsound.org"
 
       %p.copyright House of Sound ® 2014

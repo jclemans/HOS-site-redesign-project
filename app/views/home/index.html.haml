@@ -32,6 +32,14 @@
           %p= image_tag Schedule.find_next_schedule.program.avatar.url(:medium)
           %p= Schedule.find_next_schedule.program.title
 
+<<<<<<< HEAD
+=======
+    .now_playing.well.col-md-5.col-sm-offset-1
+      %p NOW PLAYING  
+      = image_tag('#{@schedules.now_playing.program.avatar}') 
+      %p= @schedules.now_playing != nil ? @schedules.now_playing.program.title : @schedules.find_next_schedule.program.title
+      
+>>>>>>> adds find_next_schedule method and tests
     .listen_now.well.col-md-5.col-sm-offset-1
       %p Listen Right Now
       %p (no media player required)

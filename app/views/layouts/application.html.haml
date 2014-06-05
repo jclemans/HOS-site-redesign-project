@@ -17,11 +17,11 @@
       .container
         .navbar-header
           =link_to image_tag("hos-logo-wht.png"), '/', class: "navbar-text"
-          =link_to "HOME", "/", class: "navbar-text"
-          =link_to "SCHEDULE", '???', class: "navbar-text"
-          =link_to "CONTACT", "/inquiries/new", class: "navbar-text"
-          =link_to "JOIN", "/dj_applications/new", class: "navbar-text"
-          =link_to "LISTEN", "???", class: "navbar-text"
+          =link_to "HOME", root_path, class: "navbar-text"
+          =link_to "SCHEDULE", schedules_path, class: "navbar-text"
+          =link_to "CONTACT", new_inquiry_path, class: "navbar-text"
+          =link_to "JOIN", new_dj_application_path, class: "navbar-text"
+          =link_to "LISTEN", listen_live_path, class: "navbar-text"
 
     .container
       =flash[:alert]

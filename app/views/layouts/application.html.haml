@@ -13,7 +13,7 @@
     = javascript_include_tag 'application'
 
   %body
-    .navbar  
+    .navbar
       .container
         .navbar-header
           =link_to image_tag("hos-logo-wht.png"), '/', class: "navbar-text"
@@ -34,14 +34,33 @@
         .navbar-bottom
           =link_to "HOUSE OF SOUND", root_url, class: "navbar-brand"
           =link_to "HOME", root_url, class: "navbar-text"
-          -if current_user.nil?  
+          -if current_user.nil?
             =link_to "SIGN IN", new_user_session_path, class: "navbar-text"
           -elsif current_user.has_role?(:DJ)
             =link_to "RECORD EPISODE", new_episode_path, class: "navbar-text"
             =link_to "EDIT PROFILE", edit_user_path(current_user), class: "navbar-text"
-            =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"  
+            =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
           -elsif current_user.has_role?(:Admin)
             =link_to "ADMIN DASHBOARD", "/admin", class: "navbar-text"
             =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
-          
+
+        .navbar-right.media
+          <div id="fb-root"></div>
+          <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+          fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+
+          <div class="fb-follow" data-href="https://www.facebook.com/houseofsound" data-width="80" data-height="18" data-colorscheme="dark" data-layout="button" data-show-faces="false"></div>
+
+          <a href="https://twitter.com/houseofsound" class="twitter-follow-button" data-show-count="false">Follow @houseofsound</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+          =link_to image_tag("tumblr.png", size: "25"), "http://www.tumblr.com/follow/houseofsoundradio/"
+          =link_to image_tag("instagram.png", size: "25"), "http://instagram.com/houseofsound"
+          =link_to image_tag("email.png", size: "65x25"), "mailto:admins@houseofsound.org"
+
       %p.copyright House of Sound ® 2014

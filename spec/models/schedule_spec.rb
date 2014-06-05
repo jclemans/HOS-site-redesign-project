@@ -67,4 +67,26 @@ describe Schedule do
       Schedule.now_playing.should eq nil
     end
   end
+
+  describe 'find_next_schedule' do
+    it 'should find the next schedule' do
+      schedule = Schedule.create(start_time: Time.new(2000) + 23.hours, duration: 120, day_of_week: Date.today.wday)
+      Schedule.find_next_schedule(0).should eq schedule
+    end
+  
+    it 'should not find a currently playing schedule' do
+      current_schedule = Schedule.create(start_time: Time.new(2000) + Time.now.hour.hours, duration: 120, day_of_week: Date.today.wday)    
+      future_schedule = Schedule.create(start_time: Time.new(2000) + (Time.now.hour + 3.hours), duration: 120, day_of_week: Date.today.wday)
+      Schedule.find_next_schedule(0).should eq future_schedule
+    end
+
+    it 'should find the next schedule even if it falls on the next day' do
+      future_schedule = Schedule.create(start_time: Time.new(2000), duration: 120, day_of_week: Date.tomorrow.wday)
+      Schedule.find_next_schedule(0).should eq future_schedule
+    end
+
+    it 'should not recurse infinitely if there are no schedules' do
+      Schedule.find_next_schedule(8).should eq "There are no programs scheduled for the next week. Contact an adminstrator."
+    end
+  end
 end

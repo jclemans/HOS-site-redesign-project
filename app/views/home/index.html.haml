@@ -1,7 +1,7 @@
 !!!
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
-    =csrf_meta_tags 
+    =csrf_meta_tags
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "House of Sound is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want - unlike other local radio stations, there is no compulsory \"Top Hits\" rotation.", :name => "description"}/
     %title House of Sound
@@ -17,11 +17,15 @@
       %p HOUSE OF SOUND
       <script type="text/javascript" src="http://houseofsoundradio.tumblr.com/js"></script>
 
-    .well.col-sm-5.pull-right
-      %p NOW PLAYING Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby. 
+    .well
+      %p NOW PLAYING Cat ipsum. Thai abyssinian . Bengal manx and munchkin but tom. Cheetah kitten but british shorthair cougar but british shorthair, so tabby. Grimalkin jaguar and malkin munchkin lynx, yet birman for kitten. Tabby mouser.
 
-    .listen_now.well.col-sm-5.pull-right
-      %p LISTEN NOW
+    .listen_now.well
+      %p Listen Right Now
+      %p (no media player required)
+      <a href="#" onclick="window.open('/listen_live','Listen Live','height=270,width=400'); return false">
+      = image_tag('button_play.png')
+      </a>
 
     .contact_dj.well.col-sm-5.pull-right
       %p Ask the DJ
@@ -32,11 +36,11 @@
       %p 503-575-9344
 
     .donate.well.col-sm-6
-      %p IPSUM Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby. 
+      %p IPSUM Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
 
     .twitter.well.col-sm-5.pull-right
       <a class="twitter-timeline" href="https://twitter.com/houseofsound" data-widget-id="471797898695303168">Tweets by @houseofsound</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-    .affiliates.well.col-sm-6 
-      %p IPSUM 2 Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby. 
+    .affiliates.well.col-sm-6
+      %p IPSUM 2 Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.

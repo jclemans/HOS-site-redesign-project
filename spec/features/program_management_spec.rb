@@ -67,3 +67,17 @@ feature 'dj signs in and edits a program' do
     page.should have_content 'Update successful.'
   end
 end
+
+feature 'a non-signed-in user cannot edit a program' do
+
+  scenario 'non-signed-in user goes to a program page and cannot edit the program' do
+    FactoryGirl.create(:dj, id: '2')
+    FactoryGirl.create(:program, id: '99', title: 'We love cats', user_id: '2', day_of_week: 1)
+    Schedule.create(start_time: "07:00", duration: 120, program_id: 99, day_of_week: 6)
+
+    visit '/schedules'
+    click_link 'We love cats'
+    page.should have_content 'We love cats'
+    page.should_not have_content 'Edit'
+  end
+end

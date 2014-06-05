@@ -5,8 +5,8 @@
       - schedules = @schedules[day]
       .row
         .row
-          %h1
-            = to_day(day)
+          %h2
+            = to_day(day).upcase
         %table{:class => "table"}
           %tr
             - schedules.sort_by! { |schedule, start_time | schedule.start_time }.each do |schedule|

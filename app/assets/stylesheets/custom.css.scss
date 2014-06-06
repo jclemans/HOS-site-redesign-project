@@ -5,9 +5,11 @@ a {
 .well {
   background-color: #042133;
   border: none;
+  font-size: 20px;
+  border-radius: 10px;
 }
 
-.contact_dj.well, .listen_now.well {
+.contact_dj.well, .listen_now.well, .now_playing.well {
   text-align: center;
   font-size: 20px;
   a {
@@ -54,12 +56,6 @@ html, body {
   height: 100%;
   margin: 0 auto -30px;
   padding-bottom: 40px;
-}
-
-.well {
-  background-color: #042133;
-  border: none;
-  border-radius: 10px;
 }
 
 ol.tumblr_posts {

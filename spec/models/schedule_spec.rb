@@ -75,8 +75,8 @@ describe Schedule do
     end
   
     it 'should not find a currently playing schedule' do
-      current_schedule = Schedule.create(start_time: Time.new(2000) + Time.now.hour.hours, duration: 120, day_of_week: Date.today.wday)    
-      future_schedule = Schedule.create(start_time: Time.new(2000) + (Time.now.hour + 3.hours), duration: 120, day_of_week: Date.today.wday)
+      current_schedule = Schedule.create(start_time: Time.new(2000), duration: 120, day_of_week: Date.today.wday)    
+      future_schedule = Schedule.create(start_time: (Time.new(2000) + Time.now.hour.hours), duration: 120, day_of_week: Date.today.wday)
       Schedule.find_next_schedule(0).should eq future_schedule
     end
 

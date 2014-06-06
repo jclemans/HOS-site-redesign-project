@@ -7,17 +7,17 @@ class Schedule < ActiveRecord::Base
   validate :schedule_conflicts
 
   def self.now_playing(time_to_check)
-      result = nil
-      schedules = Schedule.where(day_of_week: time_to_check.wday)
-      schedules.each do |schedule|
-        rounded_time = Time.at((time_to_check.to_f / 1800).round * 1800)
-        this_schedule_intersection = schedule.segments & [schedule.segment_format(time_to_check.wday, rounded_time)]
-        if this_schedule_intersection.length != 0
-          result = schedule
-        end
+    result = nil
+    schedules = Schedule.where(day_of_week: time_to_check.wday)
+    schedules.each do |schedule|
+      rounded_time = Time.at((time_to_check.to_f / 1800).round * 1800)
+      this_schedule_intersection = schedule.segments & [schedule.segment_format(time_to_check.wday, rounded_time)]
+      if this_schedule_intersection.length != 0
+        result = schedule
       end
-      result
     end
+    result
+  end
 
   def self.find_next_schedule
     next_time = Time.now + 30.minutes

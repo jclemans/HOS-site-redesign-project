@@ -11,10 +11,10 @@
   %h3 HOUSE OF SOUND LIVE
   #player
     %object{:classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :codebase => "http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0", :height => "30", :width => "30"}
-      %param{:name => "movie", :value => "/swf/audioplay.swf?file=#{DIRECT_STREAM_URL}&auto=yes&sendstop=yes&repeat=0&buttondir=/assets/audioplay_buttons/negative&bgcolor=0xffffff&mode=playstop"}/
+      %param{:name => "movie", :value => "/swf/audioplay.swf?file=#{ENV['stream_url']}&auto=yes&sendstop=yes&repeat=0&buttondir=/assets/audioplay_buttons/negative&bgcolor=0xffffff&mode=playstop"}/
       %param{:name => "quality", :value => "high"}/
       %param{:name => "wmode", :value => "transparent"}/
-      %embed{:align => "", :height => "29", :pluginspage => "http://www.macromedia.com/go/getflashplayer", :quality => "high", :src => "/swf/audioplay.swf?file=#{DIRECT_STREAM_URL}&auto=yes&sendstop=yes&repeat=0&buttondir=/assets/audioplay_buttons/negative&bgcolor=0xffffff&mode=playstop", :type => "application/x-shockwave-flash", :width => "29", :wmode => "transparent"}
+      %embed{:align => "", :height => "29", :pluginspage => "http://www.macromedia.com/go/getflashplayer", :quality => "high", :src => "/swf/audioplay.swf?file=#{ENV['stream_url']}&auto=yes&sendstop=yes&repeat=0&buttondir=/assets/audioplay_buttons/negative&bgcolor=0xffffff&mode=playstop", :type => "application/x-shockwave-flash", :width => "29", :wmode => "transparent"}
   %h5
     or
-    %a{:href => STREAM_URL} Play in iTunes/Media Player
+    %a{:href => ENV['stream_url']} Play in iTunes/Media Player

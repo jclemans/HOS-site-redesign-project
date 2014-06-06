@@ -17,8 +17,9 @@ class Episode < ActiveRecord::Base
   def record_stream
     duration = (record_time * 60)
     Thread.new do 
-      system "streamripper #{ENV['stream_url']} -A -l #{duration} -i -m 300 -a -d #{file_path}"
+      system "streamripper #{ENV['stream_url']} -A -l #{duration} -i -m 300 -a #{file_path}"
     end
+
     self.update(:recording_file_name => file_path)
   end
 

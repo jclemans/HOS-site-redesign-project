@@ -20,27 +20,26 @@
   %br/
   - if can? :edit, @program
     = link_to "Edit", edit_program_path(@program), class: "btn btn-danger"
-  / %h2 PREVIOUS SHOWS
-  / - if @program.episodes.length == 0
-  /   .episode
-  /     No archived shows yet.
-  / - else
-  /   - @program.episodes.each do |episode|
-  /     .episode
-  /       %h2= h episode.when.strftime('%B %d, %Y')
-  /       .play_embed
-  /         %p{:id => "episode_#{episode.id}"}
-  /         / HTML 5 FOR MOBILE
-  /         .play_embed
-  /           HTML5 Player (if supported)
-  /           %audio{:controls => ""}
-  /             %source{"--" => "", :src => episode_link(episode), :type => "audio/mpeg"}
-  /               / source src="http://www.houseofsound.org/<haml:loud> episode.file_public_path </haml:loud>" /
-  /               :javascript
-  /                 AudioPlayer.embed("episode_#{episode.id}", {
-  /                   soundFile: "#{episode.file_public_path}",
-  /                   titles: "#{escape_javascript episode.program.title} - #{escape_javascript episode.when.strftime('%B %d %Y')}",
-  /                 });
-  /       %span.play_link/
-  /       %h2
-  /         %a{:href => episode_link(episode)} Download
+  %h2 PREVIOUS SHOWS
+  - if @program.episodes.length == 0
+    .episode
+      No archived shows yet.
+  - else
+    - @program.episodes.each do |episode|
+      .episode
+        %h2= h episode.recorded_at.strftime('%B %d, %Y')
+        .play_embed
+          %p{:id => "episode_#{episode.id}"}
+          / HTML 5 FOR MOBILE
+          .play_embed
+            HTML5 Player (if supported)
+            %audio{:controls => ""}
+              %source{"--" => "", :src => "/Users/dev/hos_website/public/system/rips/#{episode.id}.mp3", :type => "audio/mpeg"} 
+                :javascript
+                  AudioPlayer.embed("episode_#{episode.id}", {
+                    soundFile: "#{episode.recording_file_name}",
+                    titles: "#{escape_javascript episode.program.title} - #{escape_javascript episode.recorded_at.strftime('%B %d %Y')}",
+                  });
+        %span.play_link/
+        %h2
+          %a{:href => "/Users/dev/hos_website/public/system/rips/#{episode.id}.mp3"} Download

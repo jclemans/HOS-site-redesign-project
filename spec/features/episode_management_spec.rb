@@ -9,6 +9,7 @@ feature 'DJ records an episode' do
   end
 
   scenario 'DJ signs in to record a new episode' do
+
     click_link "RECORD EPISODE"
     click_button "Record Episode"
     page.should have_content "Recording in progress"

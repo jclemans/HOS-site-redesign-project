@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 require 'hos/date_helpers'
 
+=======
+require 'hos/schedule_helpers'
+>>>>>>> 33db13d3c9048b5afac27bca2dc6d38faeb25a4c
 class Schedule < ActiveRecord::Base
-	include HOS::DateHelpers
+	include HOS::ScheduleHelpers
   belongs_to :program
 
   validate :schedule_conflicts

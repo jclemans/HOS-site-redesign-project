@@ -1,0 +1,16 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title House of Sound
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'custom'
+
+    = javascript_include_tag 'swfobject'
+    = javascript_include_tag 'audio-player'
+  %body
+    .container
+      =yield
+      .push
+
+    .footer
+      %p.copyright House of Sound ® 2014

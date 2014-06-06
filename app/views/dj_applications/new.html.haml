@@ -10,20 +10,17 @@
 
 = simple_form_for @dj_application do |f|
   = f.error_messages
-  = f.input :name
-  = f.input :email
-  = f.input :phone
+  = f.input :name, as: :text
+  = f.input :email, as: :text
+  = f.input :phone, as: :text
   = f.input :show_description
-  = f.input :show_name
-  = f.input :dj_name
-  %div.input
-    = f.label :is_cost_ok
-    = f.check_box :is_cost_ok, class: 'boolean'
-    .info= t('dj_applications.dues_are_for')
-  = f.input :availability
-  .info
-    = t('dj_applications.check_for_open_slots')
-    = link_to t('click_here').titleize, all_programs_path
+  = f.input :show_name, as: :text
+  = f.input :dj_name, as: :text
+  = f.label :is_cost_ok, as: :text
+  = f.check_box :is_cost_ok, class: 'boolean'
+  .info= t('dj_applications.dues_are_for')
+  = f.input :availability, as: :text
+  Please check the program schedule for an open time slot.
   = f.input :internal_contacts
-  = f.input :blue_meanies
+  = f.input :blue_meanies, as: :text
   = f.button :submit, t('send').upcase

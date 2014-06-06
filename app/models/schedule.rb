@@ -22,7 +22,8 @@ class Schedule < ActiveRecord::Base
 
   def self.find_next_schedule(day)
     search_day = Date.today + day.days
-    schedule = Schedule.where(day_of_week: search_day.wday).where('start_time'.to_f > Time.new(2000).to_f).order(:start_time).first
+    schedule = Schedule.where(day_of_week: search_day.wday).where("start_time > ?", Time.new(2000)).first
+    binding.pry
     if schedule != nil
       schedule
     elsif day > 7

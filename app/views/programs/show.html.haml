@@ -34,7 +34,7 @@
           .play_embed
             HTML5 Player (if supported)
             %audio{:controls => ""}
-              %source{"--" => "", :src => "/Users/dev/hos_website/public/system/rips/#{episode.id}.mp3", :type => "audio/mpeg"} 
+              %source{"--" => "", :src => "hos_website/public/system/rips/#{episode.id}.mp3", :type => "audio/mpeg"} 
                 :javascript
                   AudioPlayer.embed("episode_#{episode.id}", {
                     soundFile: "#{episode.recording_file_name}",
@@ -42,4 +42,4 @@
                   });
         %span.play_link/
         %h2
-          %a{:href => "/Users/dev/hos_website/public/system/rips/#{episode.id}.mp3"} Download
+          %a{:href => "hos_website/public/system/rips/#{episode.id}.mp3"} Download

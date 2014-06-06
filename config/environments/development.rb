@@ -27,5 +27,3 @@ HouseOfSound::Application.configure do
   # number of complex assets.
   config.assets.debug = true 
 end
-
-Paperclip.options[:command_path] = ENV["paperclip_command_path"]

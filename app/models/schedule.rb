@@ -65,12 +65,12 @@ class Schedule < ActiveRecord::Base
 			else
 				segment_day = self.day_of_week
 			end
-			results << segment_key(segment_day, segment_time)
+			results << segment_format(segment_day, segment_time)
 		end
 		results
 	end
 
-  def segment_key(weekday, time)
+  def segment_format(weekday, time)
     "#{weekday}-#{time.strftime('%H:%M')}"
   end
 end

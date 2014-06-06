@@ -6,30 +6,30 @@ class Schedule < ActiveRecord::Base
 
   validate :schedule_conflicts
 
-  def self.now_playing
+  def self.now_playing(time_to_check)
     result = nil
-    schedules = Schedule.where(day_of_week: Date.today.wday)
-
+    schedules = Schedule.where(day_of_week: time_to_check.wday)
     schedules.each do |schedule|
-      rounded_time = Time.at((Time.now.to_f / 1800).round * 1800)
-      this_one = schedule.segments & [schedule.segment_key(Date.today.wday, rounded_time)]
-      if this_one.length != 0
+      rounded_time = Time.at((time_to_check.to_f / 1800).round * 1800)
+      this_schedule_intersection = schedule.segments & [schedule.segment_format(time_to_check.wday, rounded_time)]
+      if this_schedule_intersection.length != 0
         result = schedule
       end
     end
     result
   end
 
-  def self.find_next_schedule(day)
-    search_day = Date.today + day.days
-    schedule = Schedule.where(day_of_week: search_day.wday).where("start_time > ?", Time.new(2000)).first
-    binding.pry
-    if schedule != nil
-      schedule
-    elsif day > 7
-      return "There are no programs scheduled for the next week. Contact an adminstrator."
+  def self.find_next_schedule
+    next_time = Time.now + 30.minutes
+    next_show = Schedule.now_playing(next_time)
+    while next_show == nil && next_time < Time.now + 7.days
+      next_time = next_time + 30.minutes 
+      next_show = Schedule.now_playing(next_time)
+    end
+    if next_show != nil
+      next_show
     else 
-      self.find_next_schedule(day+1)
+      nil
     end
   end
 
@@ -65,12 +65,12 @@ class Schedule < ActiveRecord::Base
 			else
 				segment_day = self.day_of_week
 			end
-			results << segment_key(segment_day, segment_time)
+			results << segment_format(segment_day, segment_time)
 		end
 		results
 	end
 
-  def segment_key(weekday, time)
+  def segment_format(weekday, time)
     "#{weekday}-#{time.strftime('%H:%M')}"
   end
 end

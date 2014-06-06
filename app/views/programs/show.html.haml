@@ -10,7 +10,7 @@
           %p= to_day(schedule.day_of_week) + 's from' + schedule.start_time.strftime("%l:%M%P") + '-' + (schedule.start_time + schedule.duration.minutes).strftime("%l:%M%P")       
        
       %h3= h @program.description
-      - if @program.program_url.length != 0
+      - unless @program.program_url.blank?
         %h4 
           %br 
           %p Website: 

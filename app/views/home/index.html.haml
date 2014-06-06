@@ -13,28 +13,32 @@
     = javascript_include_tag 'application'
 
   %body
-    .tumblr.well.col-md-6
-      %p HOUSE OF SOUND
-      <script type="text/javascript" src="http://houseofsoundradio.tumblr.com/js"></script>
+    .col-sm-7
+      .tumblr.well
+        %p HOUSE OF SOUND
+        %script{type: "text/javascript", src: "http://houseofsoundradio.tumblr.com/js"}
 
-    .well.col-md-5.col-sm-offset-1
-      %p NOW PLAYING Cat ipsum. Thai abyssinian . Bengal manx and munchkin but tom. Cheetah kitten but british shorthair cougar but british shorthair, so tabby. Grimalkin jaguar and malkin munchkin lynx, yet birman for kitten. Tabby mouser. 
-      
-    .listen_now.well.col-md-5.col-sm-offset-1
-      %p Listen Right Now
-      %p (no media player required)
-      <a href="#" onclick="window.open('/listen_live','Listen Live','height=270,width=400'); return false">
-      = image_tag('button_play.png')
-      </a>
+      .donate.well
+        %p IPSUM Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
 
-    .contact_dj.well.col-md-5.col-sm-offset-1
-      %p Ask the DJ
-      <iframe frameborder="0" scrolling="no" width="300" height="250" src="http://www.tumblr.com/ask_form/houseofsoundradio.tumblr.com/" value="Ask the DJ..."></iframe>
+      .affiliates.well
+        %p IPSUM 2 Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
 
-    .contact_dj.well.col-md-5.col-sm-offset-1
-      %p Call the DJ
-      %p 503-575-9344
+    .col-sm-5
+      .well
+        %p NOW PLAYING Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
 
-    .twitter.well.col-md-5.col-sm-offset-1
-      <a class="twitter-timeline" href="https://twitter.com/houseofsound" data-widget-id="471797898695303168">Tweets by @houseofsound</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      .listen_now.well
+        =link_to "Listen Right Now", "/listen_live", onclick: "window.open('/listen_live','Listen Live','height=270,width=400'); return false"
+
+      .contact_dj.well
+        %p Ask the DJ
+        %iframe{src: "http://www.tumblr.com/ask_form/houseofsoundradio.tumblr.com/", frameborder: "0", scrolling: "no", width: "300", height: "250"}
+
+      .contact_dj.well
+        %p Call the DJ
+        %p 503-575-9344
+
+      .twitter.well
+        <a class="twitter-timeline" href="https://twitter.com/houseofsound" data-widget-id="471797898695303168">Tweets by @houseofsound</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

@@ -1,3 +1,7 @@
+a {
+  text-decoration: none !important;
+}
+
 .well {
   background-color: #042133;
   border: none;
@@ -40,7 +44,7 @@ a.navbar-text, a.navbar-brand {
   margin-right: auto;
 }
 
-html, body { 
+html, body {
   height: 100%;
 }
 
@@ -55,6 +59,7 @@ html, body {
 .well {
   background-color: #042133;
   border: none;
+  border-radius: 10px;
 }
 
 ol.tumblr_posts {
@@ -75,16 +80,33 @@ ol.tumblr_posts {
   border: 1px solid;
   border-color: #e8e8e8;
   padding: 16px;
- } 
-  
-.tumblr_photo  { 
+  border-radius: 5px;
+ }
+
+.tumblr_photo  {
   max-width: 350px;
   max-height: 225px;
 }
 
-table {
-  font-size: 20px;
+.navbar-header {
+  font-weight: bold;
+  font-size: 20pt;
+  font-family: 'Francois One', Arial, sans-serif;
+  padding-top: 20px;
+  position: relative;
+  left: 50px;
+  float: left;
+  .navbar-text {
+    color: #FFFFFF;
+  }
 }
+
 #live_player{
   text-align: center;
 }
+
+.navbar-right {
+  vertical-align: middle;
+  padding-left: 30px;
+}
+

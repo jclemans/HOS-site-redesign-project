@@ -14,9 +14,10 @@ class HomeController < ApplicationController
         # @posts = @myClient.posts("thehouseofsound.tumblr.com", :limit => 10)
         # @posts = @posts["posts"]
 
-    # @user = Tumblog.find_by_user_id(5)
-    # @client = Tumblr::Client.new(:consumer_key => @key, :consumer_secret => @secret, :oauth_token => @user.oauth_token, :oauth_token_secret => @user.oauth_secret)
-    # @client.text("{blogname}.tumblr.com", :body => "test", :state => "draft")
-    # redirect_to "http://www.tumblr.com/blog/{blogname}/drafts"
+  def listen_live
+    render layout: 'bare'
+  end
+
+  def index
   end
 end

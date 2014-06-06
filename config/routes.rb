@@ -10,6 +10,7 @@ HouseOfSound::Application.routes.draw do
     end
   end
 
+  resources :schedules, only: [:index]
   resources :inquiries
   resources :dj_applications
   resources :users, only: [:show, :edit, :update]
@@ -17,4 +18,5 @@ HouseOfSound::Application.routes.draw do
   resources :tracks
 
   root 'home#index'
+  get '/listen_live', to: 'home#listen_live'
 end

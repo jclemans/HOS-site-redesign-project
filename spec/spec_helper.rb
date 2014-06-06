@@ -39,3 +39,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+module Kernel
+  def system(cmd)
+  end
+end

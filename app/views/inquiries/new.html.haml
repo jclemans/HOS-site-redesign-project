@@ -1,13 +1,17 @@
 %h1 CONTACT US
+%p
+  Fill out the form below to e-mail the station admins. To talk to a live DJ, use the contact box on the
+  %a{href: root_path} homepage.
 - flash.each do |name, msg|
   %h2{class: name}= msg
 
-= simple_form_for @inquiry do |f|
-  = f.error_messages
-  = f.input :name, as: :text
-  = f.input :email, as: :text
-  = f.input :subject, as: :text
-  = f.input :message
-  = f.input :blue_meanies, as: :text
-  = f.button :submit, t('inquiries.shout_out')
+.col-sm-6
+  = simple_form_for @inquiry do |f|
+    = f.error_messages
+    = f.input :name
+    = f.input :email
+    = f.input :subject
+    = f.input :message
+    = f.input :blue_meanies
+    = f.button :submit, t('inquiries.shout_out')
 

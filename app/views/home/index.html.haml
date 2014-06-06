@@ -17,26 +17,23 @@
         %p HOUSE OF SOUND
         %script{type: "text/javascript", src: "http://houseofsoundradio.tumblr.com/js"}
 
-    .now_playing.well.col-md-5.col-sm-offset-1
-      - if Schedule.now_playing(Time.now)
-        = currently_playing = Schedule.now_playing(Time.now)
-        %p Now Playing
-        %p= image_tag currently_playing.program.avatar.url(:medium)
-        %p= currently_playing.program.title
-      - else 
-        %p Next Up
-        - if Schedule.find_next_schedule == nil
-          %p There are no programs scheduled at this time.
-        - else
-          %p= image_tag Schedule.find_next_schedule.program.avatar.url(:medium)
-          %p= Schedule.find_next_schedule.program.title
+    .col-md-5
+      .now_playing.well
+        - if Schedule.now_playing(Time.now)
+          - currently_playing = Schedule.now_playing(Time.now)
+          %p Now Playing
+          %p= image_tag currently_playing.program.avatar.url(:medium)
+          %p= currently_playing.program.title
+        - else 
+          %p Next Up
+          - if Schedule.find_next_schedule == nil
+            %p There are no programs scheduled at this time.
+          - else
+            %p= image_tag Schedule.find_next_schedule.program.avatar.url(:medium)
+            %p= Schedule.find_next_schedule.program.title
 
-    .listen_now.well.col-md-5.col-sm-offset-1
-      %p Listen Right Now
-      %p (no media player required)
-      <a href="#" onclick="window.open('/listen_live','Listen Live','height=270,width=400'); return false">
-      = image_tag('button_play.png')
-      </a>
+      .listen_now.well
+        =link_to "Listen Right Now", "/listen_live", onclick: "window.open('/listen_live','Listen Live','height=270,width=400'); return false", class: "btn btn-xlarge btn-danger btn-extend"
 
       .contact_dj.well
         %p Ask the DJ

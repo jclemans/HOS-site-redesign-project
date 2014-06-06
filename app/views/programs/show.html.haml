@@ -1,45 +1,56 @@
 #program
-  - if @program.amazon_filename
-    %br/
-  /   %center
-  /
-  %h1= h @program.title
-  %h2
-    with #{h @user.djname}
-  %h2
-    / = Date::DAYNAMES[@program.day_of_week]+ "s"
-    / PENDING MIGRATION CHANGES
-    / from START_TIME to END_TIME
-  %h3= h @program.description
-  / DEBUG: <haml:loud> h @program.end_time_in_seconds </haml:loud>
-  = image_tag @program.avatar.url(:large)
-  - if @program.program_url
-    %h4
-      %strong Website:
-      = link_to @program.program_url, program_path(@program)
-  %br/
-  - if can? :edit, @program
-    = link_to "Edit", edit_program_path(@program), class: "btn btn-danger"
-  %h2 PREVIOUS SHOWS
-  - if @program.episodes.length == 0
-    .episode
-      No archived shows yet.
-  - else
-    - @program.episodes.each do |episode|
+  .container
+    .col-sm-7
+      %h1= h @program.title
+      
+      %h2
+        with #{h @user.djname} 
+      %h3
+        - @program.schedules.each do |schedule|
+          %p= to_day(schedule.day_of_week) + 's from' + schedule.start_time.strftime("%l:%M%P") + '-' + (schedule.start_time + schedule.duration.minutes).strftime("%l:%M%P")       
+       
+      %h3= h @program.description
+      - if @program.program_url.length != 0
+        %h4 
+          %br 
+          %p Website: 
+          = link_to @program.program_url, program_path(@program)
+      - if can? :edit, @program
+        = link_to "Edit", edit_program_path(@program), class: "btn btn-danger"
+
+    .col-sm-4.program_avatar
+      = image_tag @program.avatar.url(:large)
+  .container
+    %h2 PREVIOUS SHOWS
+    - if @program.episodes.length == 0
       .episode
-        %h2= h episode.recorded_at.strftime('%B %d, %Y')
-        .play_embed
-          %p{:id => "episode_#{episode.id}"}
-          / HTML 5 FOR MOBILE
-          .play_embed
-            HTML5 Player (if supported)
-            %audio{:controls => ""}
-              %source{"--" => "", :src => "hos_website/public/system/rips/#{episode.id}.mp3", :type => "audio/mpeg"} 
-                :javascript
-                  AudioPlayer.embed("episode_#{episode.id}", {
-                    soundFile: "#{episode.recording_file_name}",
-                    titles: "#{escape_javascript episode.program.title} - #{escape_javascript episode.recorded_at.strftime('%B %d %Y')}",
-                  });
-        %span.play_link/
-        %h2
-          %a{:href => "hos_website/public/system/rips/#{episode.id}.mp3"} Download
+        No archived shows yet.
+    - else
+      #accordion.panel-group
+        - @program.episodes.each do |episode|
+          .panel.panel-primary
+            .panel-heading
+              .panel-title
+                %a{"data-toggle" => "collapse", "data-parent" => "#accordion", :href => "#collapse#{episode.id}"}
+                  %h2
+                  = h episode.recorded_at.strftime('%B %d, %Y') 
+                  = h '-'
+                  = h @program.title
+            .panel-collapse.collapse{id: "collapse#{episode.id}"}    
+              .panel-body
+                .play_embed
+                  %p{:id => "episode_#{episode.id}"}
+
+                  %audio{:controls => ""}
+                    %source{"--" => "", :src => "/system/rips/#{episode.id}.mp3", :type => "audio/mpeg"}
+                  %h4
+                    %a.btn.btn-info{:href => "/system/rips/#{episode.id}.mp3"} Download
+
+                  .container-fluid
+                    -if episode.tracks != nil
+                      %h2 Playlist:
+                      - episode.tracks.each do |track|
+                        .container
+                          .row
+                            .col-md-sm-12
+                              = track.content

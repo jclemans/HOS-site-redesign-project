@@ -4,6 +4,7 @@ class Episode < ActiveRecord::Base
   before_destroy :delete_file
   has_attached_file :recording
   after_create :record_stream
+  accepts_nested_attributes_for :tracks, allow_destroy:  true
 
   LOCAL_ROOT = 'static'
   PUBLIC_ROOT = 'episodes'
@@ -32,7 +33,7 @@ class Episode < ActiveRecord::Base
   end
 
   def file_local_path
-    File.join LOCAL_ROOT, PUBLIC_ROOT, file_name
+    File.join LOCAL_ROOT, "#{ENV['episode_file_path']}/#{file_name}"
   end
 
   def file_public_path

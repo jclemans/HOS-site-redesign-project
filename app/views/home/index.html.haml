@@ -16,7 +16,7 @@
     .col-sm-7
       .tumblr.well
         %p HOUSE OF SOUND
-        <script type="text/javascript" src="http://houseofsoundradio.tumblr.com/js"></script>
+        %script{type: "text/javascript", src: "http://houseofsoundradio.tumblr.com/js"}
 
       .donate.well
         %p IPSUM Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
@@ -29,15 +29,11 @@
         %p NOW PLAYING Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
 
       .listen_now.well
-        %p Listen Right Now
-        %p (no media player required)
-        <a href="#" onclick="window.open('/listen_live','Listen Live','height=270,width=400'); return false">
-        = image_tag('button_play.png')
-        </a>
+        =link_to "Listen Right Now", "/listen_live", onclick: "window.open('/listen_live','Listen Live','height=270,width=400'); return false"
 
       .contact_dj.well
         %p Ask the DJ
-        <iframe frameborder="0" scrolling="no" width="300" height="250" src="http://www.tumblr.com/ask_form/houseofsoundradio.tumblr.com/" value="Ask the DJ..."></iframe>
+        %iframe{src: "http://www.tumblr.com/ask_form/houseofsoundradio.tumblr.com/", frameborder: "0", scrolling: "no", width: "300", height: "250"}
 
       .contact_dj.well
         %p Call the DJ

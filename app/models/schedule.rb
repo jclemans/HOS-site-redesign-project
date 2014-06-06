@@ -1,9 +1,37 @@
 require 'hos/schedule_helpers'
+
 class Schedule < ActiveRecord::Base
 	include HOS::ScheduleHelpers
   belongs_to :program
 
   validate :schedule_conflicts
+
+  def self.now_playing(time_to_check)
+    result = nil
+    schedules = Schedule.where(day_of_week: time_to_check.wday)
+    schedules.each do |schedule|
+      rounded_time = Time.at((time_to_check.to_f / 1800).round * 1800)
+      this_schedule_intersection = schedule.segments & [schedule.segment_format(time_to_check.wday, rounded_time)]
+      if this_schedule_intersection.length != 0
+        result = schedule
+      end
+    end
+    result
+  end
+
+  def self.find_next_schedule
+    next_time = Time.now + 30.minutes
+    next_show = Schedule.now_playing(next_time)
+    while next_show == nil && next_time < Time.now + 7.days
+      next_time = next_time + 30.minutes 
+      next_show = Schedule.now_playing(next_time)
+    end
+    if next_show != nil
+      next_show
+    else 
+      nil
+    end
+  end
 
   def schedule_conflicts
 		first_day = if self.day_of_week == 0 then 6 else (self.day_of_week - 1) end
@@ -37,8 +65,12 @@ class Schedule < ActiveRecord::Base
 			else
 				segment_day = self.day_of_week
 			end
-			results << "#{segment_day}-#{segment_time.strftime('%H:%M')}"
+			results << segment_format(segment_day, segment_time)
 		end
 		results
 	end
+
+  def segment_format(weekday, time)
+    "#{weekday}-#{time.strftime('%H:%M')}"
+  end
 end

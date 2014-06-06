@@ -1,4 +1,3 @@
-!!!
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     =csrf_meta_tags
@@ -18,15 +17,20 @@
         %p HOUSE OF SOUND
         %script{type: "text/javascript", src: "http://houseofsoundradio.tumblr.com/js"}
 
-      .donate.well
-        %p IPSUM Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
-
-      .affiliates.well
-        %p IPSUM 2 Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
-
-    .col-sm-5
-      .well
-        %p NOW PLAYING Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
+    .col-md-5
+      .now_playing.well
+        - if Schedule.now_playing(Time.now)
+          - currently_playing = Schedule.now_playing(Time.now)
+          %p Now Playing
+          %p= image_tag currently_playing.program.avatar.url(:medium)
+          %p= currently_playing.program.title
+        - else 
+          %p Next Up
+          - if Schedule.find_next_schedule == nil
+            %p There are no programs scheduled at this time.
+          - else
+            %p= image_tag Schedule.find_next_schedule.program.avatar.url(:medium)
+            %p= Schedule.find_next_schedule.program.title
 
       .listen_now.well
         =link_to "Listen Right Now", "/listen_live", onclick: "window.open('/listen_live','Listen Live','height=270,width=400'); return false", class: "btn btn-xlarge btn-danger btn-extend"

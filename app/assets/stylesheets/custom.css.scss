@@ -9,10 +9,10 @@ a {
 
 .contact_dj.well, .listen_now.well {
   text-align: center;
-  background-color: #042133;
-  border: none;
   font-size: 20px;
-  font-family: monospace;
+  a {
+    color: #ffffff
+  }
 }
 
 p.copyright {

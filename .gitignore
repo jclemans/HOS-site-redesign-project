@@ -27,3 +27,5 @@ hos_postgres_5.19.14.sql
 
 # Ignore public folder containing podcasts
 /public/system/rips/
+
+.DS_store

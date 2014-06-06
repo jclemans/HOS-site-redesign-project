@@ -15,8 +15,8 @@ class Schedule < ActiveRecord::Base
       if this_schedule_intersection.length != 0
         result = schedule
       end
-      result
     end
+    result
   end
 
   def self.find_next_schedule

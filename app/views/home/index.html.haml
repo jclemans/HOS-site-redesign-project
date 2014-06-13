@@ -22,8 +22,9 @@
       .tshirt
         .row
           .col-sm-11.col-sm-offset-1
-            =image_tag("hos_shirts_crop.jpg", alt: "Buy a t-shirt to support House of Sound", align: "center")
-
+            =image_tag("hos_shirts_crop.jpg", alt: "Buy a t-shirt to support House of Sound", class: 'col-sm-11')
+        .row
+          .col-sm-11.col-sm-offset-1
             %p Buy a House of Sound T-shirt for just $10, proceeds help support House of Sound
 
             %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post"}
@@ -59,6 +60,7 @@
         - else
           %p= link_to image_tag(@next_up.program.avatar.url(:medium)), @next_up.program
           %p= @next_up.program.title
+          %p= @next_up.show_time
           %p= truncate(@next_up.program.description, length: 100)
 
     .row

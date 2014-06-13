@@ -4,6 +4,10 @@
     =csrf_meta_tags
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "House of Sound is the largest free-form radio station in Portland, Oregon. Our DJs play whatever they want - unlike other local radio stations, there is no compulsory \"Top Hits\" rotation.", :name => "description"}/
+    
+    %link{:href => "http://fonts.googleapis.com/css?family=Francois+One", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic", :rel => "stylesheet", :type => "text/css"}/
+    
     %title House of Sound
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag 'custom'
@@ -11,7 +15,9 @@
     = javascript_include_tag 'swfobject'
     = javascript_include_tag 'audio-player'
     = javascript_include_tag 'application'
-
+    = javascript_include_tag 'corner'
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'
+          
   %body
     .container
       -if flash[:alert]

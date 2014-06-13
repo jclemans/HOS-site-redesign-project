@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'rails', '4.0.1'
-
+gem 'sqlite3'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'aws-sdk'
 gem 'bootstrap-sass', '~> 3.1.1'

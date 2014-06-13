@@ -1,23 +1,27 @@
 .row
-  .col-sm-7
+  .col-sm-8
     .row
-      .col-sm-5
+      .col-sm-12.col-md-5
         =image_tag("hos-logo-wht.png")
-      .col-sm-5.col-sm-offset-1{style: 'color: red; text-align: center'}
+      .col-sm-12.col-md-5.col-md-offset-2{style: 'color: red; text-align: center'}
         %h4
           Portland's largest Free-Form Radio Station
         Est. 1994
 
     .row
-      .col-sm-12{style: 'font-size: 24pt; font-weight: bolder;'}
+      .col-xs-12#mainnav
         =link_to "SCHEDULE", schedules_path, class: "navbar-text"
         =link_to "CONTACT", new_inquiry_path, class: "navbar-text"
         =link_to "JOIN", new_dj_application_path, class: "navbar-text"
         =link_to "LISTEN", listen_live_path, onclick: "window.open('/listen_live','Listen Live','height=270,width=400'); return false", class: "navbar-text"
 
-    .tumblr.well
-      %p HOUSE OF SOUND
-      %script{type: "text/javascript", src: "http://houseofsoundradio.tumblr.com/js"}
+    .row
+      .tumblr.well
+        .row
+          .col-sm-12.col-md-7.col-lg-5.titlebox
+            houseofsoundradio.tumblr
+          .row
+            %script{type: "text/javascript", src: "http://houseofsoundradio.tumblr.com/js"}
 
       .tshirt
         .row
@@ -45,34 +49,43 @@
               %br
               %input{class: "ppbut", type: "image", src: "https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif", border: "0", width: "86", height: "21", name: "submit", alt: "PayPal - The safer, easier way to pay online!"}
 
-  .col-sm-5
-    .now_playing.well
+  .col-sm-4
+    .row.now_playing.well
       - if Schedule.now_playing(Time.now)
         - currently_playing = Schedule.now_playing(Time.now)
-        %p Now Playing
-        %p= image_tag currently_playing.program.avatar.url(:medium)
-        %p= currently_playing.program.title
+        .row
+          .col-lg-6.col-md-12#onair
+            =image_tag("http://houseofsound.org/img/hos_live.png")
+          %h2 NOW PLAYING:
+          = image_tag currently_playing.program.avatar.url(:medium)
+          %h2= currently_playing.program.title
       - else 
-        %p Next Up
-        - if Schedule.find_next_schedule == nil
-          %p There are no programs scheduled at this time.
-        - else
-          %p= image_tag Schedule.find_next_schedule.program.avatar.url(:medium)
-          %p= Schedule.find_next_schedule.program.title
-      %p NOW PLAYING Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
+        .row
+          .col-lg-6.col-md-12#offair
+            =image_tag("http://houseofsound.org/img/hos_live.png")
+          .col-lg-6.col-md-12
+            %h2 NEXT LIVE SHOW:
+          - if Schedule.find_next_schedule == nil
+            %p There are no programs scheduled at this time.
+          - else
+        .row
+          = image_tag Schedule.find_next_schedule.program.avatar.url(:medium)
+          %h2= Schedule.find_next_schedule.program.title
 
     .row
-      .col-sm-4.col-sm-offset-3
-        =link_to "Listen Now", "/listen_live", onclick: "window.open('/listen_live','Listen Live','height=270,width=400'); return false", class: "btn btn-xlarge btn-danger btn-extend", style: 'font-size: 24pt'
+      .col-lg-12#listennow
+        =link_to "Listen Now", "/listen_live", onclick: "window.open('/listen_live','Listen Live','height=270,width=400'); return false", class: "btn btn-xlarge btn-danger btn-extend"
 
-    .row
-      .col-sm-12{style: 'text-align: center'}
-        %h3 Chat with the dJ
-        %h4 503-575-9344
-        %h4 OR
-        %iframe{src: "http://www.tumblr.com/ask_form/houseofsoundradio.tumblr.com/", frameborder: "0", scrolling: "no", width: "300", height: "250"}
+    .row.well#contactdj
+      .titlebox
+        Contact the DJ
+      %h2 503-575-9344
+      %h4 or Direct Chat Below
+      %iframe{src: "http://www.tumblr.com/ask_form/houseofsoundradio.tumblr.com/", frameborder: "0", scrolling: "no", width: "315", height: "250"}
+        
+    %hr
 
-    .row
+    .row{style: 'text-align: center'}
       <a class="twitter-timeline" href="https://twitter.com/houseofsound" data-widget-id="471797898695303168">Tweets by @houseofsound</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 

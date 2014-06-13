@@ -1,0 +1,58 @@
+
+body {
+  background-image:url('http://houseofsound.org/img/hos_bg_check.jpg');
+  background-repeat:no-repeat;
+  background-position: top left;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: 'Francois One', Arial, sans-serif;
+}
+
+.box	{
+	background:rgba(4, 33, 51, .6);
+}
+
+.container {
+  background-color:rgba(0,0,0,.6);
+}
+
+a:link {color:#FFFFFF; text-decoration: none;}
+a:visited {color:#FFFFFF; text-decoration: none;}
+a:hover {color:#5EACDF; text-decoration: none;}
+a:active {color:#FFFFFF; text-decoration: none;}
+
+.tumblr {
+  height:800px;
+  overflow:auto;
+}
+
+#contactdj {
+  text-align:center;
+}
+
+.titlebox {
+  padding-top:10px;
+  padding-bottom:10px;
+  background-color:#2CA5DE;
+  font-size:22px;
+}
+
+#listennow {
+  margin-bottom:30px;
+  margin-top:20px;
+}
+
+#listennow a {
+  width:70%;
+  margin:auto;
+  display:block;
+  font-size:2em;
+}
+
+#offair, #onair {
+  height:75px;
+}
+
+#offair img, #onair img {
+  width:160px;
+}

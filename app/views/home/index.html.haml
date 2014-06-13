@@ -47,19 +47,19 @@
 
   .col-sm-5
     .now_playing.well
-      - if Schedule.now_playing(Time.now)
-        - currently_playing = Schedule.now_playing(Time.now)
+      - if @now_playing
         %p Now Playing
-        %p= image_tag currently_playing.program.avatar.url(:medium)
-        %p= currently_playing.program.title
+        %p
+          =link_to image_tag(now_playing.program.avatar.url(:medium)), @now_playing.program
+        %p= now_playing.program.title
       - else 
         %p Next Up
-        - if Schedule.find_next_schedule == nil
+        - if !@next_up
           %p There are no programs scheduled at this time.
         - else
-          %p= image_tag Schedule.find_next_schedule.program.avatar.url(:medium)
-          %p= Schedule.find_next_schedule.program.title
-      %p NOW PLAYING Cat ipsum. Cheetah kitten but british shorthair cougar but british shorthair, so tabby.
+          %p= link_to image_tag(@next_up.program.avatar.url(:medium)), @next_up.program
+          %p= @next_up.program.title
+          %p= truncate(@next_up.program.description, length: 100)
 
     .row
       .col-sm-4.col-sm-offset-3

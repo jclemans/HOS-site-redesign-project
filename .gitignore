@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+*.DS_Store
 
 # Ignore DB dump file
 hos_postgres_5.19.14.sql

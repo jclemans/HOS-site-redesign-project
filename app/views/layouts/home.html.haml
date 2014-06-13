@@ -34,7 +34,9 @@
       .navbar.navbar-default
         .navbar-bottom
           =link_to "HOUSE OF SOUND", root_url, class: "navbar-brand"
-          =link_to "HOME", root_url, class: "navbar-text"
+          =link_to "SCHEDULE", schedules_path, class: "navbar-text"
+          =link_to "JOIN", new_dj_application_path, class: "navbar-text"
+          =link_to "CONTACT", new_inquiry_path, class: "navbar-text"
           -if current_user.nil?
             =link_to "SIGN IN", new_user_session_path, class: "navbar-text"
           -elsif current_user.has_role?(:DJ)

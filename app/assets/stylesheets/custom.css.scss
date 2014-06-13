@@ -3,10 +3,11 @@ a {
 }
 
 .well {
-  background-color: #042133;
+  background-color:rgba(4, 33, 51, 0.6);
   border: none;
   font-size: 20px;
   border-radius: 5px;
+  margin-bottom:0px;
 }
 
 .contact_dj.well, .listen_now.well, .now_playing.well, .tshirt.well {
@@ -26,6 +27,7 @@ p.copyright {
   font-weight:bolder;
   margin-right:12px;
   margin-left:12px;
+  margin-top:10px;
 }
 
 @media (min-width: 768px) {
@@ -46,9 +48,9 @@ p.copyright {
 
 @media (min-width: 1200px) {
   #mainnav a.navbar-text {
-    font-size:24pt;
-    margin-left:25px;
-    margin-right:25px;
+    font-size:22pt;
+    margin-left:22px;
+    margin-right:22px;
   }
 }
 
@@ -69,6 +71,22 @@ a.navbar-text, a.navbar-brand {
   text-decoration: none;
 }
 
+.btn-danger {
+  background-image: -webkit-linear-gradient(#ec1f19, #ff3832 60%, #f10f0f);
+  background-image: linear-gradient(#ec1f19, #ff3832 60%, #f10f0f);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff17a77', endColorstr='#ffec4d49', GradientType=0);
+  filter: none;
+}
+.btn-danger:hover {
+  background-image: -webkit-linear-gradient(#bb1813, #d71c16 40%, #e7201a);
+  background-image: linear-gradient(#bb1813, #d71c16 40%, #e7201a);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbb1813', endColorstr='#ffe7201a', GradientType=0);
+  filter: none;
+  color:black;
+}
+
 .footer {
   bottom: 0;
   width: 90%;
@@ -81,49 +99,24 @@ html, body {
   height: 100%;
 }
 
-.container {
-  min-height: 90%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -30px;
-  padding-bottom: 40px;
-}
-
-ol.tumblr_posts {
-  list-style-type: none;
-  margin-top:60px;
-}
-
 .audio_player_iframe {
   width: 350 px;
   height: 40 px;
 }
 
-.tumblr_post {
-  margin: 14px 4px;
-  display: block;
-  border: 1px solid;
-  border-color: #e8e8e8;
-  padding: 16px;
-  border-radius: 5px;
- }
-
-.tumblr_photo  {
-  max-width: 500px;
-  max-height: 600px;
-}
-
 .navbar-header {
-  font-weight: bold;
-  font-size: 20pt;
-  font-family: 'Francois One', Arial, sans-serif;
-  padding-top: 20px;
   position: relative;
-  left: 50px;
-  float: left;
   .navbar-text {
     color: #FFFFFF;
   }
+}
+
+.navbar-header #mainnav {
+  margin-top:15px;
+}
+
+#mainnav a:hover {
+    color: #2ca5de;
 }
 
 #live_player, .skype {
@@ -137,4 +130,16 @@ ol.tumblr_posts {
 
 img#DJ {
   padding: 10px;
+}
+
+.apply p, {
+  font-family:'Lato', Arial, sans serif;
+  font-size:.8em;
+  color:#7d8486;
+}
+
+label, {
+  font-family:'Lato', Arial, sans serif;
+  color:#7d8486;
+  margin-top:15px;
 }

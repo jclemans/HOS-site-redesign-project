@@ -1,9 +1,10 @@
-%h1 CONTACT US
-%p
-  Fill out the form below to e-mail the station admins. To talk to a live DJ, use the contact box on the
-  %a{href: root_path} homepage.
-- flash.each do |name, msg|
-  %h2{class: name}= msg
+.col-sm-6
+  %h1 CONTACT US
+  %p
+    Fill out the form below to e-mail the station admins. To talk to a live DJ, use the contact box on the
+    %a{href: root_path} homepage.
+  - flash.each do |name, msg|
+    %h2{class: name}= msg
 
 .col-sm-6
   = simple_form_for @inquiry do |f|

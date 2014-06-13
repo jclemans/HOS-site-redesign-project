@@ -23,10 +23,14 @@
           .row
             %script{type: "text/javascript", src: "http://houseofsoundradio.tumblr.com/js"}
 
-      .tshirt
+      .donate
         .row
-          .col-sm-11.col-sm-offset-1
-            =image_tag("hos_shirts_crop.jpg", alt: "Buy a t-shirt to support House of Sound", align: "center")
+          .col-md-6
+            =link_to "JOIN"
+            %br
+            Donate to House of Sound and help us keep Portland weird. Or normal. Whatever you're feeling like today. No pressure.
+          .col-md-6
+            =image_tag("hos_shirts_crop.jpg", alt: "Buy a t-shirt to support House of Sound", align: "center", width:"250")
 
             %p Buy a House of Sound T-shirt for just $10, proceeds help support House of Sound
 

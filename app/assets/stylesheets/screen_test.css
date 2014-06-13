@@ -4,6 +4,7 @@ body {
   background-repeat:no-repeat;
   background-position: top left;
   background-color: #000000;
+  background-size:contain;
   color: #FFFFFF;
   font-family: 'Francois One', Arial, sans-serif;
 }

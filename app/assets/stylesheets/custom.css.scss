@@ -101,10 +101,7 @@ ol.tumblr_posts {
 
 .tumblr_post {
   margin: 14px 4px;
-  background-color: white;
   display: block;
-  font-family: Helvetica Neue, Arial, sans-serif;
-  font-size: 14px;
   border: 1px solid;
   border-color: #e8e8e8;
   padding: 16px;
@@ -112,8 +109,8 @@ ol.tumblr_posts {
  }
 
 .tumblr_photo  {
-  max-width: 350px;
-  max-height: 225px;
+  max-width: 500px;
+  max-height: 600px;
 }
 
 .navbar-header {

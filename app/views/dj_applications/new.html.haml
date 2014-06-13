@@ -1,29 +1,34 @@
 %h1= t('dj_applications.apply_to_be_a_dj').upcase
 .apply{style: 'margin-bottom: 30px;'}
   %h3
-    = t('dj_applications.are_you_passionate_about_music')    
-    %b= t('dj_applications.thats_house_of_sound')
-    = t('dj_applications.wed_like_you_to_join')
+    %p
+      = t('dj_applications.are_you_passionate_about_music')
+    %p
+      %iare= t('dj_applications.thats_house_of_sound')
+    %p
+      = t('dj_applications.wed_like_you_to_join')
 
-- flash.each do |name, msg|
-  %h2{class: name}= msg
+.container
+  .row
+    .col-sm-5.media
+      =link_to image_tag( "DJ_Pic_HOS.jpg", id: "DJ", alt: "“Dj Guaguis @ Zukunft” by Montecruz Foto, used under CC BY / Levels adjusted from original https://www.flickr.com/photos/libertinus/"), "https://flic.kr/p/nvUjiK"
 
-= simple_form_for @dj_application do |f|
-  = f.error_messages
-  = f.input :name
-  = f.input :email
-  = f.input :phone
-  = f.input :show_description
-  = f.input :show_name
-  = f.input :dj_name
-  %div.input
-    = f.label :is_cost_ok
-    = f.check_box :is_cost_ok, class: 'boolean'
-    .info= t('dj_applications.dues_are_for')
-  = f.input :availability
-  .info
-    = t('dj_applications.check_for_open_slots')
-    = link_to t('click_here').titleize, all_programs_path
-  = f.input :internal_contacts
-  = f.input :blue_meanies
-  = f.button :submit, t('send').upcase
+    .col-sm-6
+      - flash.each do |name, msg|
+        %h2{class: name}= msg
+      = simple_form_for @dj_application do |f|
+        = f.error_messages
+        = f.input :name
+        = f.input :email
+        = f.input :phone
+        = f.input :show_name, label: "Show Name"
+        = f.input :dj_name
+        = f.input :show_description
+        = f.label :is_cost_ok
+        = f.check_box :is_cost_ok, class: 'boolean'
+        .info= t('dj_applications.dues_are_for')
+        = f.input :availability
+        Please check the program schedule for an open time slot.
+        = f.input :internal_contacts
+        = f.input :blue_meanies
+        = f.button :submit, t('send').upcase

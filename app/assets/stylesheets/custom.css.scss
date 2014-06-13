@@ -1,14 +1,20 @@
+a {
+  text-decoration: none !important;
+}
+
 .well {
   background-color: #042133;
   border: none;
+  font-size: 20px;
+  border-radius: 2px;
 }
 
-.contact_dj.well {
+.contact_dj.well, .listen_now.well, .now_playing.well, .tshirt.well {
   text-align: center;
-  background-color: #042133;
-  border: none;
   font-size: 20px;
-  font-family: monospace;
+  a {
+    color: #ffffff
+  }
 }
 
 p.copyright {
@@ -40,7 +46,7 @@ a.navbar-text, a.navbar-brand {
   margin-right: auto;
 }
 
-html, body { 
+html, body {
   height: 100%;
 }
 
@@ -50,19 +56,6 @@ html, body {
   height: 100%;
   margin: 0 auto -30px;
   padding-bottom: 40px;
-}
-
-.well {
-  background-color: #042133;
-  border: none;
-}
-
-.contact_dj.well {
-  text-align: center;
-  background-color: #042133;
-  border: none;
-  font-size: 30px;
-  font-family: monospace;
 }
 
 ol.tumblr_posts {
@@ -76,22 +69,45 @@ ol.tumblr_posts {
 
 .tumblr_post {
   margin: 14px 4px;
-  background-color: #444;
+  background-color: white;
   display: block;
   font-family: Helvetica Neue, Arial, sans-serif;
   font-size: 14px;
   border: 1px solid;
   border-color: #e8e8e8;
   padding: 16px;
- } 
-  
-.tumblr_photo  { 
+  border-radius: 5px;
+ }
+
+.tumblr_photo  {
   max-width: 350px;
   max-height: 225px;
 }
 
-table {
-  font-size: 20px;
+.navbar-header {
+  font-weight: bold;
+  font-size: 20pt;
+  font-family: 'Francois One', Arial, sans-serif;
+  padding-top: 20px;
+  position: relative;
+  left: 50px;
+  float: left;
+  .navbar-text {
+    color: #FFFFFF;
+  }
+}
+
+#live_player, .skype {
+  text-align: center;
+}
+
+.navbar-right {
+  vertical-align: middle;
+  padding-left: 30px;
+}
+
+img#DJ {
+  padding: 10px;
 }
 
 .program_avatar {

@@ -3,7 +3,7 @@ a {
 }
 
 .well {
-  background-color:rgba(4, 33, 51, 0.6);
+  background-color:rgba(4, 33, 51, 0.8);
   border: none;
   font-size: 20px;
   border-radius: 5px;
@@ -23,6 +23,7 @@ p.copyright {
 }
 
 #mainnav a.navbar-text {
+  color:#2ca5de;
   font-size:16pt;
   font-weight:bolder;
   margin-right:12px;
@@ -49,8 +50,8 @@ p.copyright {
 @media (min-width: 1200px) {
   #mainnav a.navbar-text {
     font-size:22pt;
-    margin-left:22px;
-    margin-right:22px;
+    margin-left:30px;
+    margin-right:30px;
   }
 }
 
@@ -89,19 +90,20 @@ a.navbar-text, a.navbar-brand {
 
 .footer {
   bottom: 0;
-  width: 90%;
+  width: 95%;
   height: 30px;
   margin-left: auto;
   margin-right: auto;
+  margin-top:30px;
 }
 
 html, body {
   height: 100%;
 }
 
-.audio_player_iframe {
-  width: 350 px;
-  height: 40 px;
+iframe.tumblr_audio_player {
+  width: 300px;
+  height: 60px;
 }
 
 .navbar-header {
@@ -116,7 +118,7 @@ html, body {
 }
 
 #mainnav a:hover {
-    color: #2ca5de;
+    color: white;
 }
 
 #live_player, .skype {
@@ -134,12 +136,17 @@ img#DJ {
 
 .apply p, {
   font-family:'Lato', Arial, sans serif;
-  font-size:.8em;
+  font-size:.7em;
   color:#7d8486;
+}
+
+.apply img {
+  width:80%;
 }
 
 label, {
   font-family:'Lato', Arial, sans serif;
   color:#7d8486;
   margin-top:15px;
+  font-size:.7em;
 }

@@ -13,53 +13,143 @@
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag 'custom'
 
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'
     = javascript_include_tag 'swfobject'
     = javascript_include_tag 'audio-player'
     = javascript_include_tag 'application'
     = javascript_include_tag 'corner'
-    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'
+    
+    :javascript
+      $(function() {
+        $(".box").corner("bl tr");
+      });      
 
   %body
-    .navbar
-      .container
-        .navbar-header.row
-          .col-md-4.col-sm-12
-            =link_to image_tag("hos-logo-wht.png", width: "250"), '/', class: "navbar-text"
-          .col-md-8.col-sm-12#mainnav
-            =link_to "SCHEDULE", schedules_path, class: "navbar-text"
-            =link_to "CONTACT", new_inquiry_path, class: "navbar-text"
-            =link_to "JOIN", new_dj_application_path, class: "navbar-text"
-            =link_to "LISTEN", listen_live_path, onclick: "window.open('/listen_live','Listen Live','height=270,width=400'); return false", class: "navbar-text"
-
     .container
-      -if flash[:alert]
-        .alert.alert-warning
-          =flash[:alert]
-      -elsif flash[:notice]
-        .alert.alert-info
-          =flash[:notice]
-      =yield
-      .push
+      .row
+        .col-md-8
+          .row
+            .col-sm-3.col-md-5#logo
+              =link_to image_tag("hos-logo-wht.png", width: '250'), '/'
+            .col-sm-8.col-sm-offset-1.col-md-6.col-md-offset-1{style: 'color: red; text-align: center'}
+              %h4
+                Portland's largest Free-Form
+                %br Radio Station
+              Est. 1994
 
-    .footer
-      .navbar.navbar-default
-        .navbar-bottom
-          =link_to "HOUSE OF SOUND", root_url, class: "navbar-brand"
-          =link_to "HOME", root_url, class: "navbar-text"
-          -if current_user.nil?
-            =link_to "SIGN IN", new_user_session_path, class: "navbar-text"
-          -elsif current_user.has_role?(:DJ)
-            =link_to "RECORD EPISODE", new_episode_path, class: "navbar-text"
-            =link_to "EDIT PROFILE", edit_user_path(current_user), class: "navbar-text"
-            =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
-          -elsif current_user.has_role?(:Admin)
-            =link_to "ADMIN DASHBOARD", "/admin", class: "navbar-text"
-            =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
+          .row
+            .col-xs-12#mainnav
+              =link_to "SCHEDULE", schedules_path, class: "navbar-text"
+              =link_to "CONTACT", new_inquiry_path, class: "navbar-text"
+              =link_to "JOIN", new_dj_application_path, class: "navbar-text"
+              =link_to "LISTEN", listen_live_path, onclick: "window.open('/listen_live','Listen Live','height=270,width=400'); return false", class: "navbar-text"
 
-          .navbar-right.media
-            =link_to image_tag("fb_follow.jpg", size: "80x25"), "https://www.facebook.com/houseofsound"
-            =link_to image_tag("tumblr.png", size: "25"), "http://www.tumblr.com/follow/houseofsoundradio/"
-            =link_to image_tag("instagram.png", size: "25"), "http://instagram.com/houseofsound"
-            =link_to image_tag("email.png", size: "60x25"), "mailto:admins@houseofsound.org"
+          .row.well
+            -if flash[:alert]
+              .alert.alert-warning
+                =flash[:alert]
+            -elsif flash[:notice]
+              .alert.alert-info
+                =flash[:notice]
+            =yield
+            .push
 
-      %p.copyright House of Sound ® 2014
+          %hr
+
+          #donate.row
+            .col-md-6
+              %h1 DONATE
+              %br
+              Donate to House of Sound and help us keep Portland weird. Or normal. Whatever you're feeling like today. No pressure.
+            .col-md-6
+              =image_tag("hos_shirts_crop.jpg", alt: "Buy a t-shirt to support House of Sound", align: "center", width:"250")
+
+              %p Buy a House of Sound T-shirt for just $10, proceeds help support House of Sound
+
+              %form{action: "https://www.paypal.com/cgi-bin/webscr", method: "post"}
+                %input{type: "hidden", name: "cmd", value: "_s-xclick"}
+                %input{type: "hidden", name: "hosted_button_id", value: "Q88A8GFSH4PSU"}
+                %label Select Size
+                %input{type: "hidden", name: "on0", value: "Sizes"}
+                %select{name: "os0"}
+                  %option{value: "Black Youth L"}= "Black Youth L"
+                  %option{value: "Black Adult S"}= "Black Adult S"
+                  %option{value: "Black Adult M"}= "Black Adult M"
+                  %option{value: "Black Adult L"}= "Black Adult L"
+                  %option{value: "Black Adult XL"}= "Black Adult XL"
+                  %option{value: "White Youth L"}= "White Youth L"
+                  %option{value: "White Adult S"}= "White Adult S"
+                  %option{value: "White Adult M"}= "White Adult M"
+                  %option{value: "White Adult L"}= "White Adult L"
+                  %option{value: "White Adult XL"}= "White Adult XL"
+                %br
+                %input{class: "ppbut", type: "image", src: "https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif", border: "0", width: "86", height: "21", name: "submit", alt: "PayPal - The safer, easier way to pay online!"}
+
+        .col-sm-4
+          .row.now_playing.well
+            - if Schedule.now_playing(Time.now)
+              - currently_playing = Schedule.now_playing(Time.now)
+              .row
+                .col-lg-6.col-md-12#onair
+                  =image_tag("http://houseofsound.org/img/hos_live.png")
+                %h2 NOW PLAYING:
+                = image_tag currently_playing.program.avatar.url(:medium)
+                %h2= currently_playing.program.title
+            - else 
+              .row
+                .col-lg-6.col-md-12#offair
+                  =image_tag("http://houseofsound.org/img/hos_standby.png")
+                .col-lg-6.col-md-12
+                  %h2 NEXT LIVE SHOW:
+                - if Schedule.find_next_schedule == nil
+                  %p There are no programs scheduled at this time.
+                - else
+              .row
+                = image_tag Schedule.find_next_schedule.program.avatar.url(:medium)
+                %h2= Schedule.find_next_schedule.program.title
+
+          %hr
+
+          .row
+            .col-lg-12#listennow
+              =link_to "Listen Now", "/listen_live", onclick: "window.open('/listen_live','Listen Live','height=270,width=400'); return false", class: "btn btn-xlarge btn-danger btn-extend"
+          %hr
+
+          .row#contactdj
+            %span.red.big Contact the DJ
+            .well
+              .titlebox.box
+                %h3 Call 503-575-9344
+              %h4 or type something below &#10549;
+              %iframe{src: "http://www.tumblr.com/ask_form/houseofsoundradio.tumblr.com/", frameborder: "0", scrolling: "no", width: "95%", height: "250"}
+
+          %hr
+
+          .row.well{style: 'text-align: center'}
+            <a class="twitter-timeline" data-chrome="noscrollbar transparent" height="400" href="https://twitter.com/houseofsound" data-widget-id="471797898695303168">Tweets by @houseofsound</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+      .footer
+        .navbar.navbar-default
+          .navbar-bottom
+            =link_to "HOUSE OF SOUND", root_url, class: "navbar-brand"
+            =link_to "SCHEDULE", schedules_path, class: "navbar-text"
+            =link_to "JOIN", new_dj_application_path, class: "navbar-text"
+            =link_to "CONTACT", new_inquiry_path, class: "navbar-text"
+            -if current_user.nil?
+              =link_to "SIGN IN", new_user_session_path, class: "navbar-text"
+            -elsif current_user.has_role?(:DJ)
+              =link_to "RECORD EPISODE", new_episode_path, class: "navbar-text"
+              =link_to "EDIT PROFILE", edit_user_path(current_user), class: "navbar-text"
+              =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
+            -elsif current_user.has_role?(:Admin)
+              =link_to "ADMIN DASHBOARD", "/admin", class: "navbar-text"
+              =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
+
+            .navbar-right.media
+              =link_to image_tag("fb_follow.jpg", size: "80x25"), "https://www.facebook.com/houseofsound"
+              =link_to image_tag("tumblr.png", size: "25"), "http://www.tumblr.com/follow/houseofsoundradio/"
+              =link_to image_tag("instagram.png", size: "25"), "http://instagram.com/houseofsound"
+              =link_to image_tag("email.png", size: "60x25"), "mailto:admins@houseofsound.org"
+
+        %p.copyright House of Sound ® 2014

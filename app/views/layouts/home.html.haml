@@ -13,11 +13,16 @@
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag 'custom'
 
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'
     = javascript_include_tag 'swfobject'
     = javascript_include_tag 'audio-player'
     = javascript_include_tag 'application'
     = javascript_include_tag 'corner'
-    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'
+    
+    :javascript
+      $(function() {
+        $(".box").corner("bl tr");
+      });      
           
   %body
     .container
@@ -30,27 +35,27 @@
       =yield
       .push
 
-    .footer
-      .navbar.navbar-default
-        .navbar-bottom
-          =link_to "HOUSE OF SOUND", root_url, class: "navbar-brand"
-          =link_to "SCHEDULE", schedules_path, class: "navbar-text"
-          =link_to "JOIN", new_dj_application_path, class: "navbar-text"
-          =link_to "CONTACT", new_inquiry_path, class: "navbar-text"
-          -if current_user.nil?
-            =link_to "SIGN IN", new_user_session_path, class: "navbar-text"
-          -elsif current_user.has_role?(:DJ)
-            =link_to "RECORD EPISODE", new_episode_path, class: "navbar-text"
-            =link_to "EDIT PROFILE", edit_user_path(current_user), class: "navbar-text"
-            =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
-          -elsif current_user.has_role?(:Admin)
-            =link_to "ADMIN DASHBOARD", "/admin", class: "navbar-text"
-            =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
+      .footer
+        .navbar.navbar-default
+          .navbar-bottom
+            =link_to "HOUSE OF SOUND", root_url, class: "navbar-brand"
+            =link_to "SCHEDULE", schedules_path, class: "navbar-text"
+            =link_to "JOIN", new_dj_application_path, class: "navbar-text"
+            =link_to "CONTACT", new_inquiry_path, class: "navbar-text"
+            -if current_user.nil?
+              =link_to "SIGN IN", new_user_session_path, class: "navbar-text"
+            -elsif current_user.has_role?(:DJ)
+              =link_to "RECORD EPISODE", new_episode_path, class: "navbar-text"
+              =link_to "EDIT PROFILE", edit_user_path(current_user), class: "navbar-text"
+              =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
+            -elsif current_user.has_role?(:Admin)
+              =link_to "ADMIN DASHBOARD", "/admin", class: "navbar-text"
+              =link_to "SIGN OUT", destroy_user_session_path, method: :delete, class: "navbar-text"
 
-          .navbar-right.media
-            =link_to image_tag("fb_follow.jpg", size: "80x25"), "https://www.facebook.com/houseofsound"
-            =link_to image_tag("tumblr.png", size: "25"), "http://www.tumblr.com/follow/houseofsoundradio/"
-            =link_to image_tag("instagram.png", size: "25"), "http://instagram.com/houseofsound"
-            =link_to image_tag("email.png", size: "60x25"), "mailto:admins@houseofsound.org"
+            .navbar-right.media
+              =link_to image_tag("fb_follow.jpg", size: "80x25"), "https://www.facebook.com/houseofsound"
+              =link_to image_tag("tumblr.png", size: "25"), "http://www.tumblr.com/follow/houseofsoundradio/"
+              =link_to image_tag("instagram.png", size: "25"), "http://instagram.com/houseofsound"
+              =link_to image_tag("email.png", size: "60x25"), "mailto:admins@houseofsound.org"
 
-      %p.copyright House of Sound ® 2014
+        %p.copyright House of Sound ® 2014

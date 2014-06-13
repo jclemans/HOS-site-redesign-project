@@ -4,7 +4,7 @@ body {
   background-repeat:no-repeat;
   background-position: top left;
   background-color: #000000;
-  background-size:contain;
+  background-size:cover;
   color: #FFFFFF;
   font-family: 'Francois One', Arial, sans-serif;
 }
@@ -18,7 +18,7 @@ h2 {
 }
 
 .container {
-  background-color:rgba(0,0,0,.5);
+  background-color:rgba(0,0,0,.3);
   min-height: 90%;
   height: auto !important;
   height: 100%;

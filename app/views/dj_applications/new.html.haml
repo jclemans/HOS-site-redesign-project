@@ -1,5 +1,5 @@
 .row
-  .col-md-5.col-sm-12
+  .col-md-5.col-sm-4.col-xs-12
     %h1= t('dj_applications.apply_to_be_a_dj').upcase
     .apply{style: 'margin-bottom: 30px;'}
       %h3
@@ -10,7 +10,7 @@
         %p
           = t('dj_applications.wed_like_you_to_join')
 
-  .col-md-7.col-sm-12.apply
+  .col-md-7.col-sm-8.col-xs-12.apply
     =link_to image_tag( "DJ_Pic_HOS.jpg", id: "DJ", alt: "“Dj Guaguis @ Zukunft” by Montecruz Foto, used under CC BY / Levels adjusted from original https://www.flickr.com/photos/libertinus/"), "https://flic.kr/p/nvUjiK"
 
     - flash.each do |name, msg|

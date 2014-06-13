@@ -1,5 +1,4 @@
 #program
-<<<<<<< HEAD
   .container
     .col-sm-7
       %h1= h @program.title
@@ -55,49 +54,3 @@
                           .row
                             .col-md-sm-12
                               = track.content
-=======
-  - if @program.amazon_filename
-    %br/
-  /   %center
-  /
-  %h1= h @program.title
-  %h2
-    with #{h @user.djname}
-  %h2
-    / = Date::DAYNAMES[@program.day_of_week]+ "s"
-    / PENDING MIGRATION CHANGES
-    / from START_TIME to END_TIME
-  %h3= h @program.description
-  / DEBUG: <haml:loud> h @program.end_time_in_seconds </haml:loud>
-  = image_tag @program.avatar.url(:large)
-  - if @program.program_url
-    %h4
-      %strong Website:
-      = link_to @program.program_url, program_path(@program)
-  %br/
-  - if can? :edit, @program
-    = link_to "Edit", edit_program_path(@program), class: "btn btn-danger"
-  %h2 PREVIOUS SHOWS
-  - if @program.episodes.length == 0
-    .episode
-      No archived shows yet.
-  - else
-    - @program.episodes.each do |episode|
-      .episode
-        %h2= h episode.recorded_at.strftime('%B %d, %Y')
-        .play_embed
-          %p{:id => "episode_#{episode.id}"}
-          / HTML 5 FOR MOBILE
-          .play_embed
-            HTML5 Player (if supported)
-            %audio{:controls => ""}
-              %source{"--" => "", :src => "hos_website/public/system/rips/#{episode.id}.mp3", :type => "audio/mpeg"} 
-                :javascript
-                  AudioPlayer.embed("episode_#{episode.id}", {
-                    soundFile: "#{episode.recording_file_name}",
-                    titles: "#{escape_javascript episode.program.title} - #{escape_javascript episode.recorded_at.strftime('%B %d %Y')}",
-                  });
-        %span.play_link/
-        %h2
-          %a{:href => "hos_website/public/system/rips/#{episode.id}.mp3"} Download
->>>>>>> 364e0ddd4abe7320b487dbf992ca03bd41f9974f

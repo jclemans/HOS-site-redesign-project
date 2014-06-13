@@ -10,4 +10,8 @@ class Program < ActiveRecord::Base
   validates_attachment_size :avatar, :in => 0.megabytes..2.megabytes
   validates :user_id, presence: true
   scope :active, -> {where is_active: true}
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 364e0ddd4abe7320b487dbf992ca03bd41f9974f

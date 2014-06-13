@@ -4,7 +4,10 @@ class Episode < ActiveRecord::Base
   before_destroy :delete_file
   has_attached_file :recording
   after_create :record_stream
+<<<<<<< HEAD
   accepts_nested_attributes_for :tracks, allow_destroy:  true
+=======
+>>>>>>> 364e0ddd4abe7320b487dbf992ca03bd41f9974f
 
   LOCAL_ROOT = 'static'
   PUBLIC_ROOT = 'episodes'

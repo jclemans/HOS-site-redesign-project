@@ -1,3 +1,7 @@
 stream_url: "http://www.houseofsound.org:8000/live.mp3"
+<<<<<<< HEAD
 episode_file_path: "Users/dev/hos_website/public/system/rips/"
+=======
+episode_file_path: "/users/dev/desktop/rips"
+>>>>>>> 364e0ddd4abe7320b487dbf992ca03bd41f9974f
 paperclip_file_name: "/usr/local/bin/"

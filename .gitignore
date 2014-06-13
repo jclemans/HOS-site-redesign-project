@@ -17,6 +17,9 @@ hos_postgres_5.19.14.sql
 # Ignore DB dump file
 hos_postgres_5.19.14.sql
 
+# Ignore DB dump file
+hos_postgres_5.19.14.sql
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal

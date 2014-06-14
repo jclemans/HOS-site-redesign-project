@@ -105,8 +105,8 @@
                 - if !next_up
                   %p There are no programs scheduled at this time.
                 - else
-                  = image_tag next_up.program.avatar.url(:medium)
-                  %h2= next_up.program.title
+                  = link_to image_tag(next_up.program.avatar.url(:medium)), next_up.program
+                  %h2= link_to next_up.program.title, next_up.program
                   %p= next_up.show_time
 
           %hr

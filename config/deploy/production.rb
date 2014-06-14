@@ -18,7 +18,7 @@ role :db,  %w{deploy@96.126.97.138}
 server '96.126.97.138', user: 'deploy', roles: %w{web app}, primary: true
 set :server_name, '96.126.97.138'
 
-set :branch, 'develop'
+set :branch, 'master'
 
 
 # Custom SSH Options

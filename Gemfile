@@ -14,6 +14,7 @@ gem 'capybara'
 gem 'chronic'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'cucumber-rails', require: false, group: :test
+gem 'draper'
 gem 'dynamic_form'
 gem 'database_cleaner'
 gem 'factory_girl_rails', group: :test

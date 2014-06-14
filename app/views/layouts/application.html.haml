@@ -96,17 +96,18 @@
                 = image_tag currently_playing.program.avatar.url(:medium)
                 %h2= currently_playing.program.title
             - else 
+              - next_up = Schedule.find_next_schedule.decorate
               .row
                 .col-lg-6.col-md-12#offair
                   =image_tag("http://houseofsound.org/img/hos_standby.png")
                 .col-lg-6.col-md-12
                   %h2 NEXT LIVE SHOW:
-                - if Schedule.find_next_schedule == nil
+                - if !next_up
                   %p There are no programs scheduled at this time.
                 - else
-              .row
-                = image_tag Schedule.find_next_schedule.program.avatar.url(:medium)
-                %h2= Schedule.find_next_schedule.program.title
+                  = image_tag next_up.program.avatar.url(:medium)
+                  %h2= next_up.program.title
+                  %p= next_up.show_time
 
           %hr
 

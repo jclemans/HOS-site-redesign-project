@@ -11,7 +11,16 @@ ActiveAdmin.register Program do
     column :avatar do |program|
       image_tag program.avatar.url(:thumb)
     end
-    column :user_id
+    column :user do |program|
+      program.user.djname
+    end
+    column :day_of_week do |program|
+      if program.day_of_week
+        Date::DAYNAMES[program.day_of_week]
+      else
+        "?"
+      end
+    end
     column :description
     actions
   end

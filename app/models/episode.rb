@@ -4,6 +4,7 @@ class Episode < ActiveRecord::Base
   before_destroy :delete_file
   has_attached_file :recording
   after_create :record_stream
+  accepts_nested_attributes_for :tracks, allow_destroy:  true
 
   LOCAL_ROOT = 'static'
   PUBLIC_ROOT = 'episodes'
@@ -16,7 +17,10 @@ class Episode < ActiveRecord::Base
 
   def record_stream
     duration = (record_time * 60)
-    system "streamripper #{ENV['stream_url']} -A -l #{duration} -i -m 300 -a -d #{file_path}"
+    Thread.new do 
+      system "streamripper #{ENV['stream_url']} -A -l #{duration} -i -m 300 -a #{file_path}"
+    end
+
     self.update(:recording_file_name => file_path)
   end
 
@@ -29,7 +33,7 @@ class Episode < ActiveRecord::Base
   end
 
   def file_local_path
-    File.join LOCAL_ROOT, PUBLIC_ROOT, file_name
+    File.join LOCAL_ROOT, "#{ENV['episode_file_path']}/#{file_name}"
   end
 
   def file_public_path

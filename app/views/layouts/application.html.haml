@@ -93,8 +93,8 @@
                 .col-lg-6.col-md-12#onair
                   =image_tag("http://houseofsound.org/img/hos_live.png")
                 %h2 NOW PLAYING:
-                = image_tag currently_playing.program.avatar.url(:medium)
-                %h2= currently_playing.program.title
+                = link_to image_tag(currently_playing.program.avatar.url(:medium)), currently_playing.program
+                %h2= link_to currently_playing.program.title, currently_playing.program
             - else 
               - next_up = Schedule.find_next_schedule.decorate
               .row

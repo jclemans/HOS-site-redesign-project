@@ -21,8 +21,8 @@ class EpisodesController < ApplicationController
   end
 
   def show
-    @user = current_user
     @episode = Episode.find(params[:id])
+    @user = @episode.program.user
     @track = @episode.tracks.new
   end
 

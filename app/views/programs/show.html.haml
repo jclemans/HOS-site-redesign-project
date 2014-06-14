@@ -40,6 +40,9 @@
                       = h episode.recorded_at.strftime('%B %d, %Y') 
                       = h '-'
                       = h @program.title
+                    - if can? :edit, episode
+                      = link_to "Edit", episode, class: 'btn btn-warning pull-right'
+
                 .panel-collapse.collapse{id: "collapse#{episode.id}"}    
                   .panel-body
                     .play_embed
@@ -50,11 +53,12 @@
                       %h4
                         %a.btn.btn-info{:href => "/system/rips/#{episode.id}.mp3"} Download
 
-                      .container-fluid
-                        -if episode.tracks != nil
-                          %h2 Playlist:
-                          - episode.tracks.each do |track|
-                            .container
-                              .row
-                                .col-md-sm-12
-                                  = track.content
+                      - if episode.tracks.count > 0
+                        .container-fluid
+                          -if episode.tracks != nil
+                            %h2 Playlist:
+                            - episode.tracks.each do |track|
+                              .container
+                                .row
+                                  .col-md-sm-12
+                                    = track.content

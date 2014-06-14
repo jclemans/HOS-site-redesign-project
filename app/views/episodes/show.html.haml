@@ -10,5 +10,14 @@
   %p No tracks added to this episode yet.
 - else
   %h3 Tracks
-  - @episode.tracks.each do |t|
-    %li= t.content
+  %table
+    %tr
+      %th Track
+      %th Actions
+  
+    - @episode.tracks.each do |t|
+      %tr
+        %td= t.content
+        %td
+          = link_to t, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger' do
+            %i.fa.fa-times

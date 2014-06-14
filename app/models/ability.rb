@@ -10,6 +10,7 @@ class Ability
       elsif user.has_role? :DJ
         can [:show, :update, :edit], User, id: user.id
         can [:update, :edit], Program, user_id: user.id
+        can [:update, :edit], Episode, program: {user_id: user.id}
         can :index, Schedule
 
       else

@@ -21,6 +21,7 @@ gem 'factory_girl_rails', group: :test
 gem 'faker', group: :test
 gem 'faraday', '0.8.0'
 gem 'figaro'
+gem 'font-awesome-rails'
 gem 'haml'
 gem 'ice_cube'
 gem 'jbuilder', '~> 1.2'

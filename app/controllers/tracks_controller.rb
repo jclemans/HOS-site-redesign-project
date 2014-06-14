@@ -10,6 +10,13 @@ class TracksController < ApplicationController
     end
   end
 
+  def destroy
+    @track = Track.find params[:id]
+    @track.destroy
+    flash[:alert] = "Track was removed"
+    redirect_to(:back) 
+  end
+
   private
 
   def track_params

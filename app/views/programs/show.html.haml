@@ -20,7 +20,7 @@
             %p website: 
             = link_to @program.program_url, program_path(@program)
         - if can? :edit, @program
-          = link_to "Edit", edit_program_path(@program), class: "btn btn-danger"
+          = link_to "Edit", edit_program_path(@program), class: "btn btn-success"
 
   .container-fluid
     .row
@@ -41,7 +41,7 @@
                       = h '-'
                       = h @program.title
                     - if can? :edit, episode
-                      = link_to "Edit", episode, class: 'btn btn-warning pull-right'
+                      = link_to "Edit", episode, class: 'btn btn-success pull-right'
 
                 .panel-collapse.collapse{id: "collapse#{episode.id}"}    
                   .panel-body

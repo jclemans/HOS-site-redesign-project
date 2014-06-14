@@ -1,23 +1,36 @@
 %h2= h @user.djname
 %h3= h @user.program.title
 
-= form_for @track do |f|
-  = f.hidden_field :episode_id, value: @episode.id
-  = f.text_field :content, placeholder: "Enter track title and artist."
-  = f.submit 'Add Track'
+.container-fluid
+  .row-fluid
+    .col-sm-12
+      = form_for @track do |f|
+        = f.hidden_field :episode_id, value: @episode.id
+        = f.text_field :content, placeholder: "Enter track title and artist."
+        = f.submit 'Add Track'
 
-- if @episode.tracks.length == 0
-  %p No tracks added to this episode yet.
-- else
-  %h3 Tracks
-  %table
-    %tr
-      %th Track
-      %th Actions
-  
-    - @episode.tracks.each do |t|
-      %tr
-        %td= t.content
-        %td
-          = link_to t, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger' do
-            %i.fa.fa-times
+  - if @episode.tracks.length == 0
+    .row-fluid
+      .col-sm-12
+        %p No tracks added to this episode yet.
+  - else
+    .row-fluid
+      .col-sm-12
+        %h3 Tracks
+        %table
+          %tr
+            %th Track
+            %th Actions
+        
+          - @episode.tracks.each do |t|
+            %tr
+              %td= t.content
+              %td
+                = link_to t, method: :delete, confirm: 'Are you sure?', class: 'btn btn-danger' do
+                  %i.fa.fa-times
+
+  .row-fluid
+    .col-sm-12
+      = link_to "Delete this Episode", @episode, method: :delete, confirm: 'Are you sure?  The episode and Podcast will be removed.  Forever.', class: 'btn btn-danger'
+
+

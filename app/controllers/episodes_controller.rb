@@ -26,6 +26,13 @@ class EpisodesController < ApplicationController
     @track = @episode.tracks.new
   end
 
+  def destroy
+    @episode = Episode.find(params[:id])
+    @episode.destroy
+    flash[:alert] = "Episode removed"
+    redirect_to @episode.program
+  end
+
   private
 
   def episode_params

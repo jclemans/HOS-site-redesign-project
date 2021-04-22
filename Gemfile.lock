@@ -202,7 +202,7 @@ GEM
     numbers_and_words (0.10.0)
       activesupport
       i18n
-    oauth (0.4.7)
+    oauth (0.5.6)
     orm_adapter (0.5.0)
     paperclip (3.5.2)
       activemodel (>= 3.0.0)
